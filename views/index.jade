@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  .alert.alert-success(role='alert')
+    strong Well done!
+    |  You successfully read this important alert message.
+
+  .container
+    #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+      ol.carousel-indicators
+        li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
+        li(data-target='#carouselExampleIndicators', data-slide-to='1')
+        li(data-target='#carouselExampleIndicators', data-slide-to='2')
+      .carousel-inner(role='listbox')
+        .carousel-item.active
+          img.d-block.img-fluid(src='http://www.imperiumtapet.com/media/wallpaper/22396/image/49524bfac3677c8a6aeb_720x540_cropromiar-niestandardowy.jpg', alt='First slide')
+        .carousel-item
+          img.d-block.img-fluid(src='http://www.banzaj.pl/pictures/roznosci/odjechane/Waz_z_ludzka_glowa/waz_06.jpg', alt='Second slide')
+        .carousel-item
+          img.d-block.img-fluid(src='http://www.imperiumtapet.com/media/wallpaper/22396/image/49524bfac3677c8a6aeb_720x540_cropromiar-niestandardowy.jpg', alt='Third slide')
+      a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+        span.carousel-control-prev-icon(aria-hidden='true')
+        span.sr-only Previous
+      a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+        span.carousel-control-next-icon(aria-hidden='true')
+        span.sr-only Next
+
+
+  // Indicates a successful or positive action
+  button.btn.btn-success(type='button') Success
+  // Contextual button for informational alert messages
+  button.btn.btn-info(type='button') Info
+
