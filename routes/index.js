@@ -3,7 +3,9 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Trenazer_HMI' });
+  res.render('index', { title: 'CYKLOTREN HMI' });
 });
 
 module.exports = router;
+
+

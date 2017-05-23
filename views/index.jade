@@ -1,18 +1,40 @@
 extends layout
 
+//SCRIPTS TOP
+block scripts_top
+
+
+//PAGE CONTENT
 block content
   .container-fluid
-    h1 CYKLOTREN
-  .container-fluid
+    .text-center
+      h1.display-1
+        strong CYKLOTREN
+
+
 
   .container-fluid
     .row
-      .col-2
-        button.btn.btn-primary.btn-lg.btn-block(type='button') Block level button
-      .col
-      .col-4
-        button.btn.btn-success.btn-lg.btn-block(type='button') Block level button
-      .col
-      .col-2
-        button.btn.btn-primary.btn-lg.btn-block(type='button') Block level button
+      .col-6.d-flex.align-items-center
+          .input-group.input-group-lg
+              span#sizing-addon1.input-group-addon Użytkownik:
+              input#keyboard.form-control(type='text', placeholder='Twoja nazwa użytkownika', aria-describedby='sizing-addon1', style='height: 100px')
 
+      .col-6
+          img.rounded.mx-auto.d-block(src='./images/InerionLOGO.jpg', alt='LOGO INERION' style="width:60%")
+
+  .fixed-bottom
+    .container-fluid
+      .row
+        .col-2
+          button#def.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px') Pomoc
+        .col
+        .col-4
+          button.btn.btn-success.btn-lg.btn-block(type='button' style='height: 100px') START
+        .col
+        .col-2
+          button.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px') Kalibracja
+
+
+//SCRIPTS BOTTOM
+block scripts_bottom

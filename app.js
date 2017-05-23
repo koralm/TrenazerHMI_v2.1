@@ -32,7 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //ADDED bower to server static
 app.use(express.static(path.join(__dirname, 'bower_components')));
-
+app.use(express.static(path.join(__dirname, 'scrpits_custom')));
+app.use(express.static(path.join(__dirname, 'media')));
 
 app.use('/', index);
 app.use('/users', users);

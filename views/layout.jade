@@ -1,10 +1,34 @@
 doctype html
 
 html
-  link(type='text/css', rel='stylesheet', href="./stylesheets/style.css")
-  script(src='./jquery/dist/jquery.js')
-  script(src='./tether/src/js/tether.js')
-  script(src='./bootstrap/dist/js/bootstrap.js')
-    title= title
+  title= title
+  head
+    //CSS LINKS BOWER
+    link(type='text/css', rel='stylesheet', href="./stylesheets/style.css")
+
+    link(type='text/css', rel='stylesheet', href='./keyboard/css/keyboard.css')
+
+    //SCRIPTS LINKS BOWER
+    script(src='./jquery/dist/jquery.js')
+    script(src='./jquery-ui/jquery-ui.js')
+    script(src='./tether/src/js/tether.js')
+    script(src='./bootstrap/dist/js/bootstrap.js')
+    //KEYBOARD
+    script(src='./keyboard/dist/js/jquery.keyboard.js')
+    script(src='./keyboard/dist/js/jquery.mousewheel.min.js')
+    script(src='./keyboard/dist/js/jquery.keyboard.extension-all.min.js')
+
+    //CUSTOM INIT
+    script(src='./layout_S.js')
+
+  block scripts_top
+
+
+    title CYKLOTREN HMI
+
   body
     block content
+
+  //CUSTOM SCRIPTS BLOCK BOTTOM
+  block scripts_bottom
+
