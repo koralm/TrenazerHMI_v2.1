@@ -1,0 +1,170 @@
+extends layout
+
+//SCRIPTS TOP
+block scripts_top
+    script(src='./settings_advenced_S.js')
+
+
+//PAGE CONTENT
+block content
+
+    .container-fluid(style='margin-top: 59px; ')
+        .row
+            .col-3.d-flex.align-items-center.flex-row-reverse
+                .h2
+                    b Wyświetlacz 1:
+            .col-1.d-flex.align-items-center.flex-row-reverse
+                input(checked='', data-toggle='toggle', type='checkbox')
+            .col-2
+                .input-group
+                    input#disp1_max_INA.form-control(type='text', placeholder="max", aria-describedby='basic-addon2', style='height: 60px')
+                    span#basic-addon23A.input-group-addon min
+            .col-2
+                .input-group(style='margin-bottom: 5px; ')
+                    input#disp1_min_INA.form-control(type='text', placeholder="min", aria-describedby='basic-addno21', style='height: 60px; ')
+                    span#basic-addon24A.input-group-addon max
+            .col-3
+                select.form-control.form-control-lg(style='height: 60px; ')
+                    option(value='1')#mean_phase_acc_1 Średnia siła w fazie rozpędzania [N]
+                    option(value='2')#mean_phase_brake_1 Średnia siła w fazie hamowania [N]
+                    option(value='3')#mean_cycle_1 Średnia siła w całym cyklu [N]
+                    option(value='4')#time_acceleration_1 Czas fazy rozpędzania [ms]
+                    option(value='5')#time_brake_1 Czas fazy hamowania [ms]
+                    option(value='6')#time_cycle_1 Czas cyklu [ms]
+                    option(value='7')#max_spped_cycle_1 Prędkość maksymalna w cyklu [m/s]
+                    option(value='8')#max_length_cycle_1 Maksymalna pozycjia w cyklu [cm]
+                    option(value='9')#max_power_cycle_1 Funkacja koncentracji siły w cyklu [N]
+
+
+        .row
+            .col-3.d-flex.align-items-center.flex-row-reverse
+                .h2
+                    b Wyświetlacz 2:
+            .col-1.d-flex.align-items-center.flex-row-reverse
+                input(checked='', data-toggle='toggle', type='checkbox')
+            .col-2
+                .input-group
+                    input#disp2_max_INA.form-control(type='text', placeholder="max", aria-describedby='basic-addon2', style='height: 60px')
+                    span#basic-addon223A.input-group-addon min
+            .col-2
+                .input-group
+                    input#disp2_min_INA.form-control(type='text', placeholder="min", aria-describedby='basic-addno21', style='height: 60px')
+                    span#basic-addon224A.input-group-addon max
+            .col-3
+                select.form-control.form-control-lg(style='height: 60px; ')
+                    option(value='1')#mean_phase_acc_2 Średnia siła w fazie rozpędzania [N]
+                    option(value='2')#mean_phase_brake_2 Średnia siła w fazie hamowania [N]
+                    option(value='3')#mean_cycle_2 Średnia siła w całym cyklu [N]
+                    option(value='4')#time_acceleration_2 Czas fazy rozpędzania [ms]
+                    option(value='5')#time_brake_2 Czas fazy hamowania [ms]
+                    option(value='6')#time_cycle_2 Czas cyklu [ms]
+                    option(value='7')#max_spped_cycle_2 Prędkość maksymalna w cyklu [m/s]
+                    option(value='8')#max_length_cycle_2 Maksymalna pozycjia w cyklu [cm]
+                    option(value='9')#max_power_cycle_2 Funkacja koncentracji siły w cyklu [N]
+
+    .container-fluid
+        hr(style='width: 100%; color: black; height: 1px; background-color:black;')
+        .h2
+            .text-center
+                |Użytkownik:
+                b Rambo
+        hr(style='width: 100%; color: black; height: 1px; background-color:black; margin-bottom: 50px; ')
+
+    //Simple part
+    .container-fluid
+        .row
+            .col-3.d-flex.align-items-center.flex-row-reverse
+                .h2
+                    b Oddziaływanie:
+            .col-2
+                h4 Długość liny:
+                .input-group
+                    input#line_length_INA.form-control(type='text', placeholder="10-100", aria-describedby='basic-addon2', style='height: 60px')
+                    span#basic-addon2A.input-group-addon cm
+            .col-2
+                h4 Odległość rolek:
+                .input-group
+                    input#roller_dist_INA.form-control(type='text', placeholder="1-60", aria-describedby='basic-addno21', style='height: 60px')
+                    span#basic-addon21A.input-group-addon cm
+            .col-2
+                h4 Masa:
+                .input-group
+                    input#mass_INA.form-control(type='text', placeholder="1-500", aria-describedby='basic-addon22', style='height: 60px')
+                    span#basic-addon22A.input-group-addon kg
+            .col-2
+                button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/ustawienia_S';" type='button' style='height: 100px')
+                    p Widok
+                    p prosty
+            .col
+
+        .row
+            .col-3.d-flex.align-items-center.flex-row-reverse
+                .h2
+                    b Czas trwania:
+            .col-2
+                .input-group
+                    input#duration_min_INA.form-control(type='text', placeholder="minuty", aria-describedby='basic-addon2', style='height: 60px')
+                    span#basic-addon2TA.input-group-addon min
+            .col-2
+                .input-group
+                    input#duration_sec_INA.form-control(type='text', placeholder="sekundy", aria-describedby='basic-addno21', style='height: 60px')
+                    span#basic-addon21TA.input-group-addon s
+            .col-2
+                .input-group
+                    input#duration_cycle_INA.form-control(type='text', placeholder="cykle", aria-describedby='basic-addon22', style='height: 60px')
+                    span#basic-addon22TA.input-group-addon cykli
+            .col-2.d-flex.align-items-center.justify-content-center
+                input(checked='', data-toggle='toggle', data-on='Dźwięk włączony', data-off='Dźwięk wyłczony', data-onstyle='success', data-offstyle='danger', type='checkbox')
+            .col
+
+
+
+
+    .container-fluid
+        hr(style='width: 100%; color: black; height: 1px; background-color:black; ')
+
+    //FILES
+    .container-fluid
+        .row
+            .col-3.d-flex.align-items-center.flex-row-reverse
+                .h2
+                    b Plik wynikowy:
+            .col-4
+                h4 Nazwa katalogu:
+                    input#folder_name_INA.form-control(type='text', placeholder="Wpisz nazwę katalogu", style='height: 60px')
+            .col-4
+                h4 Nazwa pliku:
+                    input#file_name_INA.form-control(type='text', placeholder="Wpisz nazwę pliku", style='height: 60px')
+
+
+    //STOPKA
+    .fixed-bottom
+        .container-fluid
+            .row
+                .col
+                    .text-center
+                        h1.text-danger
+                            strong Przed naciśnięciem dowolnego przycisku proszę wyciągnąć linę !!!
+            .row
+                .col
+                .col-2
+                    button.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px') Wyloguj
+                .col-2
+                    button.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px')
+                        p Zapisz
+                        p ustawienia
+                .col-2
+                    button.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px')
+                        p Pobierz z
+                        p Internetu
+                .col-2
+                    button.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px') Wybierz z listy
+                .col-2
+                    button.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px')
+                        p Rozpocznij
+                        p ćwiczenie
+                .col
+
+
+//SCRIPTS BOTTOM
+block scripts_bottom
