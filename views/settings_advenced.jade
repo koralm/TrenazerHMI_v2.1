@@ -8,7 +8,7 @@ block scripts_top
 //PAGE CONTENT
 block content
 
-    .container-fluid(style='margin-top: 59px; ')
+    .container-fluid#settings_disp(style='margin-top: 59px; visibility: hidden; ')
         .row
             .col-3.d-flex.align-items-center.flex-row-reverse
                 .h2
@@ -92,12 +92,12 @@ block content
                     input#mass_INA.form-control(type='text', placeholder="1-500", aria-describedby='basic-addon22', style='height: 60px')
                     span#basic-addon22A.input-group-addon kg
             .col-2
-                button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/ustawienia_S';" type='button' style='height: 100px')
+                button#settings_mode_toggle.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px')
                     p Widok
-                    p prosty
+                    p#settings_mode_text prosty
             .col
 
-        .row
+        .row#settings_time(style='visibility: hidden')
             .col-3.d-flex.align-items-center.flex-row-reverse
                 .h2
                     b Czas trwania:
@@ -114,17 +114,17 @@ block content
                     input#duration_cycle_INA.form-control(type='text', placeholder="cykle", aria-describedby='basic-addon22', style='height: 60px')
                     span#basic-addon22TA.input-group-addon cykli
             .col-2.d-flex.align-items-center.justify-content-center
-                input(checked='', data-toggle='toggle', data-on='Dźwięk włączony', data-off='Dźwięk wyłczony', data-onstyle='success', data-offstyle='danger', type='checkbox')
+                input(checked='', data-toggle='toggle', data-on='Dźwięk włączony', data-off='Dźwięk wyłączony', data-onstyle='success', data-offstyle='danger', type='checkbox')
             .col
 
 
 
 
-    .container-fluid
+    .container-fluid#settings_hr(style='visibility: hidden')
         hr(style='width: 100%; color: black; height: 1px; background-color:black; ')
 
     //FILES
-    .container-fluid
+    .container-fluid#settings_folder(style='visibility: hidden')
         .row
             .col-3.d-flex.align-items-center.flex-row-reverse
                 .h2
@@ -148,9 +148,9 @@ block content
             .row
                 .col
                 .col-2
-                    button.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px') Wyloguj
+                    button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/';" type='button' style='height: 100px') Wyloguj
                 .col-2
-                    button.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px')
+                    button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/zapisz';" type='button' style='height: 100px')
                         p Zapisz
                         p ustawienia
                 .col-2
