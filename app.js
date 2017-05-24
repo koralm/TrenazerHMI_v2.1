@@ -8,6 +8,8 @@ var sassMiddleware = require('node-sass-middleware');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var settings_simple = require('./routes/settings_simple');
+var settings_advenced = require('./routes/settings_advenced');
 
 var app = express();
 
@@ -37,6 +39,8 @@ app.use(express.static(path.join(__dirname, 'media')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/ustawienia_S', settings_simple);
+app.use('/ustawienia_A', settings_advenced);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

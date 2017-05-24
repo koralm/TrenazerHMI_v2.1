@@ -2,7 +2,7 @@ extends layout
 
 //SCRIPTS TOP
 block scripts_top
-
+  script(src='./index_S.js')
 
 //PAGE CONTENT
 block content
@@ -27,10 +27,10 @@ block content
     .container-fluid
       .row
         .col-2
-          button#def.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px') Pomoc
+          button.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px') Pomoc
         .col
         .col-4
-          button.btn.btn-success.btn-lg.btn-block(type='button' style='height: 100px') START
+          button.btn.btn-success.btn-lg.btn-block(onclick="location.href = '/ustawienia_S';" type='button' style='height: 100px') START
         .col
         .col-2
           button.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px') Kalibracja

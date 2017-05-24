@@ -17,6 +17,7 @@
   "dependencies": {
     "bootstrap": "v4.0.0-alpha.6",
     "jqbtk": "*",
-    "keyboard": "^1.26.22"
+    "keyboard": "^1.26.22",
+    "angular-bootstrap-toggle": "^0.1.2"
   }
 }
