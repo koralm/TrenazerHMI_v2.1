@@ -7,8 +7,8 @@ $(function () {
             'normal' : [
                 '0 1 2 3',
                 '4 5 6 7',
-                '    8 9 ',
-                '{bksp} {a} {c}'
+                '{c}  8 9 .',
+                '{bksp} {accept} '
             ]
         }
     })
@@ -54,3 +54,35 @@ $(function () {
         menu_mode_check);
 });
 
+//CHECK INPUT VALUES RANGE
+
+var error_parts = '';
+
+$(function(){
+
+
+    $("#button_start_exercies, #button_save_settings").click(function(){
+
+        var error_parts = '';
+
+        if ($( "#line_length_INA" ).val() <5 || $("#line_length_INA" ).val() > 150 ) {
+            //$( "#alert_bad_values" ).html(length_error_alert);
+            error_parts = 'DLUGOSC LINY (5-150 cm)'
+        }
+        if ($( "#roller_dist_INA" ).val() <=0 || $("#roller_dist_INA" ).val() > 50 ) {
+            //$( "#alert_bad_values" ).html(length_error_alert);
+            error_parts = error_parts + ', ' + 'ODL. ROLEK (0-50 cm)'
+        }
+
+        if ( error_parts.length > 0){
+            var length_error_alert = '<div role="alert" class="alert alert-danger alert-dismissible fade show"> <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">×</span></button> <h2> <strong>BLAD: ' + error_parts.toString() + '</strong></h2> </div>';
+            $( "#alert_bad_values" ).html(length_error_alert);
+
+        }else
+        {
+            alert('OK')
+            //window.location.href = '/ustawienia';
+        }
+
+    });
+});

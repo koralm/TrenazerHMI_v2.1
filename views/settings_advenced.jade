@@ -79,17 +79,17 @@ block content
             .col-2
                 h4 Długość liny:
                 .input-group
-                    input#line_length_INA.form-control(type='text', placeholder="10-100", aria-describedby='basic-addon2', style='height: 60px')
+                    input#line_length_INA.form-control.form-control-danger(type='number', placeholder="5-150", aria-describedby='basic-addon2', style='height: 60px')
                     span#basic-addon2A.input-group-addon cm
             .col-2
                 h4 Odległość rolek:
                 .input-group
-                    input#roller_dist_INA.form-control(type='text', placeholder="1-60", aria-describedby='basic-addno21', style='height: 60px')
+                    input#roller_dist_INA.form-control(type='number', placeholder="0-50", aria-describedby='basic-addno21', style='height: 60px')
                     span#basic-addon21A.input-group-addon cm
             .col-2
                 h4 Masa:
                 .input-group
-                    input#mass_INA.form-control(type='text', placeholder="1-500", aria-describedby='basic-addon22', style='height: 60px')
+                    input#mass_INA.form-control(type='number', placeholder="0.1-1000", aria-describedby='basic-addon22', style='height: 60px')
                     span#basic-addon22A.input-group-addon kg
             .col-2
                 button#settings_mode_toggle.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px')
@@ -140,6 +140,7 @@ block content
     //STOPKA
     .fixed-bottom
         .container-fluid
+            #alert_bad_values
             .row
                 .col
                     .text-center
@@ -150,7 +151,7 @@ block content
                 .col-2
                     button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/';" type='button' style='height: 100px') Wyloguj
                 .col-2
-                    button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/zapisz';" type='button' style='height: 100px')
+                    button#button_save_settings.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/zapisz';" type='button' style='height: 100px')
                         p Zapisz
                         p ustawienia
                 .col-2
@@ -160,7 +161,7 @@ block content
                 .col-2
                     button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/profile_cwiczen';" type='button' style='height: 100px') Wybierz z listy
                 .col-2
-                    button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/trening';" type='button' style='height: 100px')
+                    button#button_start_exercies.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px')
                         p Rozpocznij
                         p ćwiczenie
                 .col

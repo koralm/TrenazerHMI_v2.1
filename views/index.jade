@@ -12,25 +12,25 @@ block content
         strong CYKLOTREN
 
 
-
   .container-fluid
     .row
       .col-6.d-flex.align-items-center
-          .input-group.input-group-lg
-              span#sizing-addon1.input-group-addon Użytkownik:
-              input#keyboard.form-control(type='text', placeholder='Twoja nazwa użytkownika', aria-describedby='sizing-addon1', style='height: 100px')
-
+        #username_input_form.input-group.input-group-lg
+          span.input-group-addon Użytkownik:
+          input#user_name_input.form-control(type='text', placeholder='Twoja nazwa użytkownika', style='height: 100px')
       .col-6
-          img.rounded.mx-auto.d-block(src='./images/InerionLOGO.jpg', alt='LOGO INERION' style="width:60%")
+        img.rounded.mx-auto.d-block(src='./images/InerionLOGO.jpg', alt='LOGO INERION' style="width:60%")
 
   .fixed-bottom
+    .container-fluid
+      #alert_no_username
     .container-fluid
       .row
         .col-2
           button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/pomoc';" type='button' style='height: 100px') Pomoc
         .col
         .col-4
-          button.btn.btn-success.btn-lg.btn-block(onclick="location.href = '/ustawienia';" type='button' style='height: 100px') START
+          button#button_start.btn.btn-success.btn-lg.btn-block(type='button' style='height: 100px') START
         .col
         .col-2
           button.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px') Kalibracja
