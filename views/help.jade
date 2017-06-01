@@ -1,0 +1,32 @@
+extends layout
+
+//SCRIPTS TOP
+block scripts_top
+    .container-fluid
+        .text-center
+            h1.display-1.text-danger
+                strong UWAGA !!!
+
+            hr
+            hr
+            hr
+            hr
+
+            .alert.alert-danger(role='alert')
+                h1.display-3
+                    p Urządzenie jest wersją prototypową,
+                    p ćwiczenie może się odbywać TYLKO
+                    p w obecności trenera
+
+
+//PAGE CONTENT
+block content
+    .fixed-bottom
+        .container-fluid
+            .row
+                .col-2
+                .col
+                .col-4
+                    button.btn.secondary.btn-lg.btn-block(onclick="location.href = '/';" type='button' style='height: 100px') Wróć
+                .col
+                .col-2
