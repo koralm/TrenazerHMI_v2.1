@@ -12,6 +12,7 @@ var session = require('express-session');
 
 
 
+
 //ROUTOWANIE STRON
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -20,6 +21,7 @@ var settings_save = require('./routes/settings_save');
 var exercise = require('./routes/exercise');
 var profiles_list = require('./routes/profiles_list');
 var help = require('./routes/help');
+var login = require('./routes/login');
 
 var app = express();
 
@@ -63,8 +65,6 @@ session = session({
 app.use(session);
 
 app.use('/', index);
-app.use('/wyloguj', index);
-app.use('/zaloguj', index);
 app.use('/users', users);
 app.use('/ustawienia', settings_advenced);
 app.use('/ustawienia_OK', settings_save);
@@ -72,7 +72,7 @@ app.use('/zapisz', settings_save);
 app.use('/trening', exercise);
 app.use('/profile_cwiczen', profiles_list);
 app.use('/pomoc', help);
-
+app.use('/wyloguj', index);
 
 
 

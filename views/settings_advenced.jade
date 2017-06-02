@@ -14,7 +14,7 @@ block content
                 .h2
                     b Wyświetlacz 1:
             .col-1.d-flex.align-items-center.flex-row-reverse
-                input#dip1_show(checked='', data-toggle='toggle', type='checkbox')
+                input#disp1_show(checked='', data-toggle='toggle', type='checkbox')
             .col-2
                 .input-group
                     input#disp1_max_INA.form-control(type='text', placeholder="max", aria-describedby='basic-addon2', style='height: 60px')
@@ -24,7 +24,7 @@ block content
                     input#disp1_min_INA.form-control(type='text', placeholder="min", aria-describedby='basic-addno21', style='height: 60px; ')
                     span#basic-addon24A.input-group-addon max
             .col-3
-                select.form-control.form-control-lg(style='height: 60px; ')
+                select#disp1_select.form-control.form-control-lg(style='height: 60px; ')
                     option(value='1')#mean_phase_acc_1 Średnia siła w fazie rozpędzania [N]
                     option(value='2')#mean_phase_brake_1 Średnia siła w fazie hamowania [N]
                     option(value='3')#mean_cycle_1 Średnia siła w całym cyklu [N]
@@ -41,7 +41,7 @@ block content
                 .h2
                     b Wyświetlacz 2:
             .col-1.d-flex.align-items-center.flex-row-reverse
-                input#dip2_show(checked='', data-toggle='toggle', type='checkbox')
+                input#disp2_show(checked='', data-toggle='toggle', type='checkbox')
             .col-2
                 .input-group
                     input#disp2_max_INA.form-control(type='text', placeholder="max", aria-describedby='basic-addon2', style='height: 60px')
@@ -51,7 +51,7 @@ block content
                     input#disp2_min_INA.form-control(type='text', placeholder="min", aria-describedby='basic-addno21', style='height: 60px')
                     span#basic-addon224A.input-group-addon max
             .col-3
-                select.form-control.form-control-lg(style='height: 60px; ')
+                select#disp2_select.form-control.form-control-lg(style='height: 60px; ')
                     option(value='1')#mean_phase_acc_2 Średnia siła w fazie rozpędzania [N]
                     option(value='2')#mean_phase_brake_2 Średnia siła w fazie hamowania [N]
                     option(value='3')#mean_cycle_2 Średnia siła w całym cyklu [N]
@@ -68,7 +68,7 @@ block content
             .text-center
                 |Użytkownik:
                 b
-                    user_name_show= user_name_show
+                    user_name_show#username= user_name_show
         hr(style='width: 100%; color: black; height: 1px; background-color:black; margin-bottom: 50px; ')
 
     //Simple part
@@ -92,10 +92,8 @@ block content
                 .input-group
                     input#mass_INA.form-control(type='number', placeholder="0.1-1000", aria-describedby='basic-addon22', style='height: 60px')
                     span#basic-addon22A.input-group-addon kg
-            .col-2
-                button#settings_mode_toggle.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px')
-                    p Widok
-                    p#settings_mode_text prosty
+            .col-2.d-flex.align-items-center.justify-content-center
+                input#menu_toggle(checked='', data-toggle='toggle', data-width='200', data-height="100", type='checkbox', data-on='Widok zaawansowany', data-off='Widok prosty')
             .col
 
         .row#settings_time(style='visibility: hidden')
@@ -115,7 +113,7 @@ block content
                     input#duration_cycle_INA.form-control(type='text', placeholder="cykle", aria-describedby='basic-addon22', style='height: 60px')
                     span#basic-addon22TA.input-group-addon cykli
             .col-2.d-flex.align-items-center.justify-content-center
-                input(checked='', data-toggle='toggle', data-on='Dźwięk włączony', data-off='Dźwięk wyłączony', data-onstyle='success', data-offstyle='danger', type='checkbox')
+                input#sound_toggle(checked='', data-toggle='toggle', data-on='Dźwięk włączony', data-off='Dźwięk wyłączony', data-onstyle='success', data-offstyle='danger', type='checkbox')
             .col
 
 

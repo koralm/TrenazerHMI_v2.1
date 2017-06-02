@@ -1,5 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var fs = require('fs');
+var mkdirp = require('mkdirp');
+
+var current_settings;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -7,7 +11,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    console.log(req.body.usernMAX)
+    current_settings = req.body.user_current_settings;
+    console.log(current_settings);
+
 });
+
+
+
+
+
 
 module.exports = router;

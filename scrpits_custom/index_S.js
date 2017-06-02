@@ -27,16 +27,15 @@ $(function(){
         if ($( "#user_name_input:text" ).val().length === 0) {
             $( "#alert_no_username" ).html(empty_username_alert);
             $( "#username_input_form" ).addClass( "has-danger" );
-        } else
-        {
-            window.location.href = '/zaloguj';
-
+        } else {
+            $(function () {
+                $.ajax({
+                    url: '/',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({username: $("#user_name_input").val()}),
+                    success: window.location.href = '/zaloguj'})
+            })
         }
-        $.ajax({
-            url: '/',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({username: $( "#user_name_input" ).val()})}
-        )
-    });
+    })
 });
