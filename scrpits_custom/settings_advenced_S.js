@@ -1,13 +1,25 @@
 //INIT SECTION
 // KEYBOARD
 $(function () {
-    $('#disp1_max_INA, #disp1_min_INA, #disp2_max_INA,#disp2_min_INA, #line_length_INA, #roller_dist_INA, #mass_INA, #duration_min_INA, #duration_sec_INA, #duration_cycle_INA').keyboard({
+    $('#line_length_INA, #roller_dist_INA, #mass_INA').keyboard({
         layout: 'custom',
         customLayout: {
             'normal' : [
                 '0 1 2 3',
                 '4 5 6 7',
                 '{c}  8 9 .',
+                '{bksp} {accept} '
+            ]
+        }
+    })
+
+    $('#disp1_max_INA, #disp1_min_INA, #disp2_max_INA,#disp2_min_INA, #duration_min_INA, #duration_sec_INA, #duration_cycle_INA').keyboard({
+        layout: 'custom',
+        customLayout: {
+            'normal' : [
+                '0 1 2 3',
+                '4 5 6 7',
+                '{c}  8 9',
                 '{bksp} {accept} '
             ]
         }
@@ -67,22 +79,45 @@ $(function(){
 
         if ($( "#line_length_INA" ).val() <5 || $("#line_length_INA" ).val() > 150 ) {
             //$( "#alert_bad_values" ).html(length_error_alert);
-            error_parts = 'DLUGOSC LINY (5-150 cm)'
+            error_parts = 'DLUGOSC LINY: (5-150 cm)'
         }
         if ($( "#roller_dist_INA" ).val() <=0 || $("#roller_dist_INA" ).val() > 50 ) {
             //$( "#alert_bad_values" ).html(length_error_alert);
-            error_parts = error_parts + ', ' + 'ODL. ROLEK (0-50 cm)'
+            error_parts = error_parts + '  ' + 'ODL. ROLEK: (0-50 cm)'
+        }
+
+        if ($( "#mass_INA" ).val() <0.1 || $("#mass_INA" ).val() > 1000 ) {
+            //$( "#alert_bad_values" ).html(length_error_alert);
+            error_parts = error_parts + '  ' + 'MASA: (0.1-10000 kg)'
         }
 
         if ( error_parts.length > 0){
-            var length_error_alert = '<div role="alert" class="alert alert-danger alert-dismissible fade show"> <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">×</span></button> <h2> <strong>BLAD: ' + error_parts.toString() + '</strong></h2> </div>';
+            var length_error_alert = '<div role="alert" class="alert alert-danger alert-dismissible fade show"> <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">×</span></button> <h2> <strong>Błędna wartość: ' + error_parts + '</strong></h2> </div>';
             $( "#alert_bad_values" ).html(length_error_alert);
 
         }else
         {
-            alert('OK')
-            //window.location.href = '/ustawienia';
+            //alert('OK')
+            window.location.href = '/ustawienia_OK';
         }
+
+    });
+});
+
+//SEND SETTIONGS TO SERVER
+$(function(){
+    $("#button_start_exercies").click(function(){
+
+        var current_settings = {};
+        current_settings.disp1_max_INA = $( "#disp1_max_INA " ).val();
+        current_settings.disp1_min_INA = $( "#disp1_min_INA " ).val();
+
+        $.ajax({
+            url: '/ustawienia_OK',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({usernMAX: current_settings})}
+        )
 
     });
 });

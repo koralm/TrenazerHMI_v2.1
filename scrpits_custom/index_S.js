@@ -11,6 +11,11 @@ $(function () {
     $(".alert").alert()
 });
 
+//POST
+$(function () {
+
+});
+
 //START BUTTON CLICK FUCTION
 // - check user name exist
 // - send user namer to server
@@ -24,7 +29,14 @@ $(function(){
             $( "#username_input_form" ).addClass( "has-danger" );
         } else
         {
-            window.location.href = '/ustawienia';
+            window.location.href = '/zaloguj';
+
         }
+        $.ajax({
+            url: '/',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({username: $( "#user_name_input" ).val()})}
+        )
     });
 });

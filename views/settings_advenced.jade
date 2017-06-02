@@ -14,7 +14,7 @@ block content
                 .h2
                     b Wyświetlacz 1:
             .col-1.d-flex.align-items-center.flex-row-reverse
-                input(checked='', data-toggle='toggle', type='checkbox')
+                input#dip1_show(checked='', data-toggle='toggle', type='checkbox')
             .col-2
                 .input-group
                     input#disp1_max_INA.form-control(type='text', placeholder="max", aria-describedby='basic-addon2', style='height: 60px')
@@ -41,7 +41,7 @@ block content
                 .h2
                     b Wyświetlacz 2:
             .col-1.d-flex.align-items-center.flex-row-reverse
-                input(checked='', data-toggle='toggle', type='checkbox')
+                input#dip2_show(checked='', data-toggle='toggle', type='checkbox')
             .col-2
                 .input-group
                     input#disp2_max_INA.form-control(type='text', placeholder="max", aria-describedby='basic-addon2', style='height: 60px')
@@ -67,7 +67,8 @@ block content
         .h2
             .text-center
                 |Użytkownik:
-                b Rambo
+                b
+                    user_name_show= user_name_show
         hr(style='width: 100%; color: black; height: 1px; background-color:black; margin-bottom: 50px; ')
 
     //Simple part
@@ -149,9 +150,9 @@ block content
             .row
                 .col
                 .col-2
-                    button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/';" type='button' style='height: 100px') Wyloguj
+                    button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/wyloguj';" type='button' style='height: 100px') Wyloguj
                 .col-2
-                    button#button_save_settings.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/zapisz';" type='button' style='height: 100px')
+                    button#button_save_settings.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px')
                         p Zapisz
                         p ustawienia
                 .col-2
