@@ -9,13 +9,13 @@ $( document ).ready($(function () {
         success:  function (data, textStatus, jqXHR) {
 
             //DISP 1
-            $( "#disp1_show" ).prop('checked', data.actual_settings.disp1_show).change();
+            $( "#disp1_show" ).prop('checked', data.actual_settings.session_settings.disp1_show).change();
             $( "#disp1_select" ).val(data.actual_settings.session_settings.disp1_select);
             $( "#disp1_max_INA" ).val(data.actual_settings.session_settings.disp1_max_INA);
             $( "#disp1_min_INA" ).val(data.actual_settings.session_settings.disp1_min_INA);
 
             //DISP 2
-            $( "#disp2_show" ).prop('checked', data.actual_settings.disp2_show).change();
+            $( "#disp2_show" ).prop('checked', data.actual_settings.session_settings.disp2_show).change();
             $( "#disp2_select" ).val(data.actual_settings.session_settings.disp2_select);
             $( "#disp2_max_INA" ).val(data.actual_settings.session_settings.disp2_max_INA);
             $( "#disp2_min_INA" ).val(data.actual_settings.session_settings.disp2_min_INA);
@@ -86,9 +86,9 @@ $(function() {
     })
 })
 
-//INPUT VALIDATION
+//INPUT VALIDATION AND SAVE SETTINGS
 $(function(){
-    $("#button_start_exercies, #button_save_settings").click(function(){
+    $("#button_save_settings").click(function(){
 
         var error_parts = '';
 
@@ -154,6 +154,80 @@ $(function(){
                 data: JSON.stringify({user_current_settings: current_settings}),
                 success:  function (data, textStatus, jqXHR) {
                     window.location = data.redirectUrl;
+                }
+            })
+        }
+
+    });
+});
+
+//START EXERCISE AND VALIDATION
+$(function() {
+    $("#button_start_exercies").click(function () {
+
+        var error_parts = '';
+
+        if ($("#line_length_INA").val() < 5 || $("#line_length_INA").val() > 150) {
+            //$( "#alert_bad_values" ).html(length_error_alert);
+            error_parts = 'DLUGOSC LINY: (5-150 cm)'
+        }
+        if ($("#roller_dist_INA").val() <= 0 || $("#roller_dist_INA").val() > 50) {
+            //$( "#alert_bad_values" ).html(length_error_alert);
+            error_parts = error_parts + '  ' + 'ODL. ROLEK: (0-50 cm)'
+        }
+
+        if ($("#mass_INA").val() < 0.1 || $("#mass_INA").val() > 1000) {
+            //$( "#alert_bad_values" ).html(length_error_alert);
+            error_parts = error_parts + '  ' + 'MASA: (0.1-10000 kg)'
+        }
+
+        if (error_parts.length > 0) {
+            var length_error_alert = '<div role="alert" class="alert alert-danger alert-dismissible fade show"> <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">×</span></button> <h2> <strong>Błędna wartość: ' + error_parts + '</strong></h2> </div>';
+            $("#alert_bad_values").html(length_error_alert);
+        } else {
+            //alert('OK')
+            var current_settings = {};
+
+            //Username
+            current_settings.username = $('#username').text();
+
+            //DISP 1
+            current_settings.disp1_show = $('#disp1_show ').is(':checked');
+            current_settings.disp1_select = $( "#disp1_select" ).val();
+            current_settings.disp1_max_INA = $( "#disp1_max_INA" ).val();
+            current_settings.disp1_min_INA = $( "#disp1_min_INA" ).val();
+
+            //DISP 2
+            current_settings.disp2_show = $('#disp2_show ').is(':checked');
+            current_settings.disp2_select = $( "#disp2_select" ).val();
+            current_settings.disp2_max_INA = $( "#disp2_max_INA" ).val();
+            current_settings.disp2_min_INA = $( "#disp2_min_INA" ).val();
+
+            //Exercise
+            current_settings.line_length_INA = $( "#line_length_INA" ).val();
+            current_settings.roller_dist_INA = $( "#roller_dist_INA " ).val();
+            current_settings.mass_INA = $( "#mass_INA" ).val();
+
+            //Duration
+            current_settings.duration_min_INA = $( "#duration_min_INA" ).val();
+            current_settings.duration_sec_INA = $( "#duration_sec_INA" ).val();
+            current_settings.duration_cycle_INA = $( "#duration_cycle_INA" ).val();
+
+            //FOlders
+            current_settings.folder_name_INA = $( "#folder_name_INA" ).val();
+            current_settings.file_name_INA = $( "#file_name_INA" ).val();
+
+            //others
+            current_settings.sound_toggle = $('#sound_toggle').is(':checked');
+            current_settings.menu_toggle = $('#menu_toggle').is(':checked');
+
+            $.ajax({
+                url: '/zapisz/save_tempE',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({user_current_settings: current_settings}),
+                success:  function (data, textStatus, jqXHR) {
+                    window.location = data.redirectUrl
                 }
             })
         }

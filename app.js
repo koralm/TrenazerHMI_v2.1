@@ -86,8 +86,7 @@ app.use('/zapisz', settings_save);
 app.use('/zapisz/zapisywanie', settings_save);
 app.use('/zapisz/zapisywanie_LOGOUT', settings_save);
 app.use('/zapisz/save_temp', settings_save);
-
-
+app.use('/zapisz/save_tempE', settings_save);
 
 
 // catch 404 and forward to error handler
