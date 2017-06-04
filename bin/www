@@ -20,7 +20,6 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -88,3 +87,8 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+//SOCKET IO communication
+var io = require('socket.io')(server);
+require('../server_scripts/socket_communication.js')(io);
+

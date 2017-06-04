@@ -5,13 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
-
+var io = require('socket.io');
 //CUSTOM APPS
 //SESSION
 //var session = require('express-session');
 var cookieSession = require('cookie-session');
-
-
 
 
 //ROUTOWANIE STRON
@@ -25,8 +23,6 @@ var help = require('./routes/help');
 var login = require('./routes/login');
 
 var app = express();
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -71,6 +67,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 app.use(express.static(path.join(__dirname, 'scrpits_custom')));
 app.use(express.static(path.join(__dirname, 'media')));
+app.use(express.static(path.join(__dirname, 'server_scripts')));
 
 
 

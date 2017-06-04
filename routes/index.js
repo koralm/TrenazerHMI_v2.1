@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-var username;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -18,8 +17,6 @@ router.post('/', function(req, res, next)
     console.log("indeX2.5", req.session);
     res.send({redirectUrl: "/logowanie"});
 });
-
-
 
 router.get('/wyloguj', function(req, res, next) {
     req.session = null;

@@ -65,11 +65,11 @@ block content
                 .col-md-6
                     .row(style='margin-bottom: 10px')
                         .col-md-4
-                            button.btn.btn-success.btn-lg.btn-block(type='button' style='height: 140px') START
+                            button#bar_button_start.btn.btn-success.btn-lg.btn-block(type='button' style='height: 140px') START
                         .col-md-4
-                            button.btn.btn-warning.btn-lg.btn-block(type='button' style='height: 140px') STOP
+                            button#bar_button_stop.btn.btn-warning.btn-lg.btn-block(type='button' style='height: 140px' disabled='true') STOP
                         .col-md-4
-                            button.btn.btn-danger.btn-lg.btn-block(type='button' style='height: 140px') REC
+                            button#bar_button_rec.btn.btn-danger.btn-lg.btn-block(type='button' style='height: 140px') REC
                     .row.d-flex.align-items-center
                         .col-md-12
                             button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/ustawienia';" type='button' style='height: 80px') KONIEC

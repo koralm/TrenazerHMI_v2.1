@@ -33,7 +33,7 @@ block content
           button#button_start.btn.btn-success.btn-lg.btn-block(type='button' style='height: 100px') START
         .col
         .col-2
-          button.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px' disabled='true') Kalibracja
+          button.btn.btn-secondary.btn-lg.btn-block(onclick="socket.emit('connectionX', { line_l: 15})" type='button' style='height: 100px' disabled='true') Kalibracja
 
 
 //SCRIPTS BOTTOM
