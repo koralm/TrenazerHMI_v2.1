@@ -8,7 +8,8 @@ var sassMiddleware = require('node-sass-middleware');
 
 //CUSTOM APPS
 //SESSION
-var session = require('express-session');
+//var session = require('express-session');
+var cookieSession = require('cookie-session');
 
 
 
@@ -34,10 +35,27 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//CUSTOM USE IN APP
+//SESSION
+// session = session({
+//     secret: '$kx(Fj$uB!Ug!@jCkguFmc6f7t<c-e$9',
+//     resave: false,
+//     saveUninitialized: true
+// })
+
+app.use(cookieSession({
+    name: 'session',
+    keys: ['key1', 'key2', 'key3', 'key4', 'key5', 'key6'],
+    secure: false,
+
+    // Cookie Options
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('$kx(Fj$uB!Ug!@jCkguFmc6f7t<c-e$9"'));
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
@@ -45,7 +63,7 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 
-
+//app.use(session)
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -54,25 +72,21 @@ app.use(express.static(path.join(__dirname, 'bower_components')));
 app.use(express.static(path.join(__dirname, 'scrpits_custom')));
 app.use(express.static(path.join(__dirname, 'media')));
 
-//CUSTOM USE IN APP
-//SESSION
-session = session({
-    secret: 'trenazer_secer_SECRET',
-    resave: true,
-    saveUninitialized: true,
-    cookie: { secure: false }
-})
-app.use(session);
+
 
 app.use('/', index);
+app.use('/logowanie', login);
 app.use('/users', users);
 app.use('/ustawienia', settings_advenced);
-app.use('/ustawienia_OK', settings_save);
-app.use('/zapisz', settings_save);
 app.use('/trening', exercise);
 app.use('/profile_cwiczen', profiles_list);
 app.use('/pomoc', help);
 app.use('/wyloguj', index);
+app.use('/zapisz', settings_save);
+app.use('/zapisz/zapisywanie', settings_save);
+app.use('/zapisz/zapisywanie_LOGOUT', settings_save);
+app.use('/zapisz/save_temp', settings_save);
+
 
 
 

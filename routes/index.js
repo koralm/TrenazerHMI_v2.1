@@ -1,34 +1,29 @@
 var express = require('express');
 var router = express.Router();
 
-var session_variables;
+var username;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    req.session = null;
+    console.log("indeX", req.session);
     res.render('index', { title: 'CYKLOTREN HMI'});
-    session_variables = req.session;
-    console.log('PO GECIE:');
-    console.log(session_variables);
 });
 
 
-router.post('/', function(req, res, next) {
-    session_variables.username = ' ' + req.body.username;
-    session_variables.save();
-    console.log('PO POSCIE:', req.session);
-    console.log('PO POSCIE LOC:', session_variables);
-    console.log('PO POSCIE BODY:', req.body);
+router.post('/', function(req, res, next)
+{
+    console.log("indeX2", req.body.username);
+    req.session.username = req.body.username;
+    console.log("indeX2.5", req.session);
+    res.send({redirectUrl: "/logowanie"});
 });
+
 
 
 router.get('/wyloguj', function(req, res, next) {
-    req.session.destroy(function(err) {
-        if(err) {
-            console.log(err);
-        } else {
-            res.redirect('/');
-        }
-    });
+    req.session = null;
+    res.redirect('/');
 });
 
 

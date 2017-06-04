@@ -1,5 +1,46 @@
 //INIT SECTION
 // KEYBOARD
+//DOCUMENT READY
+$( document ).ready($(function () {
+    $.ajax({
+        url: '/ustawienia',
+        type: 'POST',
+        contentType: 'application/json',
+        success:  function (data, textStatus, jqXHR) {
+
+            //DISP 1
+            $( "#disp1_show" ).prop('checked', data.actual_settings.disp1_show).change();
+            $( "#disp1_select" ).val(data.actual_settings.session_settings.disp1_select);
+            $( "#disp1_max_INA" ).val(data.actual_settings.session_settings.disp1_max_INA);
+            $( "#disp1_min_INA" ).val(data.actual_settings.session_settings.disp1_min_INA);
+
+            //DISP 2
+            $( "#disp2_show" ).prop('checked', data.actual_settings.disp2_show).change();
+            $( "#disp2_select" ).val(data.actual_settings.session_settings.disp2_select);
+            $( "#disp2_max_INA" ).val(data.actual_settings.session_settings.disp2_max_INA);
+            $( "#disp2_min_INA" ).val(data.actual_settings.session_settings.disp2_min_INA);
+
+            //Exercise
+            $( "#line_length_INA" ).val(data.actual_settings.session_settings.line_length_INA);
+            $( "#roller_dist_INA" ).val(data.actual_settings.session_settings.roller_dist_INA);
+            $( "#mass_INA" ).val(data.actual_settings.session_settings.mass_INA);
+
+            //Duration
+            $( "#duration_min_INA" ).val(data.actual_settings.session_settings.duration_min_INA);
+            $( "#duration_sec_INA" ).val(data.actual_settings.session_settings.duration_sec_INA);
+            $( "#duration_cycle_INA" ).val(data.actual_settings.session_settings.duration_cycle_INA)
+
+            //FOlders
+            $( "#folder_name_INA" ).val(data.actual_settings.session_settings.folder_name_INA);
+            $( "#file_name_INA" ).val(data.actual_settings.session_settings.file_name_INA);
+
+            //others
+            $('#sound_toggle').prop('checked', data.actual_settings.session_settings.sound_toggle).change();
+            $('#menu_toggle').prop('checked', data.actual_settings.session_settings.menu_toggle).change();
+        }
+    })
+}))
+
 $(function () {
     $('#line_length_INA, #roller_dist_INA, #mass_INA').keyboard({
         layout: 'custom',
@@ -71,57 +112,51 @@ $(function(){
         }else
         {
             //alert('OK')
-            window.location.href = '/ustawienia_OK';
+            var current_settings = {};
+
+            //Username
+            current_settings.username = $('#username').text();
+
+            //DISP 1
+            current_settings.disp1_show = $('#disp1_show ').is(':checked');
+            current_settings.disp1_select = $( "#disp1_select" ).val();
+            current_settings.disp1_max_INA = $( "#disp1_max_INA" ).val();
+            current_settings.disp1_min_INA = $( "#disp1_min_INA" ).val();
+
+            //DISP 2
+            current_settings.disp2_show = $('#disp2_show ').is(':checked');
+            current_settings.disp2_select = $( "#disp2_select" ).val();
+            current_settings.disp2_max_INA = $( "#disp2_max_INA" ).val();
+            current_settings.disp2_min_INA = $( "#disp2_min_INA" ).val();
+
+            //Exercise
+            current_settings.line_length_INA = $( "#line_length_INA" ).val();
+            current_settings.roller_dist_INA = $( "#roller_dist_INA " ).val();
+            current_settings.mass_INA = $( "#mass_INA" ).val();
+
+            //Duration
+            current_settings.duration_min_INA = $( "#duration_min_INA" ).val();
+            current_settings.duration_sec_INA = $( "#duration_sec_INA" ).val();
+            current_settings.duration_cycle_INA = $( "#duration_cycle_INA" ).val();
+
+            //FOlders
+            current_settings.folder_name_INA = $( "#folder_name_INA" ).val();
+            current_settings.file_name_INA = $( "#file_name_INA" ).val();
+
+            //others
+            current_settings.sound_toggle = $('#sound_toggle').is(':checked');
+            current_settings.menu_toggle = $('#menu_toggle').is(':checked');
+
+            $.ajax({
+                url: '/zapisz/save_temp',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({user_current_settings: current_settings}),
+                success:  function (data, textStatus, jqXHR) {
+                    window.location = data.redirectUrl;
+                }
+            })
         }
-
-    });
-});
-
-//SEND SETTIONGS TO SERVER
-$(function(){
-    $("#button_start_exercies").click(function(){
-
-        var current_settings = {};
-
-        //Username
-        current_settings.username = $('#username').text();
-
-        //DISP 1
-        current_settings.disp1_show = $('#disp1_show ').is(':checked');
-        current_settings.disp1_select = $( "#disp1_select" ).val();
-        current_settings.disp1_max_INA = $( "#disp1_max_INA" ).val();
-        current_settings.disp1_min_INA = $( "#disp1_min_INA" ).val();
-
-        //DISP 2
-        current_settings.disp2_show = $('#disp2_show ').is(':checked');
-        current_settings.disp2_select = $( "#disp2_select" ).val();
-        current_settings.disp2_max_INA = $( "#disp2_max_INA" ).val();
-        current_settings.disp2_min_INA = $( "#disp2_min_INA" ).val();
-
-        //Exercise
-        current_settings.line_length_INA = $( "#line_length_INA" ).val();
-        current_settings.roller_dist_INA = $( "#roller_dist_INA " ).val();
-        current_settings.mass_INA = $( "#mass_INA" ).val();
-
-        //Duration
-        current_settings.duration_min_INA = $( "#duration_min_INA" ).val();
-        current_settings.duration_sec_INA = $( "#duration_sec_INA" ).val();
-        current_settings.duration_cycle_INA = $( "#duration_cycle_INA" ).val();
-
-        //FOlders
-        current_settings.folder_name_INA = $( "#folder_name_INA" ).val();
-        current_settings.file_name_INA = $( "#file_name_INA" ).val();
-
-        //others
-        current_settings.sound_toggle = $('#sound_toggle').is(':checked');
-        current_settings.menu_toggle = $('#menu_toggle').is(':checked');
-
-        $.ajax({
-            url: '/ustawienia_OK',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({user_current_settings: current_settings})}
-        )
 
     });
 });

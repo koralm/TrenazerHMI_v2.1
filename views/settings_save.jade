@@ -11,7 +11,8 @@ block content
         .h2
             .text-center
                 | Użytkownik:
-                b Rambo
+                b
+                    user_name_show#username= user_name_show
         hr(style='width: 100%; color: black; height: 1px; background-color:black; margin-bottom: 50px; ')
 
     //FILES
@@ -29,6 +30,8 @@ block content
     //STOPKA
     .fixed-bottom
         .container-fluid
+            #alert_setting_saved
+        .container-fluid
             .row
                 .col
                     .text-center
@@ -37,12 +40,12 @@ block content
             .row
                 .col
                 .col-2
-                    button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/';" type='button' style='height: 100px') Wyloguj
+                    button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/zapisz/zapisywanie_LOGOUT';" type='button' style='height: 100px') Wyloguj
                 .col-2
                     button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/ustawienia';" type='button' style='height: 100px')
                         p Edytuj
                 .col-2
-                    button.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px')
+                    button#save_settings.btn.btn-secondary.btn-lg.btn-block(type='button' style='height: 100px')
                         p Zapisz
                 .col-2
                     button.btn.btn-secondary.btn-lg.btn-block(onclick="location.href = '/trening';" type='button' style='height: 100px')

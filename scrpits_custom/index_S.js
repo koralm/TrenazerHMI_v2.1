@@ -1,4 +1,6 @@
 $(function () {
+
+
     $('#user_name_input').keyboard({
         // *** choose layout & positioning ***
         // choose from 'qwerty', 'alpha', 'international', 'dvorak', 'num' or
@@ -34,7 +36,10 @@ $(function(){
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify({username: $("#user_name_input").val()}),
-                    success: window.location.href = '/zaloguj'})
+                    success:  function (data, textStatus, jqXHR) {
+                        window.location = data.redirectUrl;
+                    }
+                })
             })
         }
     })
