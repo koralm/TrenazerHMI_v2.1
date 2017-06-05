@@ -15,7 +15,7 @@ var display_2_bar = 43;
 
 //TRENING PARAMS
 //Cycles
-var disp_cycle_number = 50;
+var disp_cycle_number = 0;
 
 //Phase
 var disp_phase_val = 0;
@@ -37,7 +37,7 @@ function update_display_1(display_1_value, display_1_bar, disp1_show){
 //DISP 2 UPDATE
 function update_display_2(display_2_value, display_2_bar, disp2_show){
     if (!disp2_show){
-        $("#display_21").css('visibility','hidden');
+        $("#display_2").css('visibility','hidden');
     }else{
         $("#display_2").css('visibility','visible');
     }
@@ -56,8 +56,10 @@ function update_training_bar(disp_cycle_number, disp_phase_val, min, sec){
 
     //PHASE DISP TEMP !!!!!
     if (disp_phase_val){
+        $("#disp_phase").removeClass('fa-arrow-up');
         $("#disp_phase").addClass( 'fa-arrow-down');
     }else if(!disp_phase_val){
+        $("#disp_phase").removeClass('fa-arrow-down');
         $("#disp_phase").addClass('fa-arrow-up');
     }
 }
@@ -87,10 +89,13 @@ function display_bar(value) {
 //BUTTONS START ON CLICK
 $(function(){
     $("#bar_button_start").click(function(){
-        bar_button_data_to_server.start = 1;
         bar_button_data_to_server.stop = 0;
-        $("#bar_button_stop").prop('disabled', false);
-        $("#bar_button_start").prop('disabled', true);
+        bar_button_data_to_server.start = 1;
+        //bar_button_data_to_server.rec = 0;
+        if ($("#bar_button_start").is(':enabled')) {$("#bar_button_start").prop('disabled', true)};
+        if ($("#bar_button_stop").is(':disabled')) {$("#bar_button_stop").prop('disabled', false)};
+        //$("#bar_button_start").prop('disabled', true);
+        //$("#bar_button_rec").prop('disabled', false);
         socket.emit('bar_button_data_to_server_socket', bar_button_data_to_server);
     });
 });
@@ -101,9 +106,10 @@ $(function() {
         bar_button_data_to_server.stop = 1;
         bar_button_data_to_server.start = 0;
         bar_button_data_to_server.rec = 0;
-        $("#bar_button_stop").prop('disabled', true);
-        $("#bar_button_start").prop('disabled', false);
-        $("#bar_button_rec").prop('disabled', false);
+        if ($("#bar_button_stop").is(':enabled')) {$("#bar_button_stop").prop('disabled', true)};
+        if ($("#bar_button_start").is(':disabled')) {$("#bar_button_start").prop('disabled', false)};
+        if ($("#bar_button_rec").is(':disabled')) {$("#bar_button_rec").prop('disabled', false)};
+
         socket.emit('bar_button_data_to_server_socket', bar_button_data_to_server);
     });
 })
@@ -112,12 +118,29 @@ $(function() {
 $(function() {
     $("#bar_button_rec").click(function () {
         bar_button_data_to_server.stop = 0;
-        bar_button_data_to_server.start = 1;
+        //bar_button_data_to_server.start = 1;
         bar_button_data_to_server.rec = 1;
-        $("#bar_button_stop").prop('disabled', false);
-        $("#bar_button_start").prop('disabled', true);
-        $("#bar_button_rec").prop('disabled', true);
+        if ($("#bar_button_stop").is(':disabled')) {$("#bar_button_stop").prop('disabled', false)};
+        if ($("#bar_button_start").is(':enabled')) {$("#bar_button_start").prop('disabled', true)};
+        if ($("#bar_button_rec").is(':enabled')) {$("#bar_button_rec").prop('disabled', true)};
+
         socket.emit('bar_button_data_to_server_socket', bar_button_data_to_server);
+    });
+})
+
+//BUTTONS END ON CLICK
+$(function() {
+    $("#bar_button_end").click(function () {
+        bar_button_data_to_server.stop = 1;
+        bar_button_data_to_server.start = 0;
+        bar_button_data_to_server.rec = 0;
+        if ($("#bar_button_stop").is(':enabled')) {$("#bar_button_stop").prop('disabled', true)};
+        if ($("#bar_button_start").is(':disabled')) {$("#bar_button_start").prop('disabled', false)};
+        if ($("#bar_button_rec").is(':disabled')) {$("#bar_button_rec").prop('disabled', false)};
+
+        socket.emit('bar_button_data_to_server_socket', bar_button_data_to_server);
+
+        window.location = '/ustawienia';
     });
 })
 
@@ -148,11 +171,30 @@ $( document ).ready($(function () {
 
 //SOCKET FUNCTIONS
 socket.on('bar_button_data_from_server_socket', function (data) {
-    update_training_bar(data.elapsed_cycle, disp_phase_val, data.elapsed_min, data.elapsed_sec, data.training_done)
-    if (data.training_done){
-        $("#bar_button_stop").prop('disabled', false);
-        $("#bar_button_start").prop('disabled', true);
-        $("#bar_button_rec").prop('disabled', true);
-    }
+    update_training_bar(data.elapsed_cycle, data.disp_phase_val, data.elapsed_min, data.elapsed_sec)
     //update_display_1(display_1_value, data, training_settings.actual_settings.session_settings.disp1_show);
 });
+
+
+//SOCKET PLAY SOUNDS
+socket.on('exercise_play_sound', function (data) {
+    if(data.up1){
+        var audio1 = new Audio('/trening/up1');
+        audio1.play();
+    } else if(data.down1){
+        var audio2 = new Audio('/trening/down1');
+        audio2.play();
+    } else if(data.up2){
+        var audio3 = new Audio('/trening/up2');
+        audio3.play();
+    } else if(data.down2){
+        var audio4 = new Audio('/trening/down2');
+        audio4.play();
+    } else if(data.stoper_end){
+        if ($("#bar_button_stop").is(':enabled')) {$("#bar_button_stop").prop('disabled', true)};
+        if ($("#bar_button_start").is(':disabled')) {$("#bar_button_start").prop('disabled', false)};
+        if ($("#bar_button_rec").is(':disabled')) {$("#bar_button_rec").prop('disabled', false)};
+        var audio5 = new Audio('/trening/dzwiek_koniec');
+        audio5.play();
+    }
+})

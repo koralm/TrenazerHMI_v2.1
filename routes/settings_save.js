@@ -48,8 +48,14 @@ router.post('/zapisywanie', function(req, res, next) {
 //SAVE TO FILE LOGOUT
 router.get('/zapisywanie_LOGOUT', function(req, res, next) {
     console.log('SAVE_ZAPISYWANIE_LOGOUT:',current_settings)
-    save_settings_to_file_last('');
-    res.redirect('/wyloguj')
+    if (current_settings === "undefined"){
+        res.redirect('/wyloguj')
+    }
+    else {
+        save_settings_to_file_last('');
+        res.redirect('/wyloguj')
+    }
+
 });
 
 function save_settings_to_file_last(file_name){
