@@ -13,14 +13,14 @@ var selected_ID;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    console.log('Y',file_list);
-    console.log('X',file_list_without_txt);
+    //console.log('Y',file_list);
+    //console.log('X',file_list_without_txt);
     res.render('profiles_list', { title: 'CYKLOTREN HMI' + username, user_name_show: username });
 });
 
 router.post('/', function(req, res, next) {
-    console.log('Y1',file_list);
-    console.log('X1',file_list_without_txt);
+    //console.log('Y1',file_list);
+    //console.log('X1',file_list_without_txt);
     res.send({loaded_profiles: loaded_profiles, file_list: file_list_without_txt});
 });
 
@@ -30,9 +30,9 @@ router.get('/zaladuj_profile_cwiczen', function(req, res, next) {
     if (current_settings.username == null){username = req.session.username;}
     else {username = current_settings.username}
 
-    console.log('zaladuj_profile_cwiczen',req.session);
-    console.log('Y2',file_list);
-    console.log('X2',file_list_without_txt);
+    //console.log('zaladuj_profile_cwiczen',req.session);
+    //console.log('Y2',file_list);
+    //console.log('X2',file_list_without_txt);
     //console.log('SAVE_/:', current_settings);
     load_profiles(function () {
         prepare_data_for_post();
