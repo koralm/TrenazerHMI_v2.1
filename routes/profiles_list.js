@@ -98,13 +98,17 @@ function prepare_data_for_post(){
 
 function delete_profile (callback){
     var filePath = 'exercise_profiles/' + username +  '/saved_settings/' + file_list[selected_ID];
-    console.log(filePath);
-    fs.unlinkSync(filePath);
-    file_list_without_txt = [];
-    file_list = [];
-    loaded_profiles = [];
-    load_profiles(function(){ prepare_data_for_post()});
-    callback();
+
+    if (file_list[selected_ID] == null){
+        callback();
+    }else{
+        console.log(filePath);
+        fs.unlinkSync(filePath);
+        file_list_without_txt = [];
+        file_list = [];
+        loaded_profiles = [];
+        load_profiles(function(){ prepare_data_for_post()});
+    }
 }
 
 module.exports = router;

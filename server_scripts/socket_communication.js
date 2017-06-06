@@ -113,7 +113,7 @@ module.exports = function (io) {
 
                 console.log(calculated_time.elapsed_min + ':' + calculated_time.elapsed_sec)
 
-                if ((calculated_time.training_time <0 || bar_button_data_to_server.stop || elapsed_cycle <0) && !training_done ){
+                if ((calculated_time.training_time <=0 || bar_button_data_to_server.stop || elapsed_cycle <0) && !training_done ){
                     clearInterval(stoper_interval_handle)
                     console.log('WELL DONE')
                     socket.emit('exercise_play_sound',{stoper_end: true});
@@ -146,4 +146,8 @@ function calc_elapsed_time(min, sec){
 function update_init_params() {
     calculated_time = calc_elapsed_time(session_settings.actual_settings.session_settings.duration_min_INA, session_settings.actual_settings.session_settings.duration_sec_INA);
     elapsed_cycle = session_settings.actual_settings.session_settings.duration_cycle_INA;
+}
+
+function play_sound(){
+
 }
