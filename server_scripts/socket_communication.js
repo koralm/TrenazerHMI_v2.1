@@ -1,5 +1,7 @@
 
 var rs232 = require('../server_scripts/rs232.js');
+var fs = require('fs');
+var mkdirp = require('mkdirp');
 
 //SESION SETTINGS FROM SERVER INIT PARAMETERS
 var session_settings = { actual_settings:
@@ -39,6 +41,8 @@ var elapsed_cycle;
 var disp_phase_val = false;
 var training_done = false;
 
+var stoper_interval_handle;
+
 module.exports = function (io) {
     io.on('connection', function (socket) {
 
@@ -53,14 +57,28 @@ module.exports = function (io) {
 
         });
 
+        //MAIN CYCLE FROM RS232
+        rs232.rs232_cycle_eventE.on("cykl", function () {
+            if (bar_button_data_to_server.start || bar_button_data_to_server.rec){
+                socket.emit('bar_button_data_from_server_socket', {elapsed_min: calculated_time.elapsed_min, elapsed_sec: calculated_time.elapsed_sec, elapsed_cycle: elapsed_cycle, disp_phase_val: disp_phase_val});
+            };
+        });
+
         //INCOMING BAR BUTTON DATA
         socket.on('bar_button_data_to_server_socket', function (data) {
 
-
-            var stoper_interval_handle;
             bar_button_data_to_server = data;
             //exports.bar_button_data_to_serverE = data;
             console.log(data);
+            bar_buttons_function();
+            });
+
+
+        //IN SCOKET FUNCTIONS
+
+        //BAR BUTTONS LOGIC
+        function bar_buttons_function() {
+
 
             //ON START BUTTON
             if (bar_button_data_to_server.start && !bar_button_data_to_server.rec){
@@ -71,14 +89,15 @@ module.exports = function (io) {
                 //UPDATE PARAMS
                 update_init_params()
 
-
                 //START STOPER
-                stoper_interval_handle = setInterval(stoper, 1000);
-                }
+                stoper_interval_handle =  setInterval(stoper, 1000);
+            }
 
             //ON REC BUTTON
             //REC PUSH AND !START
-            if (bar_button_data_to_server.rec && !bar_button_data_to_server.start){
+            if (bar_button_data_to_server.rec){
+                //REC OR REC + START
+                if (!bar_button_data_to_server.start){
                 //on_start_button
                 console.log('REC + !START');
                 training_done = false;
@@ -86,54 +105,45 @@ module.exports = function (io) {
                 //UPDATE PARAMS
                 update_init_params();
 
-
                 //START STOPER
-                stoper_interval_handle = setInterval(stoper, 1000);
-            }
-
-            //REC PUSH AND START
-            if (bar_button_data_to_server.rec && bar_button_data_to_server.start){
-                //on_start_button
-                console.log('REC + START');
-
-                //START RECORD TO FILE
+                stoper_interval_handle =  setInterval(stoper, 1000);
+            } else{
+                    console.log('REC + START');
+                }
+            //CREATE DIR AND RECORD FILE
+                createDIR_rof_recordFILE()
             }
 
             //STOP BUTTON
+            calculated_time.training_time = calculated_time.training_time - 1 ;
+        }
+        //GLOBAL STOPER FUNCTION
+        function stoper () {
 
 
-            //GLOBAL STOPER FUNCTION
-            function stoper () {
+            //console.log(calculated_time.elapsed_min + ':' + calculated_time.elapsed_sec);
+            //console.log(elapsed_cycle);
 
-                calculated_time.elapsed_min = Math.floor(calculated_time.training_time/60);
-                calculated_time.elapsed_sec = pad(calculated_time.training_time%60);
-
-
-                console.log(calculated_time.elapsed_min + ':' + calculated_time.elapsed_sec);
-                console.log(elapsed_cycle);
-
-                if (((calculated_time.training_time) <=0 || bar_button_data_to_server.stop || elapsed_cycle <=0) && !training_done ){
-                    play_sound('stoper_end');
-                    clearInterval(stoper_interval_handle);
-                    console.log('WELL DONE');
-                    training_done = true;
-                    bar_button_data_to_server = {start: 0, stop: 0, rec: 0}
-                }
-
-                //EXTERNAL FROM RS232!!!!!
-                elapsed_cycle = elapsed_cycle - 1;
-                disp_phase_val = !disp_phase_val;
-                calculated_time.training_time = calculated_time.training_time - 1 ;
-        }});
-
-        rs232.rs232_cycle_eventE.on("cykl", function () {
-            if (bar_button_data_to_server.start || bar_button_data_to_server.rec){
-                socket.emit('bar_button_data_from_server_socket', {elapsed_min: calculated_time.elapsed_min, elapsed_sec: calculated_time.elapsed_sec, elapsed_cycle: elapsed_cycle, disp_phase_val: disp_phase_val});
-            };
-        })
+            calculated_time.elapsed_min = Math.floor(calculated_time.training_time/60);
+            calculated_time.elapsed_sec = pad(calculated_time.training_time%60);
 
 
-        //SCOKET FUNCTIONS
+
+            if (((calculated_time.training_time) <=0 || bar_button_data_to_server.stop || elapsed_cycle <=0) && !training_done ){
+                play_sound('stoper_end');
+                clearInterval(stoper_interval_handle);
+                console.log('WELL DONE');
+                training_done = true;
+                socket.emit('bar_button_data_from_server_socket', {elapsed_min: calculated_time.elapsed_min, elapsed_sec: calculated_time.elapsed_sec, elapsed_cycle: elapsed_cycle, disp_phase_val: disp_phase_val})
+                bar_button_data_to_server = {start: 0, stop: 0, rec: 0}
+            }
+
+            //EXTERNAL FROM RS232!!!!!
+            calculated_time.training_time = calculated_time.training_time - 1 ;
+            elapsed_cycle = elapsed_cycle - 1;
+            disp_phase_val = !disp_phase_val;
+
+        }
         //SOUNDS
         function play_sound(play_sound_type){
 
@@ -186,4 +196,19 @@ function update_init_params() {
     calculated_time = calc_elapsed_time(session_settings.actual_settings.session_settings.duration_min_INA, session_settings.actual_settings.session_settings.duration_sec_INA);
     elapsed_cycle = session_settings.actual_settings.session_settings.duration_cycle_INA;
 }
+
+function createDIR_rof_recordFILE(){
+    var DISK_LETTER = 'C';
+    var NOW_DATE = new Date().toISOString();
+
+    var dir_path = DISK_LETTER + ':/' + session_settings.actual_settings.session_settings.username + '/' + NOW_DATE + '/';
+
+    console.log(dir_path)
+
+    mkdirp(dir_path, function (err) {
+        if (err) console.error(err);
+        else console.log('CREATED_DIR_FOR_RECORD');
+    })
+}
+
 
