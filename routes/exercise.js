@@ -3,9 +3,12 @@ var router = express.Router();
 
 var cookies;
 
+var cookies_exports;
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     cookies = req.session;
+    exports
     //console.log('EXERCISE_/:', req.session)
     res.render('exercise', { title: 'CYKLOTREN HMI' + req.session.username, user_name_show: req.session.username });
 });

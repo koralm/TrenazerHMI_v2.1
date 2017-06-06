@@ -194,6 +194,9 @@ socket.on('exercise_play_sound', function (data) {
         if ($("#bar_button_stop").is(':enabled')) {$("#bar_button_stop").prop('disabled', true)};
         if ($("#bar_button_start").is(':disabled')) {$("#bar_button_start").prop('disabled', false)};
         if ($("#bar_button_rec").is(':disabled')) {$("#bar_button_rec").prop('disabled', false)};
+        bar_button_data_to_server.stop = 0;
+        bar_button_data_to_server.start = 0;
+        bar_button_data_to_server.rec = 0;
         var audio5 = new Audio('/trening/dzwiek_koniec');
         audio5.play();
     }
