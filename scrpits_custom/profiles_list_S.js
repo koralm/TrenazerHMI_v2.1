@@ -3,7 +3,7 @@
  */
 //INIT DISPLAYS VALUES
 var profiles_data = {};
-
+var selected_profile_ID = {};
 
 
 $( document ).ready($(function () {
@@ -17,44 +17,56 @@ $( document ).ready($(function () {
 
             generate_cards();
             generate_profile_list();
-
-            //alert(Math.ceil(profiles_data.file_list.length/4))
         }
 
     })
+
 }))
 
-// $(document).on('click', '.btn', function () {
-//     var x = $(this).attr('id');
-//     alert(x)
-// });
+$(function(){
+    $.ajax({
+        url: '/delete_profile',
+        type: 'POST',
+        contentType: 'application/json',
+        success:  function (data, textStatus, jqXHR) {
+
+            profiles_data = data;
+
+            generate_cards();
+            generate_profile_list();
+        }
+
+    })
+})
 
 function generate_cards(){
     for(var i = 0; i<Math.ceil(profiles_data.file_list.length/4); i++){
         var cards_html;
         cards_html = '<div id="carousel_page_'+ i +'"><div id="carousel_page_'+ i +'_active" class="carousel-item"><div class="container"><div id="insert_profile_html_' + i + '"></div></div></div></div>';
-
         $("#carousel_main").append(cards_html);
     }
 }
 
 function generate_profile_list(){
 
-    $.each(profiles_data.file_list, function( index, value ) {
-        if (index<5){
-            var profile_html;
-            profile_html = '<div class="container"><div id="carousel_title_1' + index + '_background" class="row"><div class="col-4"><div class="card text-center"><div class="card-block"><h3 id="carousel_title_1' + index + '" class="card-title">' + value + '</h3><p class="card-text"></p><a id="carousel_title_button_1' + index + '" href="#" class="btn btn-primary btn-lg">Wybierz</a></div></div></div></div></div>'
+    var index = 0;
 
-            $("#insert_profile_html_0").append(profile_html);
-        } else if((index>=5)){
+    for(var i = 0; i<Math.ceil(profiles_data.file_list.length/4); i++){
+        for (var j = 0; (j<4 && index<profiles_data.file_list.length - 1); j++){
             var profile_html;
-            profile_html = '<div class="container"><div id="carousel_title_1' + index + '_background" class="row"><div class="col-4"><div class="card text-center"><div class="card-block"><h3 id="carousel_title_1' + index + '" class="card-title">' + value + '</h3><p class="card-text"></p><a id="carousel_title_button_1' + index + '" href="#" class="btn btn-primary btn-lg">Wybierz</a></div></div></div></div></div>'
+            var profile_thml_extended;
+            index = i*4+j;
+            var value = profiles_data.file_list[index];
 
-            $("#insert_profile_html_1").append(profile_html);
+            profile_thml_extended = '<div class="col-8"><div style="background-color: #d4d0cf" class="row"><div class="col-3"><h3><strong>Masa:</strong></h3></div><div class="col-3"><h3><strong>Zakres Ruchu:</strong></h3></div><div class="col-3"><h3><strong>Odl. rolek:</strong></h3></div><div class="col-3"><h3><strong>Limity:</strong></h3></div></div><div class="row"><div class="col-3"><h4 id="carousel_title_11_mass">'+ profiles_data.loaded_profiles[index].mass_INA +' kg</h4></div><div class="col-3"><h4 id="carousel_title_11_line_length">' + profiles_data.loaded_profiles[index].line_length_INA + ' </h4></div><div class="col-3"><h4 id="carousel_title_11_roller">' + profiles_data.loaded_profiles[index].roller_dist_INA + ' cm</h4></div><div class="col-3"> <h4 id="carousel_title_11_time_cycle">' + profiles_data.loaded_profiles[index].duration_min_INA + 'min ' + profiles_data.loaded_profiles[index].duration_sec_INA + 's | ' + profiles_data.loaded_profiles[index].duration_cycle_INA + ' cykli</h4></div>'
+            profile_html = '<div id="carousel_data_row_' + index + '" ' +'class="container"><div id="carousel_title_1' + index + '_background" class="row"><div class="col-4"><div class="card text-center"><div class="card-block"><h3 id="carousel_title_1' + index + '" class="card-title">' + value + '</h3><p class="card-text"></p><a id="carousel_title_button_1' + index + '" href="#" class="btn btn-primary btn-lg">Wybierz</a></div></div></div>' + profile_thml_extended + '</div></div>'
+
+            var profile_line = '#insert_profile_html_' + i;
+            $(profile_line).append(profile_html);
         }
+    }
 
-        $("#carousel_page_0_active").addClass('active');
-    });
+    $("#carousel_page_0_active").addClass('active');
 }
 
 $(function () {
@@ -86,4 +98,31 @@ $(function () {
 
 })
 
-//cards_html = <div id="carousel_page_1"><div class="carousel-item"><div class="container"> <div id="insert_profile_html"></div> </div> </div></div>
+//DETECT BUTTON CLICK
+$(document).on('click', '.btn', function () {
+    var x = $(this).attr('id');
+    selected_profile_ID.actual_ID = x.substr(23, 24);
+    var selected_row = '#carousel_data_row_' + selected_profile_ID.actual_ID;
+
+    //HIGHLIGHT
+    if ((x.indexOf("carousel_title_button") >= 0)) {
+
+        for (var j = 0; (j < profiles_data.file_list.length); j++) {
+            var IN_ID = '#carousel_data_row_' + j;
+            $(IN_ID).css('background-color', '');
+        }
+
+        $(selected_row).css('background-color', '#b1aaa8');
+
+        $.ajax({
+            url: '/profile_cwiczen/zaladuj_wybrany_profil',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(selected_profile_ID),
+            success: function () {alert('dddX')}
+        })
+
+
+    }
+});
+

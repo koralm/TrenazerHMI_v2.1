@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
     check_directory( function () {
         session_variables = loaded_settings;
         req.session.session_settings = session_variables;
+        //req.session.username = session_variables.username;
         next();
     });
 });
@@ -42,9 +43,13 @@ function check_directory(callback){
             else console.log('created_new_user_dir');
             //LOAD DEFAULT
             var path_new_profile = 'exercise_profiles/default.txt';
+            var path_saved_settings = path + '/saved_settings/';
+            console.log('XZ' + path_saved_settings)
+            mkdirp(path_saved_settings, function (err) {});
             load_settings_from_file_D(callback, path_new_profile);
-
         });
+
+
     }
 }
 

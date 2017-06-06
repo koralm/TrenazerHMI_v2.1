@@ -63,12 +63,23 @@ function save_settings_to_file_last(file_name){
     var path_saved_settings = 'exercise_profiles/' + current_settings.username +  '/saved_settings/' + file_name + '.txt' ;
 
     if (file_name.length == 0){
+
+        var path_auto = 'exercise_profiles/' + current_settings.username + '/saved_settings/' + current_settings.line_length_INA + '-' + current_settings.roller_dist_INA + '-' + current_settings.mass_INA + '.txt';
+
         fs.writeFile(path_last_settings, JSON.stringify(current_settings), function(err) {
             if(err) {
                 return console.log(err);
             }
             console.log("The LAST file was saved!");
         });
+
+        fs.writeFile(path_auto, JSON.stringify(current_settings), function(err) {
+            if(err) {
+                return console.log(err);
+            }
+            console.log("The CUSTOM file was saved!");
+        });
+
     }else{
 
         mkdirp('exercise_profiles/' + current_settings.username +  '/saved_settings/', function (err) {

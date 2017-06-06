@@ -32,7 +32,7 @@ else
 //          #insert_profile_html_1
 
 
-//.container
+// .container
 //    .row#carousel_title_11_background(style='background-color: #b1aaa8')
 //        .col-4
 //            .card.text-center
@@ -40,8 +40,8 @@ else
 //                    h3.card-title#carousel_title_11 Profil 1
 //                    p.card-text
 //                    a.btn.btn-primary.btn-lg#carousel_title_button_11(href='#') Wybierz
-
-//.col-8
+//
+// .col-8
 //    .row(style='background-color: #d4d0cf')
 //        .col-3
 //            h3
