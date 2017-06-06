@@ -82,6 +82,7 @@ app.use('/trening/down1', exercise);
 app.use('/trening/up2', exercise);
 app.use('/trening/down2', exercise);
 app.use('/profile_cwiczen', profiles_list);
+app.use('/profile_cwiczen/zaladuj_profile_cwiczen', profiles_list);
 app.use('/pomoc', help);
 app.use('/wyloguj', index);
 app.use('/zapisz', settings_save);

@@ -101,7 +101,7 @@ $(function(){
             error_parts = error_parts + '  ' + 'ODL. ROLEK: (0-50 cm)'
         }
 
-        if ($( "#mass_INA" ).val() <0.1 || $("#mass_INA" ).val() > 1000 ) {
+        if ($( "#mass_INA" ).val() <0.1 || $("#mass_INA" ).val() > 10000 ) {
             //$( "#alert_bad_values" ).html(length_error_alert);
             error_parts = error_parts + '  ' + 'MASA: (0.1-10000 kg)'
         }
@@ -176,7 +176,7 @@ $(function() {
             error_parts = error_parts + '  ' + 'ODL. ROLEK: (0-50 cm)'
         }
 
-        if ($("#mass_INA").val() < 0.1 || $("#mass_INA").val() > 1000) {
+        if ($("#mass_INA").val() < 0.1 || $("#mass_INA").val() > 10000) {
             //$( "#alert_bad_values" ).html(length_error_alert);
             error_parts = error_parts + '  ' + 'MASA: (0.1-10000 kg)'
         }

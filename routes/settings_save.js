@@ -48,7 +48,7 @@ router.post('/zapisywanie', function(req, res, next) {
 //SAVE TO FILE LOGOUT
 router.get('/zapisywanie_LOGOUT', function(req, res, next) {
     console.log('SAVE_ZAPISYWANIE_LOGOUT:',current_settings)
-    if (current_settings === "undefined"){
+    if (current_settings == null){
         res.redirect('/wyloguj')
     }
     else {
