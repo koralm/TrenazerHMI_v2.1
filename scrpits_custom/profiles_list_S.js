@@ -21,6 +21,8 @@ $( document ).ready($(function () {
 
     })
 
+    $('#carousel_select_1').trigger('click')
+
 }))
 
 $(function(){
@@ -45,6 +47,7 @@ function generate_cards(){
         cards_html = '<div id="carousel_page_'+ i +'"><div id="carousel_page_'+ i +'_active" class="carousel-item"><div class="container"><div id="insert_profile_html_' + i + '"></div></div></div></div>';
         $("#carousel_main").append(cards_html);
     }
+    $("#carousel_page_0_active").addClass('active');
 }
 
 function generate_profile_list(){
@@ -52,7 +55,7 @@ function generate_profile_list(){
     var index = 0;
 
     for(var i = 0; i<Math.ceil(profiles_data.file_list.length/4); i++){
-        for (var j = 0; (j<4 && index<profiles_data.file_list.length - 1); j++){
+        for (var j = 0; (j<4 && index<profiles_data.file_list.length); j++){
             var profile_html;
             var profile_thml_extended;
             index = i*4+j;
@@ -65,8 +68,6 @@ function generate_profile_list(){
             $(profile_line).append(profile_html);
         }
     }
-
-    $("#carousel_page_0_active").addClass('active');
 }
 
 $(function () {

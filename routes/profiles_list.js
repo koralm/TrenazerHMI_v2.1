@@ -65,7 +65,7 @@ router.get('/delete_profile', function(req, res, next) {
 })
 
 router.post('/delete_profile', function(req, res, next) {
-    res.send({loaded_profiles: loaded_profiles, file_list: file_list_without_txt});
+    //res.send({loaded_profiles: loaded_profiles, file_list: file_list_without_txt});
 });
 
 
