@@ -199,7 +199,9 @@ function update_init_params() {
 
 function createDIR_rof_recordFILE(){
     var DISK_LETTER = 'C';
-    var NOW_DATE = new Date().toISOString();
+    var NOW_DATE = new Date().toISOString().replace(/T.+/,'');
+    var NOW_time = new Date().getHours() + '_' + new Date().getMinutes() + '_' + new  Date().getSeconds();
+    var NOW_MINUTE = new Date().getMinutes()
 
     var dir_path = DISK_LETTER + ':/' + session_settings.actual_settings.session_settings.username + '/' + NOW_DATE + '/';
 
