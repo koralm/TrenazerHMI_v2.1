@@ -85,6 +85,18 @@ function display_bar(value) {
     }
 }
 
+//TRAINING DONE
+function traning_done(data){
+    if (data === true){
+        if ($("#bar_button_stop").is(':enabled')) {$("#bar_button_stop").prop('disabled', true)};
+        if ($("#bar_button_start").is(':disabled')) {$("#bar_button_start").prop('disabled', false)};
+        if ($("#bar_button_rec").is(':disabled')) {$("#bar_button_rec").prop('disabled', false)};
+        bar_button_data_to_server.stop = 0;
+        bar_button_data_to_server.start = 0;
+        bar_button_data_to_server.rec = 0;
+    }
+}
+
 
 //BUTTONS START ON CLICK
 $(function(){
@@ -171,8 +183,10 @@ $( document ).ready($(function () {
 
 //SOCKET FUNCTIONS
 socket.on('bar_button_data_from_server_socket', function (data) {
-    update_training_bar(data.elapsed_cycle, data.disp_phase_val, data.elapsed_min, data.elapsed_sec)
-    //update_display_1(display_1_value, data, training_settings.actual_settings.session_settings.disp1_show);
+    update_training_bar(data.data_from232.elapsed_cycle, data.data_from232.disp_phase_val, data.data_from232.elapsed_min, data.data_from232.elapsed_sec);
+    update_display_1(data.data_from232.display_1_value, data.data_from232.display_1_bar, training_settings.actual_settings.session_settings.disp1_show);
+    update_display_2(data.data_from232.display_2_value, data.data_from232.display_2_bar, training_settings.actual_settings.session_settings.disp2_show);
+    traning_done(data.data_from232.training_done);
 });
 
 
@@ -191,12 +205,6 @@ socket.on('exercise_play_sound', function (data) {
         var audio4 = new Audio('/trening/down2');
         audio4.play();
     } else if(data.stoper_end){
-        if ($("#bar_button_stop").is(':enabled')) {$("#bar_button_stop").prop('disabled', true)};
-        if ($("#bar_button_start").is(':disabled')) {$("#bar_button_start").prop('disabled', false)};
-        if ($("#bar_button_rec").is(':disabled')) {$("#bar_button_rec").prop('disabled', false)};
-        bar_button_data_to_server.stop = 0;
-        bar_button_data_to_server.start = 0;
-        bar_button_data_to_server.rec = 0;
         var audio5 = new Audio('/trening/dzwiek_koniec');
         audio5.play();
     }

@@ -6,15 +6,15 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     req.session = null;
     console.log("indeX", req.session);
-    res.render('index', { title: 'CYKLOTREN HMI'});
+    res.render('index', { title: 'CYKLOTREN'});
 });
 
 
 router.post('/', function(req, res, next)
 {
-    console.log("indeX2", req.body.username);
+    //console.log("indeX2", req.body.username);
     req.session.username = req.body.username;
-    console.log("indeX2.5", req.session);
+    //console.log("indeX2.5", req.session);
     res.send({redirectUrl: "/logowanie"});
 });
 

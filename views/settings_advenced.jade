@@ -68,7 +68,7 @@ block content
             .text-center
                 |Użytkownik:
                 b
-                    user_name_show#username= user_name_show
+                    user_name_show.text-danger#username= (' ' + user_name_show)
         hr(style='width: 100%; color: black; height: 1px; background-color:black; margin-bottom: 50px; ')
 
     //Simple part
@@ -113,7 +113,7 @@ block content
                     input#duration_cycle_INA.form-control(type='text', placeholder="cykle", aria-describedby='basic-addon22', style='height: 60px')
                     span#basic-addon22TA.input-group-addon cykli
             .col-2.d-flex.align-items-center.justify-content-center
-                input#sound_toggle(checked='', data-toggle='toggle', data-on='Dźwięk włączony', data-off='Dźwięk wyłączony', data-onstyle='success', data-offstyle='danger', type='checkbox')
+                input#sound_toggle(checked='', data-toggle='toggle', data-on='Dźwięk włączony', data-off='Dźwięk wyłączony', type='checkbox')
             .col
 
 

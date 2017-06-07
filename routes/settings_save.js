@@ -9,6 +9,7 @@ var current_filename;
 /* SAVE SETTINGS HOME. */
 router.get('/', function(req, res, next) {
     req.session.session_settings = current_settings;
+    current_settings.username = current_settings.username.replace(/\s+/g, '')
     //console.log('SAVE_/:', req.session)
     res.render('settings_save', { title: 'CYKLOTREN HMI' + req.session.username, user_name_show: req.session.username });
 });
