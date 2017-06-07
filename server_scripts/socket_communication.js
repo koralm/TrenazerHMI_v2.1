@@ -2,6 +2,8 @@
 var rs232 = require('../server_scripts/rs232.js');
 var fs = require('fs');
 var mkdirp = require('mkdirp');
+var EventEmitter = require("events");
+var training_doneE = new EventEmitter();
 
 //SESION SETTINGS FROM SERVER INIT PARAMETERS
 calculated_time = { training_time:  0}
@@ -24,8 +26,8 @@ var session_settings = { actual_settings:
                 duration_min_INA: '0',
                 duration_sec_INA: '0',
                 duration_cycle_INA: '0',
-                folder_name_INA: 'domyslne',
-                file_name_INA: 'zapisane',
+                folder_name_INA: 'data',
+                file_name_INA: 'godzina',
                 sound_toggle: true,
                 menu_toggle: false } } }
 //     actual_settings.session_settings.duration_min_INA: 0,
@@ -58,18 +60,31 @@ var sound_flags = { flag1: 0,
 module.exports = function (io) {
     io.on('connection', function (socket) {
 
+/*---------------------------//SOCKET INCOMING DATA//-------------------------------------------*/
 
         //INCOMING SESSION DATA ON TRAINING LOAD
         socket.on('session_settings', function (data) {
             session_settings = data;
-            //exports.session_settingsE = data;
-
+            prepare_session_settimgs(session_settings);
+            session_settings.actual_settings.session_settings.username = session_settings.actual_settings.session_settings.username.replace(/\s+/g, '')
             console.log(session_settings);
             update_init_params()
 
         });
 
+        //INCOMING BAR BUTTON DATA
+        socket.on('bar_button_data_to_server_socket', function (data) {
+
+            bar_button_data_to_server = data;
+            //exports.bar_button_data_to_serverE = data;
+            console.log(data);
+            bar_buttons_function();
+        });
+
+/*---------------------------//SOCKET INCOMING DATA//-------------------------------------------*/
+
 /*---------------------------//MAIN CYCLE FROM RS232//-------------------------------------------*/
+
         rs232.rs232_cycle_eventE.on("cykl", function () {
             if (bar_button_data_to_server.start || bar_button_data_to_server.rec){
                 update_values_to_display();
@@ -79,22 +94,65 @@ module.exports = function (io) {
                 }
             }
         });
+
 /*---------------------------//MAIN CYCLE FROM RS232//-------------------------------------------*/
 
-        //INCOMING BAR BUTTON DATA
-        socket.on('bar_button_data_to_server_socket', function (data) {
 
-            bar_button_data_to_server = data;
-            //exports.bar_button_data_to_serverE = data;
-            console.log(data);
-            bar_buttons_function();
-            });
+/*-----------------------------END_TRAINING_EVENT---------------------------------------------*/
+
+        training_doneE.on("training_done",function (){
+            console.log('WELL DONE');
+
+            //STOPER PAUSE
+            clearInterval(stoper_interval_handle);
+
+            //END WRTIE
+            if (rec_enable === true){
+                rec_enable = false;
+                end_streams();
+            }
+
+            play_sound('stoper_end');
+            training_done = true;
+
+            //UPDATE DISPLAYS
+            update_values_to_display();
+            socket.emit('bar_button_data_from_server_socket', {data_from232: data_from232});
+            bar_button_data_to_server = {start: 0, stop: 0, rec: 0}
+
+        });
+
+/*-----------------------------END_TRAINING_EVENT---------------------------------------------*/
 
 
-        //IN SCOKET FUNCTIONS
+        //GLOBAL STOPER FUNCTION
+        function stoper () {
+
+            console.log(calculated_time.training_time);
+            if (!(calculated_time.training_time === 0)) {
+                //console.log(calculated_time.training_time);
+
+                if ((calculated_time.training_time) <= 0) {
+
+                    training_doneE.emit("training_done");
+
+                } else {
+                    //EXTERNAL FROM RS232!!!!!
+                    calculated_time.training_time = calculated_time.training_time - 1;
+                    elapsed_cycle = elapsed_cycle - 1;
+                    disp_phase_val = !disp_phase_val;
+                }
+
+                calculated_time.elapsed_min = Math.floor(calculated_time.training_time / 60);
+                calculated_time.elapsed_sec = pad(calculated_time.training_time % 60);
+            } else{
+                clearInterval(stoper_interval_handle);
+            }
+        }
 
         //BAR BUTTONS LOGIC
         function bar_buttons_function() {
+
             //ON START BUTTON
             if (bar_button_data_to_server.start && !bar_button_data_to_server.rec){
                 //on_start_button
@@ -129,37 +187,10 @@ module.exports = function (io) {
                 createDIR_rof_recordFILE()
             }
 
-            //STOP BUTTON
-            calculated_time.training_time = calculated_time.training_time - 1 ;
-        }
-        //GLOBAL STOPER FUNCTION
-        function stoper () {
-
-
-            calculated_time.elapsed_min = Math.floor(calculated_time.training_time/60);
-            calculated_time.elapsed_sec = pad(calculated_time.training_time%60);
-
-
-            if (((calculated_time.training_time) <=0 || bar_button_data_to_server.stop || elapsed_cycle <=0) && !training_done ){
-                if (rec_enable === true){
-                    rec_enable = false;
-                    end_streams();
-                }
-                play_sound('stoper_end');
-                clearInterval(stoper_interval_handle);
-                console.log('WELL DONE');
-                training_done = true;
-                calculated_time.training_time = calculated_time.training_time - 1 ;
-                update_values_to_display();
-                socket.emit('bar_button_data_from_server_socket', {data_from232: data_from232});
-                bar_button_data_to_server = {start: 0, stop: 0, rec: 0}
+            //ON STOP BUTTON
+            if (bar_button_data_to_server.stop){
+                training_doneE.emit("training_done");
             }
-
-            //EXTERNAL FROM RS232!!!!!
-            calculated_time.training_time = calculated_time.training_time - 1 ;
-            elapsed_cycle = elapsed_cycle - 1;
-            disp_phase_val = !disp_phase_val;
-
         }
 
         //UPDATE VWALUES FROM RS232
@@ -174,16 +205,22 @@ module.exports = function (io) {
             data_from232.display_1_value = calculated_time.elapsed_min + '.' + calculated_time.elapsed_sec;
             data_from232.display_2_value = calculated_time.elapsed_min + '.' + calculated_time.elapsed_sec;
 
-            data_from232.display_1_bar = bar_precent_calculate(calculated_time.elapsed_sec, 60 , 10);
-            bar_sound_detect1(bar_precent_calculate(calculated_time.elapsed_sec, 60 , 10))
+            if (session_settings.actual_settings.session_settings.disp1_show === true){
+                data_from232.display_1_bar = bar_precent_calculate(calculated_time.elapsed_sec, 20 , 0);
+                bar_sound_detect1(bar_precent_calculate(calculated_time.elapsed_sec, 20 , 0))
+            }
 
-            data_from232.display_2_bar = bar_precent_calculate(elapsed_cycle, 30 , 0);
-            bar_sound_detect2(bar_precent_calculate(elapsed_cycle, 30 , 0))
+            if(session_settings.actual_settings.session_settings.disp2_show === true) {
+                data_from232.display_2_bar = bar_precent_calculate(calculated_time.elapsed_sec, 30 , 0);
+                bar_sound_detect2(bar_precent_calculate(calculated_time.elapsed_sec, 30 , 0))
+            }
+
 
             //DISPLAYS
         }
+
         //PRECENT_CALCULATE
-        function bar_precent_calculate(value_from_rs232, max_value, min_value, disp_number){
+        function bar_precent_calculate(value_from_rs232, max_value, min_value){
             var act_val = value_from_rs232*1.0;
             var range_min = min_value*1.0;
             var range_max = max_value*1.0;
@@ -234,6 +271,7 @@ module.exports = function (io) {
             }
 
         }
+
         //DETECT_SOUND_TO_PLAY
         function bar_sound_detect1(display_value) {
 
@@ -275,6 +313,8 @@ module.exports = function (io) {
                 sound_flags.flag4 = 0;
             }
         }
+
+        //function check_training_done
 
     });
 };
@@ -338,10 +378,11 @@ function end_streams(){
     write_stream_ilosciowy.end();
 }
 
-
-
-
-
-
-
+function prepare_session_settimgs(){
+    if (session_settings.actual_settings.session_settings.duration_min_INA === ''){session_settings.actual_settings.session_settings.duration_min_INA = 0}
+    if (session_settings.actual_settings.session_settings.duration_sec_INA === ''){session_settings.actual_settings.session_settings.duration_sec_INA = 0}
+    if (session_settings.actual_settings.session_settings.duration_cycle_INA === ''){session_settings.actual_settings.session_settings.duration_cycle_INA = 0}
+    if (session_settings.actual_settings.session_settings.folder_name_INA === ''){session_settings.actual_settings.session_settings.folder_name_INA = 'data'}
+    if (session_settings.actual_settings.session_settings.file_name_INA === ''){session_settings.actual_settings.session_settings.file_name_INA = 'godzina'}
+}
 

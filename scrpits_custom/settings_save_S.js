@@ -7,6 +7,11 @@ $(function () {
         // choose from 'qwerty', 'alpha', 'international', 'dvorak', 'num' or
         // 'custom' (to use the customLayout below)
         layout: 'qwerty',
+        autoAccept : true,
+        usePreview: false,
+        visible: function(e, keyboard, el) {
+            keyboard.$preview[0].select();
+        }
     })
 
 

@@ -48,9 +48,13 @@ $(function () {
             'normal' : [
                 '0 1 2 3',
                 '4 5 6 7',
-                '{c}  8 9 .',
-                '{bksp} {accept!!} '
+                '8 9 {bksp}'
             ]
+        },
+        autoAccept : true,
+        usePreview: false,
+        visible: function(e, keyboard, el) {
+            keyboard.$preview[0].select();
         }
     })
 
@@ -60,9 +64,14 @@ $(function () {
             'normal' : [
                 '0 1 2 3',
                 '4 5 6 7',
-                '{c}  8 9',
-                '{bksp} {accept} '
+                '8 9 {bksp}'
             ]
+        }
+        ,
+        autoAccept : true,
+        usePreview: false,
+        visible: function(e, keyboard, el) {
+            keyboard.$preview[0].select();
         }
     })
 
@@ -71,6 +80,12 @@ $(function () {
         // choose from 'qwerty', 'alpha', 'international', 'dvorak', 'num' or
         // 'custom' (to use the customLayout below)
         layout: 'qwerty',
+        autoAccept : true,
+        usePreview: false,
+        visible: function(e, keyboard, el) {
+            keyboard.$preview[0].select();
+        }
+
     })
 
 });

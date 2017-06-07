@@ -6,7 +6,7 @@ var cookies;
 /* GET home page. */
 router.get('/', function(req, res, next) {
     cookies = req.session;
-    console.log('ADV_/', req.session)
+    //console.log('ADV_/', req.session)
     req.session.save()
     res.render('settings_advenced', { title: 'CYKLOTREN HMI' + req.session.username, user_name_show: req.session.username, loaded_settings: req.session.session_settings});
 });

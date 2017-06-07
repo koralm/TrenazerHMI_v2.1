@@ -25,7 +25,7 @@ router.post('/', function(req, res, next) {
 /* PRELOAD PAGE */
 router.get('/zaladuj_profile_cwiczen', function(req, res, next) {
     current_settings = req.session.session_settings;
-    if (current_settings.username === null){username = req.session.username.replace(/\s+/g, '');}
+    if (current_settings.username == null){username = req.session.username.replace(/\s+/g, '');}
     else {username = current_settings.username.replace(/\s+/g, '')}
 
     //console.log('zaladuj_profile_cwiczen',req.session);
@@ -97,7 +97,7 @@ function prepare_data_for_post(){
 
 function delete_profile (callback){
     var filePath = 'exercise_profiles/' + username +  '/saved_settings/' + file_list[selected_ID];
-    if (file_list[selected_ID] === null){
+    if (file_list[selected_ID] == null){
         callback();
     }else{
         fs.unlinkSync(filePath);
