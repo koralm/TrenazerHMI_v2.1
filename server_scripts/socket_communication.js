@@ -45,6 +45,7 @@ var elapsed_cycle;
 var disp_phase_val = false;
 var training_done = false;
 
+
 //Handlers
 var stoper_interval_handle;
 var write_stream_ciagly;
@@ -84,71 +85,30 @@ module.exports = function (io) {
 /*---------------------------//SOCKET INCOMING DATA//-------------------------------------------*/
 
 /*---------------------------//MAIN CYCLE FROM RS232//-------------------------------------------*/
+/*---------------------------//MAIN CYCLE FROM RS232//-------------------------------------------*/
 
-        rs232.rs232_cycle_eventE.on("cykl", function () {
+        rs232.rs232_takt_eventE.on("takt", function () {
             if (bar_button_data_to_server.start || bar_button_data_to_server.rec){
                 update_values_to_display();
-                socket.emit('bar_button_data_from_server_socket', {data_from232: data_from232});
+
                 if (rec_enable === true){
                     write_stream();
                 }
+
             }
         });
 
+        // rs232.rs232_cycle_eventE.on("cykl", function () {
+        //     console.log('Xss')
+        //     // if (bar_button_data_to_server.start || bar_button_data_to_server.rec){
+        //     //     console.log('Xss')
+        //     //     cycle_counter()
+        //     //     //update_values_to_display();
+        //     // }
+        //     });
+
+        /*---------------------------//MAIN CYCLE FROM RS232//-------------------------------------------*/
 /*---------------------------//MAIN CYCLE FROM RS232//-------------------------------------------*/
-
-
-/*-----------------------------END_TRAINING_EVENT---------------------------------------------*/
-
-        training_doneE.on("training_done",function (){
-            console.log('WELL DONE');
-
-            //STOPER PAUSE
-            clearInterval(stoper_interval_handle);
-
-            //END WRTIE
-            if (rec_enable === true){
-                rec_enable = false;
-                end_streams();
-            }
-
-            play_sound('stoper_end');
-            training_done = true;
-
-            //UPDATE DISPLAYS
-            update_values_to_display();
-            socket.emit('bar_button_data_from_server_socket', {data_from232: data_from232});
-            bar_button_data_to_server = {start: 0, stop: 0, rec: 0}
-
-        });
-
-/*-----------------------------END_TRAINING_EVENT---------------------------------------------*/
-
-
-        //GLOBAL STOPER FUNCTION
-        function stoper () {
-
-            console.log(calculated_time.training_time);
-            if (!(calculated_time.training_time === 0)) {
-                //console.log(calculated_time.training_time);
-
-                if ((calculated_time.training_time) <= 0) {
-
-                    training_doneE.emit("training_done");
-
-                } else {
-                    //EXTERNAL FROM RS232!!!!!
-                    calculated_time.training_time = calculated_time.training_time - 1;
-                    elapsed_cycle = elapsed_cycle - 1;
-                    disp_phase_val = !disp_phase_val;
-                }
-
-                calculated_time.elapsed_min = Math.floor(calculated_time.training_time / 60);
-                calculated_time.elapsed_sec = pad(calculated_time.training_time % 60);
-            } else{
-                clearInterval(stoper_interval_handle);
-            }
-        }
 
         //BAR BUTTONS LOGIC
         function bar_buttons_function() {
@@ -214,9 +174,8 @@ module.exports = function (io) {
                 data_from232.display_2_bar = bar_precent_calculate(calculated_time.elapsed_sec, 30 , 0);
                 bar_sound_detect2(bar_precent_calculate(calculated_time.elapsed_sec, 30 , 0))
             }
+            socket.emit('bar_button_data_from_server_socket', {data_from232: data_from232});
 
-
-            //DISPLAYS
         }
 
         //PRECENT_CALCULATE
@@ -317,7 +276,41 @@ module.exports = function (io) {
         //function check_training_done
 
     });
+
+    /*-----------------------------END_TRAINING_EVENT---------------------------------------------*/
+
+    training_doneE.on("training_done",function (){
+        console.log('WELL DONE');
+
+        //STOPER PAUSE
+        clearInterval(stoper_interval_handle);
+
+        //END WRTIE
+        if (rec_enable === true){
+            rec_enable = false;
+            end_streams();
+        }
+
+
+        training_done = true;
+        io.on('connection', function (socket) {
+            play_sound('stoper_end')
+        });
+
+        //UPDATE DISPLAYS
+       // update_values_to_display();
+        io.on('connection', function (socket) {
+            socket.emit('bar_button_data_from_server_socket', {data_from232: data_from232})});
+        bar_button_data_to_server = {start: 0, stop: 0, rec: 0}
+
+    });
+
+    /*-----------------------------END_TRAINING_EVENT---------------------------------------------*/
+
+
 };
+
+
 
 
 function pad(n) {
@@ -385,4 +378,47 @@ function prepare_session_settimgs(){
     if (session_settings.actual_settings.session_settings.folder_name_INA === ''){session_settings.actual_settings.session_settings.folder_name_INA = 'data'}
     if (session_settings.actual_settings.session_settings.file_name_INA === ''){session_settings.actual_settings.session_settings.file_name_INA = 'godzina'}
 }
+
+//GLOBAL STOPER FUNCTION
+function stoper () {
+
+    console.log(calculated_time.training_time);
+    //if (!(calculated_time.training_time === 0)) {
+        console.log('X' + calculated_time.training_time);
+
+        if ((calculated_time.training_time) <= 0) {
+            console.log('XXXXXXX' + calculated_time.training_time);
+            training_doneE.emit("training_done");
+
+        } else {
+            calculated_time.training_time = calculated_time.training_time - 1;
+        }
+
+        calculated_time.elapsed_min = Math.floor(calculated_time.training_time / 60);
+        calculated_time.elapsed_sec = pad(calculated_time.training_time % 60);
+    //} else{
+    //    clearInterval(stoper_interval_handle);
+    //}
+}
+
+//CYCLE COUNTER
+function cycle_counter(){
+    disp_phase_val = !disp_phase_val;
+    //console.log('1')
+    if (!(session_settings.actual_settings.session_settings.duration_cycle_INA == 0)){
+        elapsed_cycle = elapsed_cycle - 1;
+        //console.log('2')
+        if (elapsed_cycle <= 0){training_doneE.emit("training_done")}
+    } else {
+        elapsed_cycle++;
+        //console.log('3')
+    }
+}
+
+rs232.rs232_cycle_eventE.on("cykl", function () {
+    if (bar_button_data_to_server.start || bar_button_data_to_server.rec){
+        cycle_counter()
+        //update_values_to_display();
+    }
+});
 

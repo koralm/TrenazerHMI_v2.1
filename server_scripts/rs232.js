@@ -3,19 +3,25 @@ var EventEmitter = require("events").EventEmitter;
 
 var ee = new EventEmitter();
 
-/*------------------------------*/
+/*---------------EMULATOR---------------*/
 
+var rs232_takt_event = new EventEmitter();
 var rs232_cycle_event = new EventEmitter();
 rs232_cycle_event.setMaxListeners(50);
 
 
 var rs232_emulator_interval_handle = setInterval(rs232_emulator, 100);
+var rs232_emulator_cycle = setInterval(rs232_emulator_cykl, 500);
 
 function rs232_emulator () {
-    //console.log('cykl');
+    rs232_takt_event.emit("takt");
+}
+
+function rs232_emulator_cykl () {
     rs232_cycle_event.emit("cykl");
 }
-/*------------------------------*/
+/*------------EMULATOR------------------*/
+
 
 
 
@@ -444,3 +450,4 @@ val_strength_table = new Array(3000);
 //
 // exports.xyz = ee
 exports.rs232_cycle_eventE = rs232_cycle_event;
+exports.rs232_takt_eventE = rs232_takt_event;
