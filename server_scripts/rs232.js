@@ -17,8 +17,30 @@ function rs232_emulator () {
     rs232_takt_event.emit("takt");
 }
 
+var i = 0;
+
+exports.phase = true;
+
 function rs232_emulator_cykl () {
     rs232_cycle_event.emit("cykl");
+
+
+    exports.mean_force_acc = 15 +i;
+    exports.mean_force_brake = 16 +i;
+    exports.mean_force_cycle = 17 +i;
+    exports.time_acc_phase = 18 +i;
+    exports.time_brake_phase = 19 +i;
+    exports.time_cycle = 20 +i;
+    exports.max_speed_cycle = 21 +i;
+    exports.max_pos_cyc = 22 +i;
+    exports.concetrate_pointer = 30 + i;
+
+    exports.decoded_data = [1,2,3,4,5,6];
+    exports.phase = !exports.phase;
+
+    i = i + 0.01;
+
+
 }
 /*------------EMULATOR------------------*/
 
