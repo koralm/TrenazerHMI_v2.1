@@ -42,6 +42,8 @@ function rs232_emulator_cykl () {
 
 
 }
+
+
 /*------------EMULATOR------------------*/
 
 
@@ -387,25 +389,29 @@ val_strength_table = new Array(3000);
 //     push_rs232();
 // };
 //
-// exports.rs_statusSET = function (data) {
-//     rs_status = data;
-//     push_rs232();
-// };
-//
-// exports.rs_line_lengthSET = function (data) {
-//     rs_line_length = data;
-//     push_rs232();
-// };
-//
-// exports.rs_roller_distSET = function (data) {
-//     rs_roller_dist = data;
-//     push_rs232();
-// };
-//
-// exports.rs_interiaSET = function (data) {
-//     rs_interia = data;
-//     push_rs232();
-// };
+exports.rs_statusSET = function (data) {
+    rs_status = data;
+    console.log(data);
+    //push_rs232();
+};
+
+exports.rs_line_lengthSET = function (data) {
+    rs_line_length = data;
+    console.log(data);
+    //push_rs232();
+};
+
+exports.rs_roller_distSET = function (data) {
+    rs_roller_dist = data;
+    console.log(data);
+    //push_rs232();
+};
+
+exports.rs_interiaSET = function (data) {
+    rs_interia = data;
+    console.log(data);
+    //push_rs232();
+};
 //
 // exports.rs_calib_forceSET = function (data) {
 //     calib_force = data;
