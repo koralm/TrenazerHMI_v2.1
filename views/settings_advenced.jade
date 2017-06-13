@@ -92,8 +92,9 @@ block content
                 .input-group
                     input#mass_INA.form-control(type='text', placeholder="0.1-1000", aria-describedby='basic-addon22', style='height: 60px')
                     span#basic-addon22A.input-group-addon kg
-            .col-2.d-flex.align-items-center.justify-content-center
-                input#menu_toggle(checked='', data-toggle='toggle', data-width='200', data-height="100", type='checkbox', data-on='Widok zaawansowany', data-off='Widok prosty')
+            .col-2
+                h4 Widok:
+                input#menu_toggle(checked='', data-toggle='toggle', data-width='200', data-height="60", type='checkbox', data-on='Widok zaawansowany', data-off='Widok prosty')
             .col
 
         .row#settings_time(style='visibility: hidden')
@@ -112,8 +113,8 @@ block content
                 .input-group
                     input#duration_cycle_INA.form-control(type='text', placeholder="cykle", aria-describedby='basic-addon22', style='height: 60px')
                     span#basic-addon22TA.input-group-addon cykli
-            .col-2.d-flex.align-items-center.justify-content-center
-                input#sound_toggle(checked='', data-toggle='toggle', data-on='Dźwięk włączony', data-off='Dźwięk wyłączony', type='checkbox')
+            .col-2
+                input#sound_toggle(checked='', data-toggle='toggle', data-width='200', data-height="60", data-on='Dźwięk włączony', data-off='Dźwięk wyłączony', type='checkbox')
             .col
 
 
@@ -137,7 +138,7 @@ block content
 
 
     //STOPKA
-    .fixed-bottom
+    .fixed-bottom(style='margin-bottom: 15px; ')
         .container-fluid
             #alert_bad_values
             .row
@@ -145,6 +146,7 @@ block content
                     .text-center
                         h1.text-danger
                             strong Przed naciśnięciem dowolnego przycisku proszę wyciągnąć linę !!!
+                    hr
             .row
                 .col
                 .col-2

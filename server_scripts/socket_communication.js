@@ -9,6 +9,9 @@ training_doneE.setMaxListeners(0);
 //SESION SETTINGS FROM SERVER INIT PARAMETERS
 calculated_time = { training_time:  0}
 
+var catalog_def_name = 'Wpisz nazwę kataalogu (domyślna: data)';
+var file_def_name = 'Wpisz nazwę kataalogu (domyślna: godzina)';
+
 var session_settings = { actual_settings:
     { username: 'INIT',
         session_settings:
@@ -27,8 +30,8 @@ var session_settings = { actual_settings:
                 duration_min_INA: '0',
                 duration_sec_INA: '0',
                 duration_cycle_INA: '0',
-                folder_name_INA: 'data',
-                file_name_INA: 'godzina',
+                folder_name_INA: catalog_def_name,
+                file_name_INA: file_def_name,
                 sound_toggle: true,
                 menu_toggle: false } } }
 //     actual_settings.session_settings.duration_min_INA: 0,
@@ -37,7 +40,7 @@ var session_settings = { actual_settings:
 
 
 //SESTION TO SERVER INIT PARAMETERS
-var bar_button_data_to_server = {start: 0, stop: 0, rec: 0};
+var bar_button_data_to_server = {start: 0, stop: 0, rec: 0, end: 0};
 
 //VAR SEND TO HMI CYCLICALLY (RS232)
 var data_from232 = {};
@@ -196,7 +199,8 @@ module.exports = function (io) {
             //UPDATE DISPLAYS
             update_values_to_display(socket);
             socket.emit('bar_button_data_from_server_socket', {data_from232: data_from232});
-            play_sound('stoper_end',socket);
+            if (!(bar_button_data_to_server.end)){play_sound('stoper_end',socket);}
+
 
         });
         /*-----------------------------END_TRAINING_EVENT---------------------------------------------*/
@@ -304,12 +308,20 @@ function createDIR_rof_recordFILE() {
     var dir_path;
     var stream_path;
 
-    if (session_settings.actual_settings.session_settings.folder_name_INA === 'data'){
+    if (session_settings.actual_settings.session_settings.folder_name_INA === catalog_def_name &&  session_settings.actual_settings.session_settings.file_name_INA === file_def_name){
 
         dir_path = DISK_LETTER + ':/' + session_settings.actual_settings.session_settings.username + '/' + NOW_DATE + '/';
         stream_path = dir_path + NOW_TIME
 
-    }else {
+    }else if (session_settings.actual_settings.session_settings.folder_name_INA === catalog_def_name &&  !(session_settings.actual_settings.session_settings.file_name_INA === file_def_name)) {
+        dir_path = DISK_LETTER + ':/' + session_settings.actual_settings.session_settings.username + '/' + NOW_DATE + '/';
+        stream_path = dir_path + session_settings.actual_settings.session_settings.file_name_INA
+
+    }else if (!(session_settings.actual_settings.session_settings.folder_name_INA === catalog_def_name) &&  session_settings.actual_settings.session_settings.file_name_INA === file_def_name) {
+        dir_path = DISK_LETTER + ':/' + session_settings.actual_settings.session_settings.username + '/' + session_settings.actual_settings.session_settings.folder_name_INA + '/';
+        stream_path = dir_path + NOW_TIME
+
+    }else{
         dir_path = DISK_LETTER + ':/' + session_settings.actual_settings.session_settings.username + '/' + session_settings.actual_settings.session_settings.folder_name_INA + '/';
         stream_path = dir_path +  session_settings.actual_settings.session_settings.file_name_INA + '_' + NOW_TIME
     }
@@ -345,8 +357,8 @@ function prepare_session_settimgs(){
     if (session_settings.actual_settings.session_settings.duration_min_INA === ''){session_settings.actual_settings.session_settings.duration_min_INA = 0}
     if (session_settings.actual_settings.session_settings.duration_sec_INA === ''){session_settings.actual_settings.session_settings.duration_sec_INA = 0}
     if (session_settings.actual_settings.session_settings.duration_cycle_INA === ''){session_settings.actual_settings.session_settings.duration_cycle_INA = 0}
-    if (session_settings.actual_settings.session_settings.folder_name_INA === ''){session_settings.actual_settings.session_settings.folder_name_INA = 'data'}
-    if (session_settings.actual_settings.session_settings.file_name_INA === ''){session_settings.actual_settings.session_settings.file_name_INA = 'godzina'}
+    if (session_settings.actual_settings.session_settings.folder_name_INA === ''){session_settings.actual_settings.session_settings.folder_name_INA = catalog_def_name}
+    if (session_settings.actual_settings.session_settings.file_name_INA === ''){session_settings.actual_settings.session_settings.file_name_INA = file_def_name}
 }
 
 //GLOBAL STOPER FUNCTION

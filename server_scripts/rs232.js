@@ -107,7 +107,7 @@ var tryb_pracy = 0;
 var induc_sens= 0;
 var phase = 0;
 var strength_r = 0;
-var line_ok = 0;
+var line_ok = 1;
 
 //Formats
 //Ilosciowy

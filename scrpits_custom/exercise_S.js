@@ -143,6 +143,7 @@ $(function() {
 //BUTTONS END ON CLICK
 $(function() {
     $("#bar_button_end").click(function () {
+        bar_button_data_to_server.end = 1;
         bar_button_data_to_server.stop = 1;
         bar_button_data_to_server.start = 0;
         bar_button_data_to_server.rec = 0;

@@ -1,5 +1,11 @@
 $(function () {
 
+    $.keyboard.keyaction.enter = function( kb ) {
+        // same as $.keyboard.keyaction.accept();
+        kb.close( true );
+        return false;     // return false prevents further processing
+    };
+
 
     $('#user_name_input').keyboard({
         // *** choose layout & positioning ***
