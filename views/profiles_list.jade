@@ -7,11 +7,7 @@ block scripts_top
 //PAGE CONTENT
 block content
     .container
-        #carouselExampleIndicators.carousel
-            ol.carousel-indicators
-                li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
-                li(data-target='#carouselExampleIndicators', data-slide-to='1')
-                li(data-target='#carouselExampleIndicators', data-slide-to='2')
+        #carouselExampleIndicators.carousel.carousel.slide(data-ride='carousel')
             .carousel-inner(role='listbox')
                 #carousel_main
 
@@ -29,18 +25,25 @@ block content
     .fixed-bottom(style='margin-bottom: 15px; ')
         .container-fluid
             .row
-                .col-4
+                .col-3
                 .col
-                    button#carousel_select_1.btn.btn-primary.btn-lg(type='button' style='height: 20px')
+                    a#carousel_backward.btn.btn-danger.btn-lg(type='button' style='height: 65px')
+                        i.fa.fa-backward.fa-2x
                 .col
-                    button#carousel_select_2.btn.btn-primary.btn-lg(type='button' style='height: 20px')
+                    button#carousel_select_1.btn.btn-danger.btn-lg(type='button' style='height: 30px')
                 .col
-                    button#carousel_select_3.btn.btn-primary.btn-lg(type='button' style='height: 20px')
+                    button#carousel_select_2.btn.btn-lg(type='button' style='height: 30px')
                 .col
-                    button#carousel_select_4.btn.btn-primary.btn-lg(type='button' style='height: 20px')
+                    button#carousel_select_3.btn.btn-lg(type='button' style='height: 30px')
                 .col
-                    button#carousel_select_5.btn.btn-primary.btn-lg(type='button' style='height: 20px')
-                .col-4
+                    button#carousel_select_4.btn.btn-lg(type='button' style='height: 30px')
+                .col
+                    button#carousel_select_5.btn.btn-lg(type='button' style='height: 30px')
+                .col
+                    a#carousel_forward.btn.btn-danger.btn-lg(type='button' style='height: 65px')
+                        .fa.fa-forward.fa-2x
+                .col-3
+
         .container-fluid
             .row
                 .col

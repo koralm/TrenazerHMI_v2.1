@@ -231,7 +231,7 @@ serial_port_USB.on('data', function (data) {
 
             exports.concetrate_pointer = ((1.0-(force_mean_count/force_sum_count))*100);
 
-            rs232_cycle_event.emit("cykl")
+            rs232_cycle_event.emit("cykl");
 
 
 
@@ -254,7 +254,7 @@ serial_port_USB.on('data', function (data) {
     //SAVE TO FILE
     exports.decoded_datax = decoded_data;
     exports.phase = phase;
-    rs232_cycle_event.emit("takt")
+    rs232_cycle_event.emit("takt");
     phase_hist = phase;
 
 });
@@ -274,16 +274,16 @@ function decode_recev_data(data){
     }else {
         //console.log("Bad_frame_decode")
         return(decoded_data)
-    };
+    }
 }
 
 function disp_recev_data(data){
-    console.log('data received: ' + data[0]);
-    console.log('probka: ' + data[1]);//.toString());
-    console.log('sila: ' + data[2]);//.toString());
-    console.log('polozenie: ' + data[3]);//.toString());
-    console.log('czujnik: ' + data[4]);//.toString());
-    console.log('predkosc: ' + data[5]);//.toString());
+//     console.log('data received: ' + data[0]);
+//     console.log('probka: ' + data[1]);//.toString());
+//     console.log('sila: ' + data[2]);//.toString());
+//     console.log('polozenie: ' + data[3]);//.toString());
+//     console.log('czujnik: ' + data[4]);//.toString());
+//     console.log('predkosc: ' + data[5]);//.toString());
 }
 
 function code_send_data(send_frame){
@@ -306,10 +306,10 @@ function code_send_data(send_frame){
 //*1000 from g to kg 0.3 = 300 (to string)
 function push_rs232(){
     var send_frame = [frame_header,rs_status,rs_line_length,(rs_roller_dist*10).toString(),rs_record_stat,(rs_interia*100).toString(),calib_force.toString(),damping_dynamic,damping_static,frame_terminator];
-    sp_ov_USB.write(code_send_data(send_frame));
+    serial_port_USB.write(code_send_data(send_frame));
     console.log(send_frame);
-    //console.log(code_send_data(send_frame))
-};
+    console.log(code_send_data(send_frame))
+}
 
 function decode_speed_status(data) {
     if ((data & 32) == 32) {
@@ -388,27 +388,22 @@ exports.rs_damp_staticSET= function (data) {
 
 exports.rs_statusSET = function (data) {
     rs_status = data;
-    console.log(data);
-    if(data===8){line_ok=0}
-    //push_rs232();
+    push_rs232();
 };
 
 exports.rs_line_lengthSET = function (data) {
     rs_line_length = data;
-    console.log(data);
-    //push_rs232();
+    push_rs232();
 };
 
 exports.rs_roller_distSET = function (data) {
     rs_roller_dist = data;
-    console.log(data);
-    //push_rs232();
+    push_rs232();
 };
 
 exports.rs_interiaSET = function (data) {
     rs_interia = data;
-    console.log(data);
-    //push_rs232();
+    push_rs232();
 };
 
 exports.rs_calib_forceSET = function (data) {
