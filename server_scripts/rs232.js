@@ -456,9 +456,9 @@ exports.rs_interiaSET = function (data) {
 //     return induc_sens;
 // };
 //
-// exports.rs_line_ok = function () {
-//     return line_ok;
-// };
+exports.rs_line_ok = function () {
+    return line_ok;
+};
 //
 // exports.rs_phase_sens = function () {
 //     return phase;

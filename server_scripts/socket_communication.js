@@ -357,7 +357,7 @@ function stoper () {
 
         if ((calculated_time.training_time) <= 1) {
             calculated_time.elapsed_sec = calculated_time.elapsed_sec - 1;
-            console.log('XXXXXXX' + calculated_time.training_time);
+            //console.log('XXXXXXX' + calculated_time.training_time);
             training_doneE.emit("training_done");
 
         } else {

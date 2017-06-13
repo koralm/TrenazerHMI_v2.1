@@ -14,8 +14,11 @@ router.get('/', function(req, res, next) {
     if (cookies.session_settings.duration_min_INA.length === 0){cookies.session_settings.duration_min_INA = '0'}
     if (cookies.session_settings.duration_cycle_INA.length === 0){cookies.session_settings.duration_cycle_INA = '0'}
     //console.log('EXERCISE_/:', req.session)
-    send_to_rs232();
-    res.render('exercise', { title: 'CYKLOTREN HMI' + req.session.username, user_name_show: req.session.username });
+    send_to_rs232(function () {
+        fold_line();
+        res.render('exercise', { title: 'CYKLOTREN HMI' + req.session.username, user_name_show: req.session.username });
+    });
+
 });
 
 router.post('/', function(req, res, next)
@@ -50,18 +53,34 @@ function pad(n) {
     return (n < 10) ? ("0" + n) : n;
 }
 
-function send_to_rs232(){
+function send_to_rs232(callback){
     //RESET SEQUENCE
-    rs232.rs_statusSET(0)
-    rs232.rs_statusSET(0)
-    rs232.rs_statusSET(7)
-    rs232.rs_statusSET(3)
-    rs232.rs_statusSET(0)
+    rs232.rs_statusSET(0);
+    rs232.rs_statusSET(0);
+    rs232.rs_statusSET(7);
+    rs232.rs_statusSET(3);
+    rs232.rs_statusSET(0);
 
     //EXERCISE DATA
     rs232.rs_line_lengthSET(cookies.session_settings.line_length_INA);
     rs232.rs_roller_distSET(cookies.session_settings.roller_dist_INA);
     rs232.rs_interiaSET(cookies.session_settings.mass_INA);
+
+    //CONFIRM DATA AND WAIT FOR PULL
+    rs232.rs_statusSET(0);
+    rs232.rs_statusSET(4);
+    rs232.rs_statusSET(8);
+
+    while(!(rs232.rs_line_ok())){}
+    callback()
+}
+
+function fold_line(){
+    //IF LINE OK >>> LINE FOLD
+    rs232.rs_statusSET(0);
+    rs232.rs_statusSET(4);
+    rs232.rs_statusSET(1);
+    rs232.rs_statusSET(2);
 }
 
 module.exports = router;
