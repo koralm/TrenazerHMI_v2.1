@@ -3,7 +3,7 @@ var router = express.Router();
 var rs232 = require('../server_scripts/rs232.js');
 
 var cookies;
-
+var handler_check_line
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -14,10 +14,11 @@ router.get('/', function(req, res, next) {
     if (cookies.session_settings.duration_min_INA.length === 0){cookies.session_settings.duration_min_INA = '0'}
     if (cookies.session_settings.duration_cycle_INA.length === 0){cookies.session_settings.duration_cycle_INA = '0'}
     //console.log('EXERCISE_/:', req.session)
-    send_to_rs232(function () {
-        fold_line();
+    //res.render('exercise', { title: 'CYKLOTREN HMI' + req.session.username, user_name_show: req.session.username });
+    send_to_rs232(function(){
         res.render('exercise', { title: 'CYKLOTREN HMI' + req.session.username, user_name_show: req.session.username });
     });
+
 
 });
 
@@ -71,8 +72,7 @@ function send_to_rs232(callback){
     rs232.rs_statusSET(4);
     rs232.rs_statusSET(8);
 
-    while(!(rs232.rs_line_ok())){}
-    callback()
+    handler_check_line = setInterval(function() {check_line_fold(callback)}, 500)
 }
 
 function fold_line(){
@@ -83,4 +83,11 @@ function fold_line(){
     rs232.rs_statusSET(2);
 }
 
+function check_line_fold(callback) {
+    if(rs232.rs_line_ok()) {
+        fold_line();
+        clearInterval(handler_check_line);
+        callback()
+    }
+}
 module.exports = router;
