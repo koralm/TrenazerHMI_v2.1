@@ -27,7 +27,7 @@ html
         var socket = io().connect('http://localhost:3000');
 
     //CUSTOM INIT
-    //script(src='./layout_S.js')
+    script(src='./layout_S.js')
 
   block scripts_top
 
@@ -37,6 +37,18 @@ html
   body
     block content
 
+    #AW_STOP.modal.fade
+      .modal-dialog.modal-lg(role='document')
+        .modal-content
+          .modal-header.bg-danger
+            h1.text-center.text-danger UWAGA!!!
+          .modal-body
+            h2#awstop_modal.text-center.text-danger ZATRZYMANIE AWARYJNE
+            h3.text-center.text-danger  sprawdź powód, a nasępnie
+            h3.text-center.text-danger  dezaktywuj przycisk i odświez aplikację
+
   //CUSTOM SCRIPTS BLOCK BOTTOM
   block scripts_bottom
+
+
 

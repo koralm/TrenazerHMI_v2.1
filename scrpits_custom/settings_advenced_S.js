@@ -246,8 +246,10 @@ $(function() {
                 }
             })
 
-            var length_error_alert = '<div role="alert" class="alert alert-danger alert-dismissible fade show"> <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">×</span></button> <h2> <strong>' + 'Jeśli ładowanie trwa zbyt długo szarpnij LINE' + '</strong></h2> </div>';
+            var length_error_alert = '<div role="alert" class="alert alert-danger alert-dismissible fade show"> <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">×</span></button> <h2> <strong>' + 'Po kliknięciu szarpnij LINE' + '</strong></h2> </div>';
             $("#alert_bad_values").html(length_error_alert);
+
+            $("#button_start_exercies").prop('disabled', true)
         }
 
     });

@@ -5,7 +5,9 @@ var EventEmitter = require("events").EventEmitter;
 //
 var rs232_takt_event = new EventEmitter();
 var rs232_cycle_event = new EventEmitter();
-rs232_cycle_event.setMaxListeners(50);
+var rs232_emergency_stop_event = new EventEmitter();
+rs232_takt_event.setMaxListeners(0);
+rs232_cycle_event.setMaxListeners(0);
 //
 //
 // var rs232_emulator_interval_handle = setInterval(rs232_emulator, 100);
@@ -152,7 +154,7 @@ serial_port_USB.on('data', function (data) {
     decode_work(decoded_data[4]);
     decode_induction(decoded_data[4]);
     decode_phase(decoded_data[4]);
-    //decode_line_ok(decoded_data[4]);
+    decode_line_ok(decoded_data[4]);
 
     //PARAMS TO SAVE
     force_sum = force_sum + decoded_data[2];
@@ -254,7 +256,7 @@ serial_port_USB.on('data', function (data) {
     //SAVE TO FILE
     exports.decoded_datax = decoded_data;
     exports.phase = phase;
-    rs232_cycle_event.emit("takt");
+    exports.rs232_takt_eventE.emit("takt");
     phase_hist = phase;
 
 });
@@ -308,7 +310,7 @@ function push_rs232(){
     var send_frame = [frame_header,rs_status,rs_line_length,(rs_roller_dist*10).toString(),rs_record_stat,(rs_interia*100).toString(),calib_force.toString(),damping_dynamic,damping_static,frame_terminator];
     serial_port_USB.write(code_send_data(send_frame));
     console.log(send_frame);
-    console.log(code_send_data(send_frame))
+    //console.log(code_send_data(send_frame))
 }
 
 function decode_speed_status(data) {
@@ -324,9 +326,16 @@ function decode_speed_status(data) {
 function decode_stop(data){
     if ((data & 64) == 64) {
         //console.log("STOP ok")
+        if (stop_aw === 0){
+            rs232_emergency_stop_event.emit("clear");
+        }
+
         stop_aw=1;
     } else {
         //console.log("STOP wcisnięty")
+        if (stop_aw === 1){
+            rs232_emergency_stop_event.emit("stop");
+        }
         stop_aw=0;
     }
 }
@@ -471,3 +480,4 @@ exports.rs_speedREAD = function (){
 
 exports.rs232_cycle_eventE = rs232_cycle_event;
 exports.rs232_takt_eventE = rs232_takt_event;
+exports.rs232_emergency_stop_eventE = rs232_emergency_stop_event;

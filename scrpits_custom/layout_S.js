@@ -1,16 +1,21 @@
-/**
- * Created by koralm on 23.05.2017.
- */
-$(function () {
-
-    var liczba = 0;
 
 
-    socket.on('message', function (message) {
-        liczba = message;
-    });
+//$(function() {
 
-    socket.emit('connection', { line_l: 15});
+//});
+
+socket.on('stop_RED', function (data) {
+    //alert('kon')
+    $('#AW_STOP').modal({
+        keyboard: false,
+        backdrop: 'static'
+    })
 });
 
+
+socket.on('stop_clear', function (data) {
+    //alert('poncz')
+    //window.location = '/ustawienia';
+    $('#AW_STOP').modal('hide');
+});
 

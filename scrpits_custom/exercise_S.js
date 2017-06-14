@@ -190,23 +190,33 @@ socket.on('bar_button_data_from_server_socket', function (data) {
     traning_done(data.data_from232.training_done);
 });
 
-
+var sound_flag1 = 0;
+var sound_flag2 = 0;
 //SOCKET PLAY SOUNDS
 socket.on('exercise_play_sound', function (data) {
-    if(data.up1){
+    if(data.up1 && sound_flag1===0){
         var audio1 = new Audio('/trening/up1');
+        sound_flag1=1;
         audio1.play();
-    } else if(data.down1){
+        setTimeout(function(){sound_flag1=0;}, 50);
+    } else if(data.down1 && sound_flag1===0){
         var audio2 = new Audio('/trening/down1');
+        sound_flag1=1;
         audio2.play();
-    } else if(data.up2){
+        setTimeout(function(){sound_flag1=0;}, 50);
+    } else if(data.up2 && sound_flag2===0){
         var audio3 = new Audio('/trening/up2');
+        sound_flag2=1;
         audio3.play();
-    } else if(data.down2){
+        setTimeout(function(){sound_flag2=0;}, 50);
+    } else if(data.down2 && sound_flag2===0){
         var audio4 = new Audio('/trening/down2');
+        sound_flag2=1;
         audio4.play();
-    } else if(data.stoper_end){
+        setTimeout(function(){sound_flag2=0;}, 50);
+    } else if(data.stoper_end && sound_flag1===0){
         var audio5 = new Audio('/trening/dzwiek_koniec');
+        sound_flag1=1;
         audio5.play();
     }
 })

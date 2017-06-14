@@ -9,8 +9,8 @@ training_doneE.setMaxListeners(0);
 //SESION SETTINGS FROM SERVER INIT PARAMETERS
 calculated_time = { training_time:  0}
 
-var catalog_def_name = 'Wpisz nazwę kataalogu (domyślna: data)';
-var file_def_name = 'Wpisz nazwę kataalogu (domyślna: godzina)';
+var catalog_def_name = 'Wpisz nazwę katalogu (domyślna: data)';
+var file_def_name = 'Wpisz nazwę katalogu (domyślna: godzina)';
 
 var session_settings = { actual_settings:
     { username: 'INIT',
@@ -130,6 +130,18 @@ module.exports = function (io) {
 
         /*---------------------------//MAIN CYCLE FROM RS232//-------------------------------------------*/
         /*---------------------------//MAIN CYCLE FROM RS232//-------------------------------------------*/
+        //STOP_AW
+        //var stop_flag = 0;
+
+        rs232.rs232_emergency_stop_eventE.on("stop", function () {
+            socket.emit('stop_RED');
+        });
+
+
+
+        rs232.rs232_emergency_stop_eventE.on("clear", function () {
+            socket.emit('stop_clear')
+        });
 
         //BAR BUTTONS LOGIC
         function bar_buttons_function() {
@@ -181,7 +193,7 @@ module.exports = function (io) {
         /*-----------------------------END_TRAINING_EVENT---------------------------------------------*/
 
         training_doneE.on("training_done",function (){
-            console.log('WELL DONE');
+            //console.log('WELL DONE');
             training_done = true;
 
             //STOPER PAUSE
@@ -226,11 +238,11 @@ function play_sound(play_sound_type, socket){
                     socket.emit('exercise_play_sound', {down1: true});
                     break;
                 case 'up2':
-                    //console.log('up2');
+                    console.log('up2');
                     socket.emit('exercise_play_sound', {up2: true});
                     break;
                 case 'down2':
-                    //console.log('down2');
+                    console.log('down2');
                     socket.emit('exercise_play_sound', {down2: true});
                     break;
                 default:
@@ -240,6 +252,7 @@ function play_sound(play_sound_type, socket){
         }
 }
 
+
 //DETECT_SOUND_TO_PLAY
 function bar_sound_detect1(display_value,socket) {
 
@@ -248,13 +261,13 @@ function bar_sound_detect1(display_value,socket) {
     if (display_value < 25 && sound_flags.flag1 === 0){
         //console.log('<25')
         play_sound('down1',socket);
-        setTimeout(function(){sound_flags.flag1 = 1},2);
+        setTimeout(function(){sound_flags.flag1 = 1},1);
     }
 
     if (display_value > 75 && sound_flags.flag2 === 0){
         //console.log('>75')
         play_sound('up1',socket);
-        setTimeout(function(){sound_flags.flag2 = 1},2);
+        setTimeout(function(){sound_flags.flag2 = 1},1);
 
     }
     if (display_value >= 25 && display_value <= 75){
@@ -269,13 +282,14 @@ function bar_sound_detect2(display_value,socket) {
     if (display_value < 25 && sound_flags.flag3 === 0){
         //console.log('<25')
         play_sound('down2',socket);
-        setTimeout(function(){sound_flags.flag3 = 1}, 2);
+        setTimeout(function(){sound_flags.flag3 = 1}, 1);
     }
 
     if (display_value > 75 && sound_flags.flag4 === 0){
         //console.log('>75')
         play_sound('up2',socket);
-        setTimeout(function(){sound_flags.flag4 = 1}, 2);
+        //sound_flags.flag4 = 1
+        setTimeout(function(){sound_flags.flag4 = 1}, 1);
 
     }
     if (display_value >= 25 && display_value <= 75){
@@ -302,7 +316,7 @@ function update_init_params() {
 }
 
 function createDIR_rof_recordFILE() {
-    var DISK_LETTER = 'C';
+    var DISK_LETTER = 'D';
     var NOW_DATE = new Date().toISOString().replace(/T.+/, '');
     var NOW_TIME = new Date().getHours() + '_' + new Date().getMinutes() + '_' + new Date().getSeconds();
     var dir_path;
@@ -365,7 +379,7 @@ function prepare_session_settimgs(){
 function stoper () {
 
     if (!(calculated_time.training_time === 0)) {
-        console.log('X' + calculated_time.training_time);
+        //console.log('X' + calculated_time.training_time);
 
         if ((calculated_time.training_time) <= 1) {
             calculated_time.elapsed_sec = calculated_time.elapsed_sec - 1;
