@@ -238,11 +238,11 @@ function play_sound(play_sound_type, socket){
                     socket.emit('exercise_play_sound', {down1: true});
                     break;
                 case 'up2':
-                    console.log('up2');
+                    //console.log('up2');
                     socket.emit('exercise_play_sound', {up2: true});
                     break;
                 case 'down2':
-                    console.log('down2');
+                    //console.log('down2');
                     socket.emit('exercise_play_sound', {down2: true});
                     break;
                 default:
