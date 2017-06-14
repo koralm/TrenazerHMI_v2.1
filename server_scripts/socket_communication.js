@@ -193,7 +193,7 @@ module.exports = function (io) {
         /*-----------------------------END_TRAINING_EVENT---------------------------------------------*/
 
         training_doneE.on("training_done",function (){
-            //console.log('WELL DONE');
+            console.log('WELL DONE');
             training_done = true;
 
             //STOPER PAUSE
@@ -484,7 +484,7 @@ function prepare_string_to_save_ciagly(){
 }
 
 function prepare_string_to_save_ilosciowy(){
-    return(parseFloat(rs232.decoded_data[2]).toFixed(2) + '\t' + parseFloat(rs232.decoded_data[3]).toFixed(1) + '\t' + rs232.phase + '\r\n')
+    return(parseFloat(rs232.decoded_datax[2]).toFixed(2) + '\t' + parseFloat(rs232.decoded_datax[3]).toFixed(1) + '\t' + rs232.phase + '\r\n')
 }
 
 rs232.rs232_cycle_eventE.on("cykl", function () {
