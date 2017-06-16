@@ -209,6 +209,8 @@ serial_port_USB.on('data', function (data) {
             exports.time_brake_phase = phase0_count;
         }
 
+        rs232_cycle_event.emit("faza");
+
         //CONSOLE LOG DATA
         phase0_count = 0;
         force_sum = 0;

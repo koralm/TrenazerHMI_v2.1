@@ -116,7 +116,9 @@ module.exports = function (io) {
         /*---------------------------//MAIN CYCLE FROM RS232//-------------------------------------------*/
         /*---------------------------//MAIN CYCLE FROM RS232//-------------------------------------------*/
 
-        rs232.rs232_takt_eventE.on("cykl", function () {
+        //rs232.rs232_takt_eventE.on("takt", function () {
+        rs232.rs232_cycle_eventE.on("faza", function () {
+            console.log('cykl')
             if ((bar_button_data_to_server.start || bar_button_data_to_server.rec) && training_done === false){
                 update_values_to_display(socket);
 
