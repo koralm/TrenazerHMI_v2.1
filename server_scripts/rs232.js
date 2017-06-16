@@ -1,13 +1,14 @@
 var serialport = require('serialport');
-var EventEmitter = require("events").EventEmitter;
+var Eventemitter = require("events").EventEmitter;
 
 // /*---------------EMULATOR---------------*/
 //
-var rs232_takt_event = new EventEmitter();
-var rs232_cycle_event = new EventEmitter();
-var rs232_emergency_stop_event = new EventEmitter();
+var rs232_takt_event = new Eventemitter ();
+var rs232_cycle_event = new Eventemitter ();
+var rs232_emergency_stop_event = new Eventemitter ();
 rs232_takt_event.setMaxListeners(0);
 rs232_cycle_event.setMaxListeners(0);
+rs232_emergency_stop_event.setMaxListeners(0);
 //
 //
 // var rs232_emulator_interval_handle = setInterval(rs232_emulator, 100);
@@ -54,7 +55,7 @@ rs232_cycle_event.setMaxListeners(0);
  */
 //DO pull origin dodnae XX
 //Port settings
-var COM_port = "COM3";
+var COM_port = "COM4";
 var COM_baudrate = 1000000;
 var COM_buffer_size = 4096;
 var COM_parse_strig = "03037e7e";
@@ -113,23 +114,35 @@ var force_sum_count = 0;
 
 val_strength_table = new Array(3000);
 
+var COM_port_list;
 
-serialport.list(function (err, ports) {
-    ports.forEach(function(port) {
-        console.log(port.comName);
-        COM_port = port.comName;
+
+
+function COM_list(callback){
+
+    serialport.list(function (err, ports) {
+        ports.forEach(function (port) {
+            console.log(port.comName);
+            COM_port_list = port.comName;
+        });
+        callback(COM_port_list);
     });
+
+    return COM_port_list
+}
+
+COM_list(function (data){
     //Open Serial port
-    serial_port_USB = new serialport(COM_port, {
+    serial_port_USB = new serialport(data, {
         baudRate: COM_baudrate,
         bufferSize: COM_buffer_size,
-        parser: serialport.parsers.readline(COM_parse_strig,'hex'),
+        parser: serialport.parsers.readline(COM_parse_strig, 'hex'),
         autoOpen: false
     });
 
     serial_port_USB.open(function (error) {
-        if ( error ) {
-            console.log('failed to open COM: '+error);
+        if (error) {
+            console.log('failed to open COM: ' + error);
         } else {
             console.log(COM_port + ' open');
             //console.log([frame_header,'0',rs_line_length,rs_roller_dist,rs_record_stat,rs_interia,calib_force,damping_dynamic,damping_static,frame_terminator]);
@@ -328,13 +341,16 @@ function decode_stop(data){
         //console.log("STOP ok")
         if (stop_aw === 0){
             rs232_emergency_stop_event.emit("clear");
+            console.log('OK')
         }
+
 
         stop_aw=1;
     } else {
         //console.log("STOP wcisnięty")
         if (stop_aw === 1){
             rs232_emergency_stop_event.emit("stop");
+            console.log('STOP')
         }
         stop_aw=0;
     }

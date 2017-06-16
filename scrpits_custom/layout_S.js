@@ -1,21 +1,20 @@
 
 
-//$(function() {
-
-//});
-
 socket.on('stop_RED', function (data) {
-    //alert('kon')
+    if (!$('#AW_STOP').hasClass('show')){
     $('#AW_STOP').modal({
         keyboard: false,
         backdrop: 'static'
-    })
+    })}
+
 });
 
 
 socket.on('stop_clear', function (data) {
-    //alert('poncz')
-    //window.location = '/ustawienia';
-    $('#AW_STOP').modal('hide');
+
+    if ($('#AW_STOP').hasClass('show')){
+        $('#AW_STOP').modal('hide');
+        location.reload();
+    }
 });
 
