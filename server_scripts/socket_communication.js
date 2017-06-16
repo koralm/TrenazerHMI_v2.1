@@ -116,11 +116,17 @@ module.exports = function (io) {
         /*---------------------------//MAIN CYCLE FROM RS232//-------------------------------------------*/
         /*---------------------------//MAIN CYCLE FROM RS232//-------------------------------------------*/
 
-        //rs232.rs232_takt_eventE.on("takt", function () {
-        rs232.rs232_cycle_eventE.on("faza", function () {
-            console.log('cykl')
+        var i = 0;
+
+        rs232.rs232_takt_eventE.on("takt", function () {
+        //rs232.rs232_cycle_eventE.on("faza", function () {
             if ((bar_button_data_to_server.start || bar_button_data_to_server.rec) && training_done === false){
-                update_values_to_display(socket);
+
+                if (i>1000){
+                    update_values_to_display(socket);
+                    i=0;
+                }
+
 
                 if (rec_enable === true){
                     write_stream();
