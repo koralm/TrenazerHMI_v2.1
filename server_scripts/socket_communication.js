@@ -116,7 +116,7 @@ module.exports = function (io) {
         /*---------------------------//MAIN CYCLE FROM RS232//-------------------------------------------*/
         /*---------------------------//MAIN CYCLE FROM RS232//-------------------------------------------*/
 
-        rs232.rs232_takt_eventE.on("takt", function () {
+        rs232.rs232_takt_eventE.on("cykl", function () {
             if ((bar_button_data_to_server.start || bar_button_data_to_server.rec) && training_done === false){
                 update_values_to_display(socket);
 
@@ -447,7 +447,7 @@ function update_values_to_display(socket){
         data_from232.display_2_bar = disp_2_val;
         bar_sound_detect2(disp_2_val,socket)
     }
-        socket.emit('bar_button_data_from_server_socket', {data_from232: data_from232});
+        socket.emit('bar_button_data_from_server_socket', {data_from232: data_from232})
 
 }
 
