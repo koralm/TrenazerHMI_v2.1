@@ -122,9 +122,10 @@ module.exports = function (io) {
         //rs232.rs232_cycle_eventE.on("faza", function () {
             if ((bar_button_data_to_server.start || bar_button_data_to_server.rec) && training_done === false){
 
-                if (i>1000){
+                if (i>100){
                     update_values_to_display(socket);
                     i=0;
+                    console.log('takt')
                 }
 
 
@@ -133,6 +134,7 @@ module.exports = function (io) {
                 }
 
             }
+            i++;
         });
 
 
