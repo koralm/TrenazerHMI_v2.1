@@ -117,6 +117,7 @@ module.exports = function (io) {
         /*---------------------------//MAIN CYCLE FROM RS232//-------------------------------------------*/
 
         var i = 0;
+        var ii = 0;
 
         rs232.rs232_takt_eventE.on("takt", function () {
         //rs232.rs232_cycle_eventE.on("faza", function () {
@@ -128,13 +129,16 @@ module.exports = function (io) {
                     console.log('takt')
                 }
 
-
-                if (rec_enable === true){
-                    write_stream();
+                if (ii>50) {
+                    if (rec_enable === true) {
+                        write_stream();
+                    }
                 }
 
+                i++;
+                ii++;
             }
-            i++;
+
         });
 
 
