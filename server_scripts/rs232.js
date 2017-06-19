@@ -144,7 +144,7 @@ COM_list(function (data){
         if (error) {
             console.log('failed to open COM: ' + error);
         } else {
-            console.log(COM_port + ' open');
+            console.log(data + ' open');
             //console.log([frame_header,'0',rs_line_length,rs_roller_dist,rs_record_stat,rs_interia,calib_force,damping_dynamic,damping_static,frame_terminator]);
         }
     });
