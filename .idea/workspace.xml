@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9e4ef456-6c24-4a47-afcd-8e1e2c8e57a1" name="Default" comment="">
+    <list default="true" id="9e4ef456-6c24-4a47-afcd-8e1e2c8e57a1" name="Default" comment="takt + divider /100 + write divider=10">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server_scripts/socket_communication.js" afterPath="$PROJECT_DIR$/server_scripts/socket_communication.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scrpits_custom/profiles_list_S.js" afterPath="$PROJECT_DIR$/scrpits_custom/profiles_list_S.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scrpits_custom/settings_advenced_S.js" afterPath="$PROJECT_DIR$/scrpits_custom/settings_advenced_S.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,10 +17,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="socket_communication.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="socket_communication.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server_scripts/socket_communication.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-460">
+            <state relative-caret-position="-2482">
               <caret line="131" column="25" lean-forward="false" selection-start-line="131" selection-start-column="25" selection-end-line="131" selection-end-column="25" />
               <folding>
                 <marker date="1497627321861" expanded="true" signature="7280:8323" ph="{...}" />
@@ -76,8 +77,51 @@
       <file leaf-file-name="rs232.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server_scripts/rs232.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2144">
-              <caret line="250" column="12" lean-forward="false" selection-start-line="250" selection-start-column="12" selection-end-line="250" selection-end-column="12" />
+            <state relative-caret-position="648">
+              <caret line="142" column="43" lean-forward="true" selection-start-line="142" selection-start-column="43" selection-end-line="142" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profiles_list_S.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scrpits_custom/profiles_list_S.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="634">
+              <caret line="163" column="244" lean-forward="false" selection-start-line="163" selection-start-column="244" selection-end-line="163" selection-end-column="286" />
+              <folding>
+                <marker date="1497862913438" expanded="true" signature="1661:1686" ph="..." />
+                <marker date="1497862913438" expanded="true" signature="3497:3511" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings_save_S.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scrpits_custom/settings_save_S.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="11" column="3" lean-forward="false" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exercise_S.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scrpits_custom/exercise_S.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1236">
+              <caret line="91" column="32" lean-forward="false" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings_advenced_S.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scrpits_custom/settings_advenced_S.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="248" column="249" lean-forward="false" selection-start-line="248" selection-start-column="249" selection-end-line="248" selection-end-column="249" />
               <folding />
             </state>
           </provider>
@@ -157,14 +201,14 @@
         <option value="$PROJECT_DIR$/exercise_profiles/default.txt" />
         <option value="$PROJECT_DIR$/routes/exercise.js" />
         <option value="$PROJECT_DIR$/scrpits_custom/exercise_S.js" />
-        <option value="$PROJECT_DIR$/scrpits_custom/settings_advenced_S.js" />
         <option value="$PROJECT_DIR$/views/profiles_list.jade" />
-        <option value="$PROJECT_DIR$/scrpits_custom/profiles_list_S.js" />
         <option value="$PROJECT_DIR$/views/exercise.jade" />
         <option value="$PROJECT_DIR$/views/layout.jade" />
         <option value="$PROJECT_DIR$/scrpits_custom/layout_S.js" />
-        <option value="$PROJECT_DIR$/server_scripts/rs232.js" />
         <option value="$PROJECT_DIR$/server_scripts/socket_communication.js" />
+        <option value="$PROJECT_DIR$/server_scripts/rs232.js" />
+        <option value="$PROJECT_DIR$/scrpits_custom/profiles_list_S.js" />
+        <option value="$PROJECT_DIR$/scrpits_custom/settings_advenced_S.js" />
       </list>
     </option>
   </component>
@@ -203,7 +247,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -261,6 +304,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -785,7 +829,8 @@
       <workItem from="1497422133860" duration="9525000" />
       <workItem from="1497431713268" duration="429000" />
       <workItem from="1497618561222" duration="4144000" />
-      <workItem from="1497624156042" duration="3209000" />
+      <workItem from="1497624156042" duration="3838000" />
+      <workItem from="1497861901920" duration="1022000" />
     </task>
     <task id="LOCAL-00001" summary="first page">
       <created>1495557825624</created>
@@ -871,11 +916,25 @@
       <option name="project" value="LOCAL" />
       <updated>1497626593386</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="takt + divider /100 + write divider=10">
+      <created>1497627386011</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1497627386011</updated>
+    </task>
+    <task id="LOCAL-00014" summary="takt + divider /100 + write divider=10">
+      <created>1497862071601</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1497862071601</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68731000" />
+    <option name="totallyTimeSpent" value="70382000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -890,13 +949,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969603" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2436407" sideWeight="0.27642277" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32969603" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2436407" sideWeight="0.27642277" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969603" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16891892" sideWeight="0.72357726" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17011128" sideWeight="0.72357726" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -971,7 +1030,8 @@
     <MESSAGE value="zamiana takt na cykl ==&gt;" />
     <MESSAGE value="takt + divider" />
     <MESSAGE value="takt + divider /100" />
-    <option name="LAST_COMMIT_MESSAGE" value="takt + divider /100" />
+    <MESSAGE value="takt + divider /100 + write divider=10" />
+    <option name="LAST_COMMIT_MESSAGE" value="takt + divider /100 + write divider=10" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1099,13 +1159,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scrpits_custom/settings_save_S.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="3" lean-forward="false" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/exercise_profiles/default.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1162,27 +1215,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scrpits_custom/profiles_list_S.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2856">
-          <caret line="168" column="3" lean-forward="false" selection-start-line="168" selection-start-column="3" selection-end-line="168" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scrpits_custom/settings_advenced_S.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="244" column="20" lean-forward="true" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scrpits_custom/exercise_S.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1261">
-          <caret line="91" column="32" lean-forward="false" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/exercise.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-797">
@@ -1212,17 +1244,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server_scripts/rs232.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2144">
-          <caret line="250" column="12" lean-forward="false" selection-start-line="250" selection-start-column="12" selection-end-line="250" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server_scripts/socket_communication.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-460">
+        <state relative-caret-position="-2482">
           <caret line="131" column="25" lean-forward="false" selection-start-line="131" selection-start-column="25" selection-end-line="131" selection-end-column="25" />
           <folding>
             <marker date="1497627321861" expanded="true" signature="7280:8323" ph="{...}" />
@@ -1272,6 +1296,49 @@
             <marker date="1497627321861" expanded="true" signature="18651:18882" ph="{...}" />
             <marker date="1497627321861" expanded="true" signature="18755:18880" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server_scripts/rs232.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="142" column="43" lean-forward="true" selection-start-line="142" selection-start-column="43" selection-end-line="142" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrpits_custom/profiles_list_S.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="163" column="244" lean-forward="false" selection-start-line="163" selection-start-column="244" selection-end-line="163" selection-end-column="286" />
+          <folding>
+            <marker date="1497862913438" expanded="true" signature="1661:1686" ph="..." />
+            <marker date="1497862913438" expanded="true" signature="3497:3511" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrpits_custom/settings_save_S.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="11" column="3" lean-forward="false" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrpits_custom/exercise_S.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1236">
+          <caret line="91" column="32" lean-forward="false" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrpits_custom/settings_advenced_S.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="248" column="249" lean-forward="false" selection-start-line="248" selection-start-column="249" selection-end-line="248" selection-end-column="249" />
+          <folding />
         </state>
       </provider>
     </entry>

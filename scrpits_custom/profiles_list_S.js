@@ -73,7 +73,7 @@ function generate_profile_list(){
 
 $(function () {
 
-    var select_active = 1;
+    var select_active = 0;
 
     $('#carousel_select_1').click(function () {
         $("#carousel_page_0_active").addClass('active');
@@ -108,23 +108,23 @@ $(function () {
 
     $('#carousel_backward').click(function () {
         select_active--;
-        select_active = select_active > 5 ? 1 : select_active;
-        select_active = select_active < 1 ? 5 : select_active;
+        select_active = select_active > 4 ? 0 : select_active;
+        select_active = select_active < 0 ? 4 : select_active;
         $("#carousel_page_0_active, #carousel_page_1_active, #carousel_page_2_active, #carousel_page_3_active, #carousel_page_4_active, #carousel_page_5_active").removeClass('active');
         $("#carousel_page_" + select_active + "_active").addClass('active');
         $("#carousel_select_1, #carousel_select_2, #carousel_select_3, #carousel_select_4, #carousel_select_5").removeClass('btn-danger');
-        $('#carousel_select_' + select_active).addClass('btn-danger');
+        $('#carousel_select_' + (select_active + 1 )).addClass('btn-danger');
 
     })
 
     $('#carousel_forward').click(function () {
         select_active++;
-        select_active = select_active > 5 ? 1 : select_active;
-        select_active = select_active < 1 ? 5 : select_active;
+        select_active = select_active > 4 ? 0 : select_active;
+        select_active = select_active < 0 ? 4 : select_active;
         $("#carousel_page_0_active, #carousel_page_1_active, #carousel_page_2_active, #carousel_page_3_active, #carousel_page_4_active, #carousel_page_5_active").removeClass('active');
         $("#carousel_page_" + select_active + "_active").addClass('active');
         $("#carousel_select_1, #carousel_select_2, #carousel_select_3, #carousel_select_4, #carousel_select_5").removeClass('btn-danger');
-        $('#carousel_select_' + select_active).addClass('btn-danger');
+        $('#carousel_select_' + (select_active + 1 )).addClass('btn-danger');
     })
 
 
@@ -161,7 +161,7 @@ $(document).on('click', '.btn', function () {
 //START EXERCISE AND VALIDATION
 $(function() {
     $("#start_rotk_from_list").click(function () {
-        var length_error_alert = '<div role="alert" class="alert alert-danger alert-dismissible fade show"> <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">×</span></button> <h2> <strong>' + 'Po kliknięciu szarpnij LINE' + '</strong></h2> </div>';
+        var length_error_alert = '<div role="alert" class="alert alert-danger alert-dismissible fade show"> <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">×</span></button> <h2> <strong>' + 'Po kliknięciu WYCIĄGNIJ LINE JESZCZE RAZ' + '</strong></h2> </div>';
         $("#alert_bad_values").html(length_error_alert);
 
         $("#start_rotk_from_list").prop('disabled', true)
