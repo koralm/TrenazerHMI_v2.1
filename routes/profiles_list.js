@@ -47,6 +47,7 @@ router.get('/zaladuj_wybrany_profil', function(req, res, next) {
 router.post('/zaladuj_wybrany_profil', function(req, res, next) {
     //console.log('WYBRANO: ' + req.body.actual_ID);
     selected_ID = req.body.actual_ID;
+    req.session.actual_ID = file_list[selected_ID];
     res.redirect('/profile_cwiczen/zaladuj_wybrany_profil_TO_TEMP')
 });
 

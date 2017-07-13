@@ -61,9 +61,12 @@ function generate_profile_list(){
             index = i*4+j;
             var value = profiles_data.file_list[index];
 
-            profile_thml_extended = '<div class="col-8"><div style="background-color: #d4d0cf" class="row"><div class="col-2"><h3><strong>Masa:</strong></h3></div><div class="col-4"><h3><strong>Zakres Ruchu:</strong></h3></div><div class="col-3"><h3><strong>Odl. rolek:</strong></h3></div><div class="col-3"><h3><strong>Limity:</strong></h3></div></div><div class="row"><div class="col-3"><h4 id="carousel_title_11_mass">'+ profiles_data.loaded_profiles[index].mass_INA +' kg</h4></div><div class="col-3"><h4 id="carousel_title_11_line_length">' + profiles_data.loaded_profiles[index].line_length_INA + ' </h4></div><div class="col-3"><h4 id="carousel_title_11_roller">' + profiles_data.loaded_profiles[index].roller_dist_INA + ' cm</h4></div><div class="col-3"> <h4 id="carousel_title_11_time_cycle">' + profiles_data.loaded_profiles[index].duration_min_INA + 'min ' + profiles_data.loaded_profiles[index].duration_sec_INA + 's | ' + profiles_data.loaded_profiles[index].duration_cycle_INA + ' cykli</h4></div>'
+            profile_thml_extended = '<div class="col-8"><div style="background-color: #d4d0cf" class="row"><div class="col-2"><h3><strong>Masa:</strong></h3></div><div class="col-2"><h3><strong>Zakres:</strong></h3></div><div class="col-3"><h3><strong>Odl. rolek:</strong></h3></div><div class="col-5"><h3><strong>Limity:</strong></h3></div></div><div class="row"><div class="col-2"><h4 id="carousel_title_11_mass">'+ profiles_data.loaded_profiles[index].mass_INA +' kg</h4></div><div class="col-2"><h4 id="carousel_title_11_line_length">' + profiles_data.loaded_profiles[index].line_length_INA + ' cm</h4></div><div class="col-3"><h4 id="carousel_title_11_roller">' + profiles_data.loaded_profiles[index].roller_dist_INA + ' cm</h4></div><div class="col-5"> <h4 id="carousel_title_11_time_cycle">' + profiles_data.loaded_profiles[index].duration_min_INA + 'min ' + profiles_data.loaded_profiles[index].duration_sec_INA + 's | ' + profiles_data.loaded_profiles[index].duration_cycle_INA + ' cykli</h4></div>'
             //profile_html = '<div id="carousel_data_row_' + index + '" ' +'class="container"><div id="carousel_title_1' + index + '_background" class="row"><div class="col-4"><div class="card text-center"><div class="card-block"><h3 id="carousel_title_1' + index + '" class="card-title">' + value + '</h3><p class="card-text"></p><a id="carousel_title_button_1' + index + '" href="#" class="btn btn-primary btn-lg">Wybierz</a></div></div></div>' + profile_thml_extended + '</div></div>'
-            profile_html = '<div id="carousel_data_row_' + index + '" ' +'class="container"><div id="carousel_title_1' + index + '_background" class="row"><div class="col-4"><div class="card text-center"><div class="card-block"><p class="card-text"></p><a id="carousel_title_button_1' + index + '" href="#" class="btn btn-primary btn-lg"><h1 id="carousel_title_1' + index + '" class="card-title" style="font-size:30px">' + value + '</h1></a></div></div></div>' + profile_thml_extended + '</div></div>'
+
+            profile_html = '<div id="carousel_data_row_' + index + '" ' +'class="container" style="margin-top: 40px"><div id="carousel_title_1' + index + '_background" class="row"><div class="col-4"><div class="card text-center"><a id="carousel_title_button_1' + index + '" href="#" class="btn btn-primary btn-lg"><h1 id="carousel_title_1' + index + '" class="card-title" style="font-size:30px">' + value + '</h1></a></div></div>' + profile_thml_extended + '</div></div>'
+            //profile_html = '<div id="carousel_data_row_' + index + '" ' +'class="container"><div id="carousel_title_1' + index + '_background" class="row"><div class="col-4"><div class="card text-center"><div class="card-block"><p class="card-text"></p><a id="carousel_title_button_1' + index + '" href="#" class="btn btn-block btn-primary btn-lg"><h1 id="carousel_title_1' + index + '" class="card-title" style="font-size:30px">' + value + '</h1></a></div></div></div>' + profile_thml_extended + '</div></div>'
+
 
             var profile_line = '#insert_profile_html_' + i;
             $(profile_line).append(profile_html);
@@ -78,31 +81,41 @@ $(function () {
     $('#carousel_select_1').click(function () {
         $("#carousel_page_0_active").addClass('active');
         $("#carousel_page_1_active, #carousel_page_2_active, #carousel_page_3_active, #carousel_page_4_active").removeClass('active');
-        select_active = 1;
+        select_active = 0;
+        $("#carousel_select_1, #carousel_select_2, #carousel_select_3, #carousel_select_4, #carousel_select_5").removeClass('btn-danger');
+        $(this).addClass('btn-danger')
         //$('#carouselExampleIndicators').carousel('next')
     });
     $('#carousel_select_2').click(function () {
         $("#carousel_page_0_active, #carousel_page_2_active, #carousel_page_3_active, #carousel_page_4_active").removeClass('active');
         $("#carousel_page_1_active").addClass('active');
-        select_active = 2;
+        select_active = 1;
+        $("#carousel_select_1, #carousel_select_2, #carousel_select_3, #carousel_select_4, #carousel_select_5").removeClass('btn-danger');
+        $(this).addClass('btn-danger')
         //$('#carouselExampleIndicators').carousel('next')
     });
     $('#carousel_select_3').click(function () {
         $("#carousel_page_0_active, #carousel_page_1_active, #carousel_page_3_active, #carousel_page_4_active").removeClass('active');
         $("#carousel_page_2_active").addClass('active');
-        select_active = 3;
+        select_active = 2;
+        $("#carousel_select_1, #carousel_select_2, #carousel_select_3, #carousel_select_4, #carousel_select_5").removeClass('btn-danger');
+        $(this).addClass('btn-danger')
         //$('#carouselExampleIndicators').carousel('next')
     });
     $('#carousel_select_4').click(function () {
         $("#carousel_page_0_active, #carousel_page_1_active, #carousel_page_2_active, #carousel_page_4_active").removeClass('active');
         $("#carousel_page_3_active").addClass('active');
-        select_active = 4;
+        select_active = 3;
+        $("#carousel_select_1, #carousel_select_2, #carousel_select_3, #carousel_select_4, #carousel_select_5").removeClass('btn-danger');
+        $(this).addClass('btn-danger')
         //$('#carouselExampleIndicators').carousel('next')
     });
     $('#carousel_select_5').click(function () {
         $("#carousel_page_0_active, #carousel_page_1_active, #carousel_page_3_active, #carousel_page_2_active").removeClass('active');
         $("#carousel_page_4_active").addClass('active');
-        select_active = 5;
+        select_active = 4;
+        $("#carousel_select_1, #carousel_select_2, #carousel_select_3, #carousel_select_4, #carousel_select_5").removeClass('btn-danger');
+        $(this).addClass('btn-danger')
         //$('#carouselExampleIndicators').carousel('next')
     });
 

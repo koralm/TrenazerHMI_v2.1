@@ -4,14 +4,17 @@ var fs = require('fs');
 var mkdirp = require('mkdirp');
 
 var current_settings;
-var current_filename;
+var current_filename = null;
+
 
 /* SAVE SETTINGS HOME. */
 router.get('/', function(req, res, next) {
     req.session.session_settings = current_settings;
     current_settings.username = current_settings.username.replace(/\s+/g, '');
-    //console.log('SAVE_/:', req.session)
-    res.render('settings_save', { title: 'CYKLOTREN HMI' + req.session.username, user_name_show: req.session.username });
+    //DODANE ręcznie
+    if (req.session.actual_ID !== "undefined"){ current_filename = req.session.actual_ID.replace('.txt','')}
+
+    res.render('settings_save', { title: 'CYKLOTREN HMI' + req.session.username, user_name_show: req.session.username, profile_name:  current_filename});
 });
 
 router.post('/', function(req, res, next) {
