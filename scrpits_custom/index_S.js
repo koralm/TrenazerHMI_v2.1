@@ -18,6 +18,21 @@ $(function () {
             keyboard.$preview[0].select();
         }
     })
+
+    $('#adv_calib_weight').keyboard({
+        layout: 'custom',
+        customLayout: {
+            'normal' : [
+                '0 1 2 3',
+                '4 5 6 7',
+                '8 9 {bksp} {a}'
+            ]
+        },
+        usePreview: false,
+        visible: function(e, keyboard, el) {
+            keyboard.$preview[0].select();
+        }
+    })
 });
 
 $(function () {
@@ -54,4 +69,41 @@ $(function(){
             })
         }
     })
+});
+
+//CALIBRATION ADD
+//Odblokowanie kalibracji
+// k/miesiac/godzina/minuty
+
+$(function() {
+    $("#user_name_input").change(
+        function () {
+            var dateNow = new Date();
+            if ($(this).val()===('k'+(dateNow.getMonth() + 1) + '/' + dateNow.getHours() + '/' + dateNow.getMinutes())){$("#button_calibration").prop('disabled', false)}
+            //alert('k'+(dateNow.getMonth() + 1) + '/' + dateNow.getHours()+ '/' + dateNow.getMinutes());
+        }
+    )
+});
+
+$(function() {
+    $("#button_calibration").click( function() {
+        $(this).prop('disabled', true);
+        $("#adv_calib_mod2").modal('show');
+    })
+
+});
+
+$(function() {
+    $("#button_adv_calib_conf").click(function () {
+        var calibration_value = $("#adv_calib_weight").val();
+        //alert(calibration_value);
+        $(this).prop('disabled', true);
+        $('#button_adv_exit').prop('disabled', true);
+        socket.emit('calib_value', calibration_value);
+        setTimeout(
+            function()
+            {
+                $("#adv_calib_mod2").modal('hide');
+            }, 1000);
+    });
 });

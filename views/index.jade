@@ -32,8 +32,29 @@ block content
           button#button_start.btn.btn-success.btn-lg.btn-block(type='button' style='height: 100px') START
         .col
         .col-2
-          button.btn.btn-secondary.btn-lg.btn-block(onclick="socket.emit('connectionX', { line_l: 15})" type='button' style='height: 100px' disabled='true') Kalibracja
+          button#button_calibration.btn.btn-secondary.btn-lg.btn-block(onclick="socket.emit('connectionX', { line_l: 15})" type='button' style='height: 100px' disabled='true') Kalibracja
+
+
+  .container
+    #adv_calib_mod2.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true' style='margin-top: 120px')
+      .modal-dialog.modal-lg(role='document')
+        .modal-content
+          .modal-header.bg-danger
+            h2#exampleModalLabel.modal-title KALIBRACJA CZUJNIKA SIŁY
+          .modal-body
+            h4.text-center W celu wykonania kalibracji zawieś na linie odważnik o znanym ciężarze.
+            h4.text-center Następnie podaj ciężar w polu poniżej.
+            h4.text-center Po wciśnięciu przycisku KALIBRUJ odczekaj 5 sekund.
+            br
+            .input-group.input-group-lg
+              input#adv_calib_weight.form-control.text-center(type='text', placeholder="Ciężar", aria-describedby='basic-addon2' style='height: 60px')
+              span.input-group-addon g
+          .modal-footer
+            button#button_adv_exit.btn.btn-primary(type='button', data-dismiss='modal' style='height: 60px; width: 100px') Wyjdź
+            button#button_adv_calib_conf.btn.btn-danger(type='button' style='height: 60px; width: 100px') Kalibruj
+
 
 
 //SCRIPTS BOTTOM
 block scripts_bottom
+

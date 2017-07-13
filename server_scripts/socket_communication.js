@@ -230,6 +230,20 @@ module.exports = function (io) {
 
         });
         /*-----------------------------END_TRAINING_EVENT---------------------------------------------*/
+
+        /*--------------------------------CALIVRATION------------------------------------------------*/
+        socket.on('calib_value', function (data){
+            rs232.rs_statusSET(0);
+            rs232.rs_statusSET(7);
+            rs232.rs_statusSET(3);
+            rs232.rs_statusSET(0);
+            rs232.rs_statusSET(0);
+            rs232.rs_statusSET(4);
+            rs232.rs_calib_forceSET(data/100);
+            rs232.rs_statusSET(5);
+            rs232.rs_calib_forceSET(0);
+            rs232.rs_statusSET(0);
+        })
     });
 };
 
@@ -509,4 +523,3 @@ rs232.rs232_cycle_eventE.on("cykl", function () {
         //update_values_to_display();
     }
 });
-
