@@ -6,11 +6,11 @@ var training_settings = {};
 var bar_button_data_to_server = {start: 0, stop: 0, rec: 0};
 
 
-var display_1_value = '000.000'
+var display_1_value = '';
 var display_1_bar = 73;
 
 //DISP 2
-var display_2_value = '000.000'
+var display_2_value = '';
 var display_2_bar = 43;
 
 //TRENING PARAMS
@@ -218,5 +218,7 @@ socket.on('exercise_play_sound', function (data) {
         var audio5 = new Audio('/trening/dzwiek_koniec');
         sound_flag1=1;
         audio5.play();
+        sound_flag1 = 0;
+        sound_flag2 = 0;
     }
 })

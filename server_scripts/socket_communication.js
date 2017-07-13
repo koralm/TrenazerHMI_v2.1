@@ -431,14 +431,15 @@ function update_values_to_display(socket){
     //console.log('update');
 
 
-    rs232_measured_values.values[0] = rs232.mean_force_acc;
-    rs232_measured_values.values[1] = rs232.mean_force_brake;
-    rs232_measured_values.values[2] = rs232.mean_force_cycle;
-    rs232_measured_values.values[3] = rs232.time_acc_phase;
-    rs232_measured_values.values[4] = rs232.time_cycle;
-    rs232_measured_values.values[5] = rs232.max_speed_cycle;
-    rs232_measured_values.values[6] = rs232.max_pos_cyc;
-    rs232_measured_values.values[7] = rs232.concetrate_pointer;
+    rs232_measured_values.values[0] = rs232.mean_force_acc.toFixed(2);
+    rs232_measured_values.values[1] = rs232.mean_force_brake.toFixed(2);
+    rs232_measured_values.values[2] = rs232.mean_force_cycle.toFixed(2);
+    rs232_measured_values.values[3] = Math.round(rs232.time_acc_phase);
+    rs232_measured_values.values[4] = Math.round(rs232.time_brake_phase);
+    rs232_measured_values.values[5] = Math.round(rs232.time_cycle);
+    rs232_measured_values.values[6] = rs232.max_speed_cycle.toFixed(2);
+    rs232_measured_values.values[7] = rs232.max_pos_cyc.toFixed(2);
+    rs232_measured_values.values[8] = rs232.concetrate_pointer.toFixed(2);
 
     //BAR BUTTON
     data_from232.training_done = training_done;
@@ -446,8 +447,8 @@ function update_values_to_display(socket){
     data_from232.elapsed_sec = calculated_time.elapsed_sec;
     data_from232.elapsed_cycle = elapsed_cycle;
     data_from232.disp_phase_val = rs232.phase;
-    data_from232.display_1_value = rs232_measured_values.values[session_settings.actual_settings.session_settings.disp1_select - 1].toFixed(2) + '   ' + rs232_measured_values_units.values[session_settings.actual_settings.session_settings.disp1_select - 1];
-    data_from232.display_2_value = rs232_measured_values.values[session_settings.actual_settings.session_settings.disp2_select - 1].toFixed(2) + '   ' + rs232_measured_values_units.values[session_settings.actual_settings.session_settings.disp2_select - 1];
+    data_from232.display_1_value = rs232_measured_values.values[session_settings.actual_settings.session_settings.disp1_select - 1] + '   ' + rs232_measured_values_units.values[session_settings.actual_settings.session_settings.disp1_select - 1];
+    data_from232.display_2_value = rs232_measured_values.values[session_settings.actual_settings.session_settings.disp2_select - 1] + '   ' + rs232_measured_values_units.values[session_settings.actual_settings.session_settings.disp2_select - 1];
 
 
     if (session_settings.actual_settings.session_settings.disp1_show === true){
