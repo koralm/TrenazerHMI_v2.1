@@ -12,7 +12,8 @@ router.get('/', function(req, res, next) {
     req.session.session_settings = current_settings;
     current_settings.username = current_settings.username.replace(/\s+/g, '');
     //DODANE ręcznie
-    if (req.session.actual_ID !== "undefined"){ current_filename = req.session.actual_ID.replace('.txt','')}
+    console.log(req.session.actual_ID);
+    if (req.session.actual_ID !== undefined){ current_filename = req.session.actual_ID.replace('.txt','')}
 
     res.render('settings_save', { title: 'CYKLOTREN HMI' + req.session.username, user_name_show: req.session.username, profile_name:  current_filename});
 });
