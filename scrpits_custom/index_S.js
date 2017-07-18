@@ -1,9 +1,18 @@
 $(function () {
 
-    $.keyboard.keyaction.enter = function( kb ) {
-        // same as $.keyboard.keyaction.accept();
-        kb.close( true );
-        return false;     // return false prevents further processing
+    //$.keyboard.keyaction.enter = function( kb ) {
+    //    // same as $.keyboard.keyaction.accept();
+    //    kb.close( true );
+    //    return false;     // return false prevents further processing
+   // };
+
+    $.keyboard.keyaction.enter = function(base){
+        if (base.el.tagName === "INPUT") {
+            base.accept();      // accept the content
+            $('form').submit(); // submit form on enter
+        } else {
+            base.insertText('\r\n'); // textarea
+        }
     };
 
 
@@ -17,7 +26,7 @@ $(function () {
         visible: function(e, keyboard, el) {
             keyboard.$preview[0].select();
         }
-    })
+    });
 
     $('#adv_calib_weight').keyboard({
         layout: 'custom',
@@ -79,7 +88,8 @@ $(function() {
     $("#user_name_input").change(
         function () {
             var dateNow = new Date();
-            if ($(this).val()===('k'+(dateNow.getMonth() + 1) + '/' + dateNow.getHours() + '/' + dateNow.getMinutes())){$("#button_calibration").prop('disabled', false)}
+            //if ($(this).val()===('k'+(dateNow.getMonth() + 1) + '/' + dateNow.getHours() + '/' + dateNow.getMinutes())){$("#button_calibration").prop('disabled', false)}
+            if ($(this).val()===('kalibracja')){$("#button_calibration").prop('disabled', false)}
             //alert('k'+(dateNow.getMonth() + 1) + '/' + dateNow.getHours()+ '/' + dateNow.getMinutes());
         }
     )

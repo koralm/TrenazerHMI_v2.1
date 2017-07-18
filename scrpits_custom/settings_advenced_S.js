@@ -42,6 +42,16 @@ $( document ).ready($(function () {
 }))
 
 $(function () {
+
+    $.keyboard.keyaction.enter = function(base){
+        if (base.el.tagName === "INPUT") {
+            base.accept();      // accept the content
+            $('form').submit(); // submit form on enter
+        } else {
+            base.insertText('\r\n'); // textarea
+        }
+    };
+
     $('#line_length_INA, #roller_dist_INA, #mass_INA').keyboard({
         layout: 'custom',
         customLayout: {
