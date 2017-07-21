@@ -344,7 +344,7 @@ function update_init_params() {
 }
 
 function createDIR_rof_recordFILE() {
-    var DISK_LETTER = 'C';
+    var DISK_LETTER = 'D';
     var NOW_DATE = new Date().toISOString().replace(/T.+/, '');
     var NOW_TIME = new Date().getHours() + '_' + new Date().getMinutes() + '_' + new Date().getSeconds();
     var dir_path;

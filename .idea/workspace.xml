@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9e4ef456-6c24-4a47-afcd-8e1e2c8e57a1" name="Default" comment="takt + divider /100 + write divider=10">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scrpits_custom/profiles_list_S.js" afterPath="$PROJECT_DIR$/scrpits_custom/profiles_list_S.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scrpits_custom/settings_advenced_S.js" afterPath="$PROJECT_DIR$/scrpits_custom/settings_advenced_S.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server_scripts/socket_communication.js" afterPath="$PROJECT_DIR$/server_scripts/socket_communication.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,124 +13,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="socket_communication.js" pinned="false" current-in-tab="false">
+    <leaf>
+      <file leaf-file-name="socket_communication.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server_scripts/socket_communication.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2482">
-              <caret line="131" column="25" lean-forward="false" selection-start-line="131" selection-start-column="25" selection-end-line="131" selection-end-column="25" />
-              <folding>
-                <marker date="1497627321861" expanded="true" signature="7280:8323" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="7367:8270" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="7406:8260" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="7911:7932" ph="..." />
-                <marker date="1497627321861" expanded="true" signature="8102:8221" ph="..." />
-                <marker date="1497627321861" expanded="true" signature="8276:8321" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="8398:8957" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="8489:8618" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="8674:8802" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="8854:8955" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="9008:9567" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="9065:9195" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="9251:9412" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="9464:9565" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="9585:9625" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="9663:9916" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="9948:10218" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="10256:12408" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="10676:10850" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="11036:11264" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="11450:11680" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="11684:11986" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="12052:12381" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="12125:12375" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="12461:12597" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="12621:12689" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="12726:13713" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="12732:12913" ph="//..." />
-                <marker date="1497627321861" expanded="true" signature="13759:14459" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="13810:14398" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="13923:14130" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="14136:14226" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="14403:14457" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="14501:14949" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="14507:14565" ph="//..." />
-                <marker date="1497627321861" expanded="true" signature="14734:14881" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="14887:14947" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="15020:17340" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="16411:16790" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="16870:17249" ph="{...}" />
-                <marker date="1497627321861" expanded="false" signature="17432:17894" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="17588:17675" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="17936:18410" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="18455:18601" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="18651:18882" ph="{...}" />
-                <marker date="1497627321861" expanded="true" signature="18755:18880" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="rs232.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server_scripts/rs232.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="142" column="43" lean-forward="true" selection-start-line="142" selection-start-column="43" selection-end-line="142" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profiles_list_S.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scrpits_custom/profiles_list_S.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="634">
-              <caret line="163" column="244" lean-forward="false" selection-start-line="163" selection-start-column="244" selection-end-line="163" selection-end-column="286" />
-              <folding>
-                <marker date="1497862913438" expanded="true" signature="1661:1686" ph="..." />
-                <marker date="1497862913438" expanded="true" signature="3497:3511" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings_save_S.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scrpits_custom/settings_save_S.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="11" column="3" lean-forward="false" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="exercise_S.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scrpits_custom/exercise_S.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1236">
-              <caret line="91" column="32" lean-forward="false" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings_advenced_S.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/scrpits_custom/settings_advenced_S.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="248" column="249" lean-forward="false" selection-start-line="248" selection-start-column="249" selection-end-line="248" selection-end-column="249" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/layout.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="42" column="33" lean-forward="false" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
+            <state relative-caret-position="195">
+              <caret line="346" column="26" lean-forward="true" selection-start-line="346" selection-start-column="26" selection-end-line="346" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -185,7 +73,6 @@
         <option value="$PROJECT_DIR$/bower_components/keyboard/css/keyboard.css" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/routes/settings_simple.js" />
-        <option value="$PROJECT_DIR$/scrpits_custom/index_S.js" />
         <option value="$PROJECT_DIR$/bower_components/bootstrap-toggle/js/bootstrap-toggle.js" />
         <option value="$PROJECT_DIR$/scrpits_custom/settings_advenced_S.jade" />
         <option value="$PROJECT_DIR$/scrpits_custom/settings_simple_S.js" />
@@ -194,21 +81,22 @@
         <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/routes/settings_save.js" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/views/settings_advenced.jade" />
         <option value="$PROJECT_DIR$/views/settings_save.jade" />
         <option value="$PROJECT_DIR$/scrpits_custom/settings_save_S.js" />
         <option value="$PROJECT_DIR$/routes/settings_advenced.js" />
         <option value="$PROJECT_DIR$/exercise_profiles/default.txt" />
         <option value="$PROJECT_DIR$/routes/exercise.js" />
         <option value="$PROJECT_DIR$/scrpits_custom/exercise_S.js" />
-        <option value="$PROJECT_DIR$/views/profiles_list.jade" />
         <option value="$PROJECT_DIR$/views/exercise.jade" />
         <option value="$PROJECT_DIR$/views/layout.jade" />
         <option value="$PROJECT_DIR$/scrpits_custom/layout_S.js" />
-        <option value="$PROJECT_DIR$/server_scripts/socket_communication.js" />
         <option value="$PROJECT_DIR$/server_scripts/rs232.js" />
         <option value="$PROJECT_DIR$/scrpits_custom/profiles_list_S.js" />
         <option value="$PROJECT_DIR$/scrpits_custom/settings_advenced_S.js" />
+        <option value="$PROJECT_DIR$/scrpits_custom/index_S.js" />
+        <option value="$PROJECT_DIR$/views/profiles_list.jade" />
+        <option value="$PROJECT_DIR$/views/settings_advenced.jade" />
+        <option value="$PROJECT_DIR$/server_scripts/socket_communication.js" />
       </list>
     </option>
   </component>
@@ -216,11 +104,19 @@
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
     <package-json value="$PROJECT_DIR$/package.json" />
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>false</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>false</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/bower_components/tether/node_modules" />
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
@@ -247,65 +143,31 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TrenazerHMI_v2.1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TrenazerHMI_v2.1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TrenazerHMI_v2.1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TrenazerHMI_v2.1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TrenazerHMI_v2.1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TrenazerHMI_v2.1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server_scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TrenazerHMI_v2.1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TrenazerHMI_v2.1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scrpits_custom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="TrenazerHMI_v2.1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrenazerHMI_v2.1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrenazerHMI_v2.1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrenazerHMI_v2.1" type="462c0819:PsiDirectoryNode" />
+              <item name="scrpits_custom" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrenazerHMI_v2.1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrenazerHMI_v2.1" type="462c0819:PsiDirectoryNode" />
+              <item name="server_scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -313,7 +175,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="6.10.3" />
-    <property name="last_opened_file_path" value="C:/GitHub/TrenazerHMI" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -333,12 +195,102 @@
     </option>
   </component>
   <component name="RunManager" selected="Node.js.bin\www">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
-      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="" />
@@ -393,29 +345,6 @@
         <option name="SUPPORT_LIB_ENABLED" value="true" />
         <option name="INSTRUMENTATION_ENABLED" value="true" />
       </Profilers>
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <module />
-      <method />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -564,36 +493,6 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="passParentEnv" value="true" />
-      <setting name="launchBrowser" value="true" />
-      <setting name="launchBrowserUrl" value="" />
-      <setting name="depsClasspath" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <envs />
@@ -659,14 +558,6 @@
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
       <method />
     </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <method />
-    </configuration>
     <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -708,43 +599,6 @@
     <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
       <envs />
       <method />
     </configuration>
@@ -793,9 +647,6 @@
       <envs />
       <method />
     </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Node.js.bin\www" />
-    </list>
   </component>
   <component name="SbtLocalSettings">
     <option name="externalProjectsViewState">
@@ -831,6 +682,12 @@
       <workItem from="1497618561222" duration="4144000" />
       <workItem from="1497624156042" duration="3838000" />
       <workItem from="1497861901920" duration="1022000" />
+      <workItem from="1500375905352" duration="21000" />
+      <workItem from="1500375940207" duration="952000" />
+      <workItem from="1500468332980" duration="34000" />
+      <workItem from="1500468429676" duration="186000" />
+      <workItem from="1500468627264" duration="487000" />
+      <workItem from="1500618675161" duration="72000" />
     </task>
     <task id="LOCAL-00001" summary="first page">
       <created>1495557825624</created>
@@ -930,42 +787,49 @@
       <option name="project" value="LOCAL" />
       <updated>1497862071601</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="poprawki ostanie została funkcja koncentracji + max pozycja">
+      <created>1500376863135</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1500376863135</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70382000" />
+    <option name="totallyTimeSpent" value="72134000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.334375" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969603" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32969603" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2436407" sideWeight="0.27642277" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1764706" sideWeight="0.290625" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969603" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17011128" sideWeight="0.72357726" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1764706" sideWeight="0.709375" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3998441" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1003,7 +867,7 @@
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="processedProjectFiles" value="true" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -1031,7 +895,8 @@
     <MESSAGE value="takt + divider" />
     <MESSAGE value="takt + divider /100" />
     <MESSAGE value="takt + divider /100 + write divider=10" />
-    <option name="LAST_COMMIT_MESSAGE" value="takt + divider /100 + write divider=10" />
+    <MESSAGE value="poprawki ostanie została funkcja koncentracji + max pozycja" />
+    <option name="LAST_COMMIT_MESSAGE" value="poprawki ostanie została funkcja koncentracji + max pozycja" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1127,13 +992,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scrpits_custom/settings_simple_S.js" />
-    <entry file="file://$PROJECT_DIR$/scrpits_custom/index_S.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="15" lean-forward="true" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../TrenazerHMI/views/exercise.jade" />
     <entry file="file://$PROJECT_DIR$/../TrenazerHMI/views/exercise/ex_displays_bar.jade" />
     <entry file="file://$PROJECT_DIR$/views/settings_base.jade" />
@@ -1142,13 +1000,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="32" column="87" lean-forward="true" selection-start-line="32" selection-start-column="87" selection-end-line="32" selection-end-column="87" />
         </state>
       </provider>
     </entry>
@@ -1194,24 +1045,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/settings_advenced.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="142" column="12" lean-forward="false" selection-start-line="142" selection-start-column="12" selection-end-line="142" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/exercise.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="512">
           <caret line="31" column="69" lean-forward="false" selection-start-line="31" selection-start-column="69" selection-end-line="31" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/profiles_list.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="64" column="26" lean-forward="false" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -1222,13 +1059,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/serialport/lib/serialport.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="167" column="0" lean-forward="false" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/serialport/lib/serialport.js" />
     <entry file="file://$PROJECT_DIR$/scrpits_custom/layout_S.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1236,108 +1067,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="33" lean-forward="false" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server_scripts/socket_communication.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2482">
-          <caret line="131" column="25" lean-forward="false" selection-start-line="131" selection-start-column="25" selection-end-line="131" selection-end-column="25" />
-          <folding>
-            <marker date="1497627321861" expanded="true" signature="7280:8323" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="7367:8270" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="7406:8260" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="7911:7932" ph="..." />
-            <marker date="1497627321861" expanded="true" signature="8102:8221" ph="..." />
-            <marker date="1497627321861" expanded="true" signature="8276:8321" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="8398:8957" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="8489:8618" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="8674:8802" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="8854:8955" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="9008:9567" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="9065:9195" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="9251:9412" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="9464:9565" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="9585:9625" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="9663:9916" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="9948:10218" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="10256:12408" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="10676:10850" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="11036:11264" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="11450:11680" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="11684:11986" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="12052:12381" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="12125:12375" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="12461:12597" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="12621:12689" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="12726:13713" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="12732:12913" ph="//..." />
-            <marker date="1497627321861" expanded="true" signature="13759:14459" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="13810:14398" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="13923:14130" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="14136:14226" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="14403:14457" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="14501:14949" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="14507:14565" ph="//..." />
-            <marker date="1497627321861" expanded="true" signature="14734:14881" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="14887:14947" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="15020:17340" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="16411:16790" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="16870:17249" ph="{...}" />
-            <marker date="1497627321861" expanded="false" signature="17432:17894" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="17588:17675" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="17936:18410" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="18455:18601" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="18651:18882" ph="{...}" />
-            <marker date="1497627321861" expanded="true" signature="18755:18880" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server_scripts/rs232.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="142" column="43" lean-forward="true" selection-start-line="142" selection-start-column="43" selection-end-line="142" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scrpits_custom/profiles_list_S.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="163" column="244" lean-forward="false" selection-start-line="163" selection-start-column="244" selection-end-line="163" selection-end-column="286" />
-          <folding>
-            <marker date="1497862913438" expanded="true" signature="1661:1686" ph="..." />
-            <marker date="1497862913438" expanded="true" signature="3497:3511" ph="..." />
-          </folding>
+        <state relative-caret-position="2771">
+          <caret line="163" column="25" lean-forward="false" selection-start-line="163" selection-start-column="25" selection-end-line="163" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scrpits_custom/settings_save_S.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="170">
           <caret line="11" column="3" lean-forward="false" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scrpits_custom/exercise_S.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1236">
+        <state relative-caret-position="1530">
           <caret line="91" column="32" lean-forward="false" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="32" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="59" lean-forward="false" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrpits_custom/index_S.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="99" column="39" lean-forward="false" selection-start-line="99" selection-start-column="39" selection-end-line="99" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/profiles_list.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="44" column="44" lean-forward="true" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scrpits_custom/settings_advenced_S.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="248" column="249" lean-forward="false" selection-start-line="248" selection-start-column="249" selection-end-line="248" selection-end-column="249" />
+        <state relative-caret-position="203">
+          <caret line="52" column="6" lean-forward="false" selection-start-line="52" selection-start-column="6" selection-end-line="52" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/settings_advenced.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="57" column="84" lean-forward="true" selection-start-line="57" selection-start-column="84" selection-end-line="57" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server_scripts/rs232.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-991">
+          <caret line="142" column="43" lean-forward="false" selection-start-line="142" selection-start-column="43" selection-end-line="142" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server_scripts/socket_communication.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="346" column="26" lean-forward="true" selection-start-line="346" selection-start-column="26" selection-end-line="346" selection-end-column="26" />
           <folding />
         </state>
       </provider>
