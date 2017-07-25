@@ -125,6 +125,13 @@ function COM_list(callback){
             console.log(port.comName);
             COM_port_list = port.comName;
         });
+
+        //if less then 2 COMs throw error
+        if (Object.keys(ports).length<2) {
+            throw new Error('Brak konmunikacji');
+        }
+
+        console.log(Object.keys(ports).length);
         callback(COM_port_list);
     });
 
