@@ -147,14 +147,23 @@ module.exports = function (io) {
         //STOP_AW
         //var stop_flag = 0;
 
+        var xxi=0;
+
         rs232.rs232_emergency_stop_eventE.on("stop", function () {
-            socket.emit('stop_RED');
+            if (xxi>800) {
+                socket.emit('stop_RED');
+                console.log('stop_RED');
+                xxi = 0;
+            }
+
+            xxi++;
         });
 
 
 
         rs232.rs232_emergency_stop_eventE.on("clear", function () {
-            socket.emit('stop_clear')
+            socket.emit('stop_clear');
+            //console.log('stop_clear');
         });
 
         //BAR BUTTONS LOGIC

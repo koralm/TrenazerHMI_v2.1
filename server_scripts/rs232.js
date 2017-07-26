@@ -80,7 +80,7 @@ var damping_static = '0';           //tłumienie statyczne
 var frame_terminator = '0303';      //Frame terminator
 
 //Receive form COM
-var stop_aw = 0;
+var stop_aw = 1;
 var speed_controler_off = 0;
 var tryb_pracy = 0;
 var induc_sens= 0;
@@ -345,25 +345,30 @@ function decode_speed_status(data) {
     }
 }
 
+var init_aw = 0;
+
+
 function decode_stop(data){
     if ((data & 64) == 64) {
         //console.log("STOP ok")
         if (stop_aw === 0){
             rs232_emergency_stop_event.emit("clear");
-            console.log('OK')
+            //console.log('OK')
         }
-
-
         stop_aw=1;
+
     } else {
         //console.log("STOP wcisnięty")
-        if (stop_aw === 1){
+        //if (stop_aw === 1){
             rs232_emergency_stop_event.emit("stop");
-            console.log('STOP')
-        }
+            //console.log('STOP')
+        //}
         stop_aw=0;
     }
+
 }
+
+//setTimeout(function(){stop_aw=1},100);
 
 function decode_work(data){
     if ((data & 128) == 128) {
