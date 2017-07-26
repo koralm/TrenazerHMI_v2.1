@@ -127,7 +127,7 @@ function COM_list(callback){
         });
 
         //if less then 2 COMs throw error
-        if (Object.keys(ports).length<2) {
+        if (Object.keys(ports).length<1) {
             throw new Error('Brak konmunikacji');
         }
 

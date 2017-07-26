@@ -126,17 +126,17 @@ module.exports = function (io) {
                 if (i>100){
                     update_values_to_display(socket);
                     i=0;
-                    console.log('takt')
+                    //console.log('takt')
                 }
-
-                if (ii>50) {
-                    if (rec_enable === true) {
-                        write_stream();
-                    }
-                }
+                //
+                // if (ii>2550) {
+                //     if (rec_enable === true) {
+                //         write_stream("ilosciowy");
+                //     }
+                // }
 
                 i++;
-                ii++;
+                // ii++;
             }
 
         });
@@ -213,11 +213,6 @@ module.exports = function (io) {
             //STOPER PAUSE
             clearInterval(stoper_interval_handle);
             //calculated_time.training_time = calculated_time.training_time - 1;
-            //END WRTIE
-            if (rec_enable === true){
-                rec_enable = false;
-                end_streams();
-            }
 
 
 
@@ -226,6 +221,13 @@ module.exports = function (io) {
             update_values_to_display(socket);
             socket.emit('bar_button_data_from_server_socket', {data_from232: data_from232});
             if (!(bar_button_data_to_server.end)){play_sound('stoper_end',socket);}
+
+            //END WRTIE
+            if (rec_enable === true){
+                rec_enable = false;
+                setTimeout(function(){end_streams()},10);
+            }
+
 
 
         });
@@ -255,23 +257,23 @@ function play_sound(play_sound_type, socket){
         if (session_settings.actual_settings.session_settings.sound_toggle === true) {
             switch (play_sound_type) {
                 case 'stoper_end':
-                    socket.emit('exercise_play_sound', {stoper_end: true});
+                    socket.emit('exercise_play_sound_end', {stoper_end: true});
                     break;
                 case 'up1':
                     //console.log('up1');
-                    socket.emit('exercise_play_sound', {up1: true});
+                    socket.emit('exercise_play_sound1', {up1: true});
                     break;
                 case 'down1':
                     //console.log('down1');
-                    socket.emit('exercise_play_sound', {down1: true});
+                    socket.emit('exercise_play_sound1', {down1: true});
                     break;
                 case 'up2':
                     //console.log('up2');
-                    socket.emit('exercise_play_sound', {up2: true});
+                    socket.emit('exercise_play_sound2', {up2: true});
                     break;
                 case 'down2':
                     //console.log('down2');
-                    socket.emit('exercise_play_sound', {down2: true});
+                    socket.emit('exercise_play_sound2', {down2: true});
                     break;
                 default:
             }
@@ -289,13 +291,13 @@ function bar_sound_detect1(display_value,socket) {
     if (display_value < 25 && sound_flags.flag1 === 0){
         //console.log('<25')
         play_sound('down1',socket);
-        setTimeout(function(){sound_flags.flag1 = 1},1);
+        setTimeout(function(){sound_flags.flag1 = 1},10);
     }
 
     if (display_value > 75 && sound_flags.flag2 === 0){
         //console.log('>75')
         play_sound('up1',socket);
-        setTimeout(function(){sound_flags.flag2 = 1},1);
+        setTimeout(function(){sound_flags.flag2 = 1},10);
 
     }
     if (display_value >= 25 && display_value <= 75){
@@ -310,14 +312,14 @@ function bar_sound_detect2(display_value,socket) {
     if (display_value < 25 && sound_flags.flag3 === 0){
         //console.log('<25')
         play_sound('down2',socket);
-        setTimeout(function(){sound_flags.flag3 = 1}, 1);
+        setTimeout(function(){sound_flags.flag3 = 1}, 10);
     }
 
     if (display_value > 75 && sound_flags.flag4 === 0){
         //console.log('>75')
         play_sound('up2',socket);
         //sound_flags.flag4 = 1
-        setTimeout(function(){sound_flags.flag4 = 1}, 1);
+        setTimeout(function(){sound_flags.flag4 = 1}, 10);
 
     }
     if (display_value >= 25 && display_value <= 75){
@@ -344,7 +346,7 @@ function update_init_params() {
 }
 
 function createDIR_rof_recordFILE() {
-    var DISK_LETTER = 'C';
+    var DISK_LETTER = 'D';
     var NOW_DATE = new Date().toISOString().replace(/T.+/, '');
     var NOW_TIME = new Date().getHours() + '_' + new Date().getMinutes() + '_' + new Date().getSeconds();
     var dir_path;
@@ -383,9 +385,12 @@ function createDIR_rof_recordFILE() {
 
 }
 
-function write_stream(data_ciagly, data_ilosciowy) {
-    write_stream_ciagly.write(prepare_string_to_save_ciagly());
-    write_stream_ilosciowy.write(prepare_string_to_save_ilosciowy())
+function write_stream(stream_type) {
+    if (stream_type==="ciagly"){
+        write_stream_ciagly.write(prepare_string_to_save_ciagly());
+    } else if (stream_type==="ilosciowy") {
+        write_stream_ilosciowy.write(prepare_string_to_save_ilosciowy())
+    }
 }
 
 function end_streams(){
@@ -517,9 +522,18 @@ function prepare_string_to_save_ilosciowy(){
 }
 
 rs232.rs232_cycle_eventE.on("cykl", function () {
-    if ((bar_button_data_to_server.start || bar_button_data_to_server.rec) && training_done === false){
+    if ((bar_button_data_to_server.start) && training_done === false){
         //console.log(rs232_measured_values.values[0]);
         cycle_counter()
         //update_values_to_display();
+    }else if ((bar_button_data_to_server.rec) && training_done === false){
+        cycle_counter();
+        write_stream("ciagly");
+    }
+});
+
+rs232.rs232_takt_eventE.on("takt", function () {
+    if (rec_enable === true) {
+        write_stream("ilosciowy");
     }
 });
