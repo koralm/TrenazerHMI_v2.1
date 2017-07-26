@@ -378,10 +378,11 @@ function createDIR_rof_recordFILE() {
             console.log('CREATED_DIR_FOR_RECORD');
             write_stream_ciagly = fs.createWriteStream(stream_path + "_ciagly" + ".txt" );
             write_stream_ilosciowy = fs.createWriteStream(stream_path + "_ilosciowy" + ".txt" );
+            rec_enable=true;
         }
     });
 
-    rec_enable=true;
+
 
 }
 
@@ -528,7 +529,9 @@ rs232.rs232_cycle_eventE.on("cykl", function () {
         //update_values_to_display();
     }else if ((bar_button_data_to_server.rec) && training_done === false){
         cycle_counter();
-        write_stream("ciagly");
+        if (rec_enable === true) {
+            write_stream("ciagly");
+        }
     }
 });
 
