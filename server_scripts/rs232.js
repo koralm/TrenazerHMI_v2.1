@@ -101,6 +101,7 @@ var concetrate_pointer =0;
 
 var help_count=0;
 var phase0_count=0;
+var phase_hist_count=0;
 var speed = 0;
 
 var phase_hist = 3;
@@ -110,9 +111,10 @@ var max_speed_cycle = 0;
 var val_strength_table_sum = 0;
 var force_mean_count = 0;
 var force_sum_count = 0;
+var force_sum_hist_count = 0;
 
 
-val_strength_table = new Array(3000);
+val_strength_table = new Array(2000);
 
 var COM_port_list;
 
@@ -218,6 +220,9 @@ serial_port_USB.on('data', function (data) {
 
         rs232_cycle_event.emit("faza");
 
+        phase_hist_count = phase_hist_count + phase0_count;
+        force_sum_hist_count = force_sum_hist_count + force_sum;
+
         //CONSOLE LOG DATA
         phase0_count = 0;
         force_sum = 0;
@@ -227,11 +232,15 @@ serial_port_USB.on('data', function (data) {
         if (help_count == 2){
             help_count = 0;
             //console.log("cykl");
-            exports.mean_force_cycle = (mean_force_brake + mean_force_acc)/2;
+            //exports.mean_force_cycle = (mean_force_brake + mean_force_acc)/2;
+
+            exports.mean_force_cycle = force_sum_hist_count/phase_hist_count;
             exports.time_cycle = time_acc_phase + time_brake_phase;
-            exports.max_pos_cyc = rs_line_length - max_pos_cyc;
+            exports.max_pos_cyc = max_pos_cyc;
             exports.max_speed_cycle = max_speed_cycle;
 
+            phase_hist_count = 0;
+            force_sum_hist_count = 0;
 
             //concentrate function
             //CALC Mean
@@ -248,12 +257,12 @@ serial_port_USB.on('data', function (data) {
 
             //CALC AVV mean
             for (i=0; i < val_strength_table.length-1; i++){
-                if ((parseFloat(val_strength_table[i]).toFixed(2) > parseFloat(force_mean).toFixed(2)) && (val_strength_table[i]!=0) ){
+                if ((parseFloat(val_strength_table[i]).toFixed(3) > parseFloat(force_mean).toFixed(3)) && (val_strength_table[i]!=0) ){
                     force_mean_count++;
                 }
             }
 
-            exports.concetrate_pointer = ((1.0-(force_mean_count/force_sum_count))*100);
+            exports.concetrate_pointer = ((1.0-(force_mean_count/force_sum_count))*100.0);
 
             rs232_cycle_event.emit("cykl");
 
@@ -394,10 +403,10 @@ function decode_line_ok(data){
 function decode_phase(data){
     if ((data & 2) == 2) {
         //console.log("faza_1");
-        phase= 1;
+        phase= 0;
     } else {
         //console.log("faza_0");
-        phase = 0;
+        phase = 1;
     }
 }
 
