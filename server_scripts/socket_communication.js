@@ -82,6 +82,7 @@ var write_stream_ilosciowy;
 
 //SEMAFORS
 var rec_enable = false;
+var stoper_first_flag = false;
 var sound_flags = { flag1: 0,
                     flag2: 0,
                     flag3: 0,
@@ -421,7 +422,7 @@ function prepare_session_settimgs(){
 //GLOBAL STOPER FUNCTION
 function stoper () {
 
-    if (!(calculated_time.training_time === 0)) {
+    if (!(calculated_time.training_time === 0) && !stoper_first_flag) {
         //console.log('X' + calculated_time.training_time);
 
         if ((calculated_time.training_time) <= 1) {
@@ -436,7 +437,11 @@ function stoper () {
         calculated_time.elapsed_min = Math.floor(calculated_time.training_time / 60);
         calculated_time.elapsed_sec = pad(calculated_time.training_time % 60);
     } else{
-        clearInterval(stoper_interval_handle);
+        stoper_first_flag = true;
+        calculated_time.training_time = calculated_time.training_time + 1;
+        calculated_time.elapsed_min = Math.floor(calculated_time.training_time / 60);
+        calculated_time.elapsed_sec = pad(calculated_time.training_time % 60);
+        //clearInterval(stoper_interval_handle);
     }
 }
 
@@ -523,7 +528,7 @@ function prepare_string_to_save_ciagly(){
 
     return (parseFloat(rs232.mean_force_brake).toFixed(2) + '\t' + parseFloat(rs232.mean_force_acc).toFixed(2)
     + '\t' + parseFloat(rs232.mean_force_cycle).toFixed(2) + '\t' + rs232.time_brake_phase.toFixed(2) + '\t' + rs232.time_acc_phase.toFixed(2)
-    + '\t' + rs232.time_cycle.toFixed(2) + '\t' + parseFloat(rs232.max_speed_cycle).toFixed(2) + '\t' + parseFloat(rs232.max_pos_cyc*2.0).toFixed(2)
+    + '\t' + rs232.time_cycle.toFixed(2) + '\t' + parseFloat(rs232.max_speed_cycle).toFixed(2) + '\t' + parseFloat(rs232.max_pos_cyc).toFixed(2)
     + '\t' + parseFloat(rs232.concetrate_pointer).toFixed(1) + '\r\n')
 }
 

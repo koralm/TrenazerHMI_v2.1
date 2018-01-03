@@ -196,9 +196,9 @@ $(function() {
             //$( "#alert_bad_values" ).html(length_error_alert);
             error_parts = 'DLUGOSC LINY: (5-150 cm)'
         }
-        if ($("#roller_dist_INA").val() <= 0 || $("#roller_dist_INA").val() > 50) {
+        if ($("#roller_dist_INA").val() < 1 || $("#roller_dist_INA").val() > 50) {
             //$( "#alert_bad_values" ).html(length_error_alert);
-            error_parts = error_parts + '  ' + 'ODL. ROLEK: (0-50 cm)'
+            error_parts = error_parts + '  ' + 'ODL. ROLEK: (1-50 cm)'
         }
 
         if ($("#mass_INA").val() < 0.1 || $("#mass_INA").val() > 10000) {
@@ -256,8 +256,10 @@ $(function() {
                 }
             })
 
+            $("#alert_bad_values").detach();
+
             var length_error_alert = '<div role="alert" class="alert alert-danger alert-dismissible fade show"> <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">×</span></button> <h2> <strong>' + 'Po kliknięciu WYCIĄGNIJ LINE JESZCZE RAZ' + '</strong></h2> </div>';
-            $("#alert_bad_values").html(length_error_alert);
+            $("#alert_line_fold").html(length_error_alert);
 
             $("#button_start_exercies").prop('disabled', true)
         }

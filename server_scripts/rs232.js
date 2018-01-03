@@ -237,7 +237,7 @@ serial_port_USB.on('data', function (data) {
 
             exports.mean_force_cycle = force_sum_hist_count/phase_hist_count;
             exports.time_cycle = time_acc_phase + time_brake_phase;
-            exports.max_pos_cyc = max_pos_cyc;
+            exports.max_pos_cyc = max_pos_cyc*2.0;
             exports.max_speed_cycle = max_speed_cycle;
 
             phase_hist_count = 0;

@@ -174,8 +174,11 @@ $(document).on('click', '.btn', function () {
 //START EXERCISE AND VALIDATION
 $(function() {
     $("#start_rotk_from_list").click(function () {
+
+        $("#alert_bad_values").empty();
+
         var length_error_alert = '<div role="alert" class="alert alert-danger alert-dismissible fade show"> <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">×</span></button> <h2> <strong>' + 'Po kliknięciu WYCIĄGNIJ LINE JESZCZE RAZ' + '</strong></h2> </div>';
-        $("#alert_bad_values").html(length_error_alert);
+        $("#alert_line_fold").html(length_error_alert);
 
         $("#start_rotk_from_list").prop('disabled', true)
     })
