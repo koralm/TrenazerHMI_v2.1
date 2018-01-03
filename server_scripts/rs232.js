@@ -188,6 +188,7 @@ serial_port_USB.on('data', function (data) {
     //max position in cycle
     if (max_pos_cyc<decoded_data[3]){
         max_pos_cyc = decoded_data[3]
+        //console.log(max_pos_cyc,decoded_data[3])
     }
 
     //max speed in cycle

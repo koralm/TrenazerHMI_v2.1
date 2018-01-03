@@ -385,8 +385,8 @@ function createDIR_rof_recordFILE() {
         if (err) console.error('CREATE_PAHT_ERROR' + err);
         else{
             console.log('CREATED_DIR_FOR_RECORD');
-            write_stream_ciagly = fs.createWriteStream(stream_path + "_ciagly" + ".txt" );
-            write_stream_ilosciowy = fs.createWriteStream(stream_path + "_ilosciowy" + ".txt" );
+            write_stream_ciagly = fs.createWriteStream(stream_path + "_ilosciowy" + ".txt" );
+            write_stream_ilosciowy = fs.createWriteStream(stream_path + "_ciagly" + ".txt" );
             rec_enable=true;
         }
     });
@@ -523,7 +523,7 @@ function prepare_string_to_save_ciagly(){
 
     return (parseFloat(rs232.mean_force_brake).toFixed(2) + '\t' + parseFloat(rs232.mean_force_acc).toFixed(2)
     + '\t' + parseFloat(rs232.mean_force_cycle).toFixed(2) + '\t' + rs232.time_brake_phase.toFixed(2) + '\t' + rs232.time_acc_phase.toFixed(2)
-    + '\t' + rs232.time_cycle.toFixed(2) + '\t' + parseFloat(rs232.max_speed_cycle).toFixed(2) + '\t' + parseFloat(rs232.max_pos_cyc).toFixed(2)
+    + '\t' + rs232.time_cycle.toFixed(2) + '\t' + parseFloat(rs232.max_speed_cycle).toFixed(2) + '\t' + parseFloat(rs232.max_pos_cyc*2.0).toFixed(2)
     + '\t' + parseFloat(rs232.concetrate_pointer).toFixed(1) + '\r\n')
 }
 
