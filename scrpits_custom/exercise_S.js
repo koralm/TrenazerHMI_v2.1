@@ -224,37 +224,44 @@ socket.on('exercise_play_sound', function (data) {
     }
 })*/
 
+var audio1 = new Audio('/trening/up1');
+var audio2 = new Audio('/trening/down1');
+var audio3 = new Audio('/trening/up2');
+var audio4 = new Audio('/trening/down2');
+var audio5 = new Audio('/trening/dzwiek_koniec');
+
+
 socket.on('exercise_play_sound1', function (data) {
     if(data.up1 && sound_flag1===0){
-        var audio1 = new Audio('/trening/up1');
+
         sound_flag1=1;
         audio1.play();
-        setTimeout(function(){sound_flag1=0;}, 5);
+        setTimeout(function(){sound_flag1=0;}, 35);
     } else if(data.down1 && sound_flag1===0) {
-        var audio2 = new Audio('/trening/down1');
+
         sound_flag1 = 1;
         audio2.play();
         setTimeout(function () {
             sound_flag1 = 0;
-        }, 5);
+        }, 35);
     }});
 
 socket.on('exercise_play_sound2', function (data) {
     if(data.up2 && sound_flag2===0){
-        var audio3 = new Audio('/trening/up2');
+
         sound_flag2=1;
         audio3.play();
-        setTimeout(function(){sound_flag2=0;}, 5);
+        setTimeout(function(){sound_flag2=0;}, 35);
     } else if(data.down2 && sound_flag2===0){
-        var audio4 = new Audio('/trening/down2');
+
         sound_flag2=1;
         audio4.play();
-        setTimeout(function(){sound_flag2=0;}, 5);
+        setTimeout(function(){sound_flag2=0;}, 35);
     } });
 
 socket.on('exercise_play_sound_end', function (data) {
         if(data.stoper_end){
-        var audio5 = new Audio('/trening/dzwiek_koniec');
+
         //sound_flag1=1;
         audio5.play();
         sound_flag1 = 0;

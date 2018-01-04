@@ -301,13 +301,13 @@ function bar_sound_detect1(display_value,socket) {
     if (display_value < 25 && sound_flags.flag1 === 0){
         //console.log('<25')
         play_sound('down1',socket);
-        setTimeout(function(){sound_flags.flag1 = 1},10);
+        setTimeout(function(){sound_flags.flag1 = 1},30);
     }
 
     if (display_value > 75 && sound_flags.flag2 === 0){
         //console.log('>75')
         play_sound('up1',socket);
-        setTimeout(function(){sound_flags.flag2 = 1},10);
+        setTimeout(function(){sound_flags.flag2 = 1},30);
 
     }
     if (display_value >= 25 && display_value <= 75){
@@ -322,14 +322,14 @@ function bar_sound_detect2(display_value,socket) {
     if (display_value < 25 && sound_flags.flag3 === 0){
         //console.log('<25')
         play_sound('down2',socket);
-        setTimeout(function(){sound_flags.flag3 = 1}, 10);
+        setTimeout(function(){sound_flags.flag3 = 1}, 30);
     }
 
     if (display_value > 75 && sound_flags.flag4 === 0){
         //console.log('>75')
         play_sound('up2',socket);
         //sound_flags.flag4 = 1
-        setTimeout(function(){sound_flags.flag4 = 1}, 10);
+        setTimeout(function(){sound_flags.flag4 = 1}, 30);
 
     }
     if (display_value >= 25 && display_value <= 75){
