@@ -236,14 +236,14 @@ socket.on('exercise_play_sound1', function (data) {
 
         sound_flag1=1;
         audio1.play();
-        setTimeout(function(){sound_flag1=0;}, 35);
+        setTimeout(function(){sound_flag1=0;}, 55);
     } else if(data.down1 && sound_flag1===0) {
 
         sound_flag1 = 1;
         audio2.play();
         setTimeout(function () {
             sound_flag1 = 0;
-        }, 35);
+        }, 45);
     }});
 
 socket.on('exercise_play_sound2', function (data) {
@@ -251,12 +251,12 @@ socket.on('exercise_play_sound2', function (data) {
 
         sound_flag2=1;
         audio3.play();
-        setTimeout(function(){sound_flag2=0;}, 35);
+        setTimeout(function(){sound_flag2=0;}, 45);
     } else if(data.down2 && sound_flag2===0){
 
         sound_flag2=1;
         audio4.play();
-        setTimeout(function(){sound_flag2=0;}, 35);
+        setTimeout(function(){sound_flag2=0;}, 55);
     } });
 
 socket.on('exercise_play_sound_end', function (data) {
