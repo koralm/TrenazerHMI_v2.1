@@ -75,7 +75,7 @@ function send_to_rs232(callback){
 
     handler_check_line = setInterval(function() {check_line_fold(callback)}, 25)
 
-    handler_check_line_back = setInterval(function() {router.res.redirect('/ustawienia')}, 10000)
+    handler_check_line_back = setInterval(function() {clearInterval(handler_check_line), window.location = '/ustawienia'}, 15000)
 }
 
 function fold_line(){
