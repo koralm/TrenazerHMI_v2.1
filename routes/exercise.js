@@ -85,8 +85,8 @@ function fold_line(){
 
 function check_line_fold(callback) {
     if(rs232.rs_line_ok()) {
-        fold_line();
         clearInterval(handler_check_line);
+        fold_line();
         callback()
     }
 }
