@@ -16,6 +16,17 @@ router.get('/', function(req, res, next) {
     if (cookies.session_settings.duration_cycle_INA.length === 0){cookies.session_settings.duration_cycle_INA = '0'}
     //console.log('EXERCISE_/:', req.session)
     //res.render('exercise', { title: 'CYKLOTREN HMI' + req.session.username, user_name_show: req.session.username });
+
+    handler_check_line_back = setInterval(function () {
+
+        console.log("dupa")
+        res.redirect('/ustawienia')
+
+
+        clearInterval(handler_check_line);
+        clearInterval(handler_check_line_back);
+    },15000);
+
     send_to_rs232(function(){
         res.render('exercise', { title: 'CYKLOTREN HMI' + req.session.username, user_name_show: req.session.username });
     });
@@ -76,15 +87,6 @@ function send_to_rs232(callback) {
     handler_check_line = setInterval(function () {
         check_line_fold(callback)
     }, 25);
-
-    handler_check_line_back = setInterval(function () {
-
-        router.post('/', function (req, res, next) {
-            res.send({redirectUrl: "/ustawienia"});
-        });
-        clearInterval(handler_check_line);
-        clearInterval(handler_check_line_back);
-    },5000);
 }
 
 function fold_line(){
