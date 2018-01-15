@@ -78,11 +78,13 @@ function send_to_rs232(callback) {
     }, 25);
 
     handler_check_line_back = setInterval(function () {
-        clearInterval(handler_check_line);
+
         router.post('/', function (req, res, next) {
             res.send({redirectUrl: "/ustawienia"});
         });
-    },15000);
+        clearInterval(handler_check_line);
+        clearInterval(handler_check_line_back);
+    },5000);
 }
 
 function fold_line(){
