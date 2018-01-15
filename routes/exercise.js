@@ -4,6 +4,7 @@ var rs232 = require('../server_scripts/rs232.js');
 
 var cookies;
 var handler_check_line;
+var handler_check_line_back;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -73,6 +74,8 @@ function send_to_rs232(callback){
     rs232.rs_statusSET(8);
 
     handler_check_line = setInterval(function() {check_line_fold(callback)}, 25)
+
+    handler_check_line_back = setInterval(function() {router.res.redirect('/ustawienia')}, 10000)
 }
 
 function fold_line(){
