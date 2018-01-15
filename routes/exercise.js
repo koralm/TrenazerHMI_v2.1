@@ -82,7 +82,7 @@ function send_to_rs232(callback) {
         router.post('/', function (req, res, next) {
             res.send({redirectUrl: "/ustawienia"});
         });
-    });
+    },15000);
 }
 
 function fold_line(){
