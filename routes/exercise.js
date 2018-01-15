@@ -72,7 +72,7 @@ function send_to_rs232(callback){
     rs232.rs_statusSET(4);
     rs232.rs_statusSET(8);
 
-    handler_check_line = setInterval(function() {check_line_fold(callback)}, 30)
+    handler_check_line = setInterval(function() {check_line_fold(callback)}, 5)
 }
 
 function fold_line(){
