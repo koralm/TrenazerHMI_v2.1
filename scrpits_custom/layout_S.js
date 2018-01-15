@@ -16,6 +16,7 @@ socket.on('stop_clear', function (data) {
     //     $('#AW_STOP').modal('hide');
     //     location.reload();
     // }
+    $('#AW_STOP').modal('hide')
     location.reload()
     //$('#AW_STOP').modal('hide')
 });
