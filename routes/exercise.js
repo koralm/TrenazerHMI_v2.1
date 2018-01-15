@@ -55,7 +55,7 @@ function pad(n) {
     return (n < 10) ? ("0" + n) : n;
 }
 
-function send_to_rs232(callback){
+function send_to_rs232(callback) {
     //RESET SEQUENCE
     rs232.rs_statusSET(0);
     rs232.rs_statusSET(0);
@@ -73,9 +73,16 @@ function send_to_rs232(callback){
     rs232.rs_statusSET(4);
     rs232.rs_statusSET(8);
 
-    handler_check_line = setInterval(function() {check_line_fold(callback)}, 25)
+    handler_check_line = setInterval(function () {
+        check_line_fold(callback)
+    }, 25);
 
-    handler_check_line_back = setInterval(function() {clearInterval(handler_check_line), window.location = '/ustawienia'}, 15000)
+    handler_check_line_back = setInterval(function () {
+        clearInterval(handler_check_line);
+        router.post('/', function (req, res, next) {
+            res.send({redirectUrl: "/ustawienia"});
+        });
+    });
 }
 
 function fold_line(){
@@ -89,6 +96,7 @@ function fold_line(){
 function check_line_fold(callback) {
     if(rs232.rs_line_ok()) {
         clearInterval(handler_check_line);
+        clearInterval(handler_check_line_back);
         fold_line();
         callback()
     }
