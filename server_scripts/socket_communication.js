@@ -108,7 +108,7 @@ module.exports = function (io) {
 
             bar_button_data_to_server = data;
             //exports.bar_button_data_to_serverE = data;
-            console.log(data);
+            //console.log(data);
             bar_buttons_function();
         });
 

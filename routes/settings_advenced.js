@@ -22,7 +22,9 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next)
 {
     //console.log('ADV_/POST', cookies)
+    //console.log("dupa");
     res.send({actual_settings: cookies});
+    //console.log("dupa1");
 });
 
 function send_reset_to_rs232(callback){
