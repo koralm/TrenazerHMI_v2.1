@@ -537,7 +537,7 @@ function prepare_string_to_save_ilosciowy(){
 }
 
 rs232.rs232_cycle_eventE.on("cykl", function () {
-    if ((bar_button_data_to_server.start) && training_done === false){
+    if ((bar_button_data_to_server.start) && training_done === false && (!bar_button_data_to_server.rec) ){
         //console.log(rs232_measured_values.values[0]);
         cycle_counter()
         //update_values_to_display();
